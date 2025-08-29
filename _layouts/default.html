@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ site.name }}{% if page.title %} 🍖 {{ page.title }} {% endif %}</title>
+    <title>{{ site.name }}{% if page.title %} &middot; {{ page.title }} {% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Respect user dark/light theme choice -->
@@ -27,7 +27,7 @@
     <!-- Default Facebook Open Graph tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}">
-    <meta property="og:title" content="{{ site.name }}{% if page.title %} 🍖 {{ page.title }}{% endif %}">
+    <meta property="og:title" content="{{ site.name }}{% if page.title %} &middot; {{ page.title }}{% endif %}">
     <meta property="og:description"
         content="{% if page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
     <meta property="og:image"
@@ -37,7 +37,7 @@
     <!-- Default Twitter Card tags (additive to FB tags) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:domain" value="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}" />
-    <meta name="twitter:title" value="{{ site.name }}{% if page.title %} 🍖 {{ page.title }}{% endif %}" />
+    <meta name="twitter:title" value="{{ site.name }}{% if page.title %} &middot; {{ page.title }}{% endif %}" />
     <meta name="twitter:description"
         value="{% if page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
     <meta name="twitter:image"
