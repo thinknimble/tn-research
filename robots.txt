@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://research.thinknimble.com/sitemap.xml

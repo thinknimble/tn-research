@@ -1,0 +1,42 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+
+<div class="blog-page">
+  <h1>Research Blog</h1>
+  <p class="page-description">Updates, insights, and discussions from the ThinkNimble Research Institute.</p>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-entry">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          
+          {% if post.author %}
+            <span class="author">by {{ post.author }}</span>
+          {% endif %}
+          
+          {% if post.categories %}
+            <span class="categories">
+              {% for category in post.categories %}
+                <a href="/category/{{ category | slugify }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+        
+        {% if post.excerpt %}
+          <div class="excerpt">
+            {{ post.excerpt }}
+          </div>
+        {% endif %}
+        
+        <a href="{{ post.url | relative_url }}" class="read-more">Read more →</a>
+      </article>
+    {% endfor %}
+  </div>
+</div>

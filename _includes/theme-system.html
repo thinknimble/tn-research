@@ -1,0 +1,388 @@
+<!-- Theme System: Respects user preference, allows manual override -->
+<style>
+  /* CSS Variables for all theme-aware properties */
+  :root {
+    /* Light mode colors (default) */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --heading-color: #000000;
+    --link-color: rgb(24, 127, 168);
+    --link-hover: rgb(20, 100, 140);
+    --border-color: #cdcdcd;
+    --code-bg: #f5f5f5;
+    --code-text: #333333;
+    --blockquote-border: rgba(180, 255, 180, 0.75);
+    --tag-bg: #f0f0f0;
+    --tag-text: #666666;
+    --meta-text: #666666;
+    --card-bg: #ffffff;
+    --card-border: #e0e0e0;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    
+    /* Typography */
+    --font-serif: 'Lora', 'Georgia', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  }
+
+  /* Dark mode colors */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --heading-color: #ffffff;
+      --link-color: rgb(34, 194, 255);
+      --link-hover: rgb(64, 210, 255);
+      --border-color: #444444;
+      --code-bg: #2a2a2a;
+      --code-text: #e0e0e0;
+      --blockquote-border: rgba(100, 255, 100, 0.5);
+      --tag-bg: #2a2a2a;
+      --tag-text: #a0a0a0;
+      --meta-text: #a0a0a0;
+      --card-bg: #2a2a2a;
+      --card-border: #333333;
+      --card-shadow: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  /* Manual dark theme override */
+  [data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --link-color: rgb(34, 194, 255);
+    --link-hover: rgb(64, 210, 255);
+    --border-color: #444444;
+    --code-bg: #2a2a2a;
+    --code-text: #e0e0e0;
+    --blockquote-border: rgba(100, 255, 100, 0.5);
+    --tag-bg: #2a2a2a;
+    --tag-text: #a0a0a0;
+    --meta-text: #a0a0a0;
+    --card-bg: #2a2a2a;
+    --card-border: #333333;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Manual light theme override */
+  [data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --heading-color: #000000;
+    --link-color: rgb(24, 127, 168);
+    --link-hover: rgb(20, 100, 140);
+    --border-color: #cdcdcd;
+    --code-bg: #f5f5f5;
+    --code-text: #333333;
+    --blockquote-border: rgba(180, 255, 180, 0.75);
+    --tag-bg: #f0f0f0;
+    --tag-text: #666666;
+    --meta-text: #666666;
+    --card-bg: #ffffff;
+    --card-border: #e0e0e0;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Apply variables to base elements */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-serif);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    font-family: var(--font-serif);
+  }
+
+  a {
+    color: var(--link-color);
+  }
+
+  a:visited {
+    color: var(--link-color);
+  }
+
+  a:hover {
+    color: var(--link-hover);
+  }
+
+  hr {
+    background-color: var(--border-color);
+  }
+
+  blockquote {
+    border-left-color: var(--blockquote-border);
+  }
+
+  code {
+    background-color: var(--code-bg);
+    color: var(--code-text);
+    font-family: var(--font-mono);
+  }
+
+  pre {
+    background-color: var(--code-bg);
+    color: var(--code-text);
+    font-family: var(--font-mono);
+  }
+
+  /* UI Elements use sans-serif */
+  .main-nav,
+  .post-date,
+  .note-meta,
+  .note-meta-top,
+  .essay-meta-top,
+  .post-meta-top,
+  .readtime,
+  .authors,
+  .tag,
+  .tag-small,
+  .post-category-label,
+  .status-badge,
+  .status-label,
+  .status-tooltip,
+  .footer,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-sans);
+  }
+
+  /* Navigation styles */
+  .main-nav {
+    border-top-color: var(--border-color);
+    border-bottom-color: var(--border-color);
+  }
+
+  .main-nav > a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: text-decoration-color 0.2s ease;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.25em;
+  }
+
+  .main-nav > a:visited {
+    color: var(--text-color);
+  }
+
+  .main-nav > a:hover {
+    background: none;
+    text-decoration-color: var(--text-color);
+  }
+
+  /* Header styles */
+  .header__title {
+    color: var(--heading-color);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .header__title {
+      font-size: 2.5rem;
+    }
+  }
+
+  /* Meta information styling */
+  .post-date, .note-meta, .essay-meta-top, time, .readtime, .authors {
+    color: var(--meta-text);
+  }
+
+  /* Layout for meta sections */
+  .post-meta-top,
+  .essay-meta-top,
+  .note-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .post-meta-top .post-date {
+    order: -1;
+  }
+
+  /* Tags and labels */
+  .tag, .tag-small, .post-category-label {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    border-color: var(--border-color);
+  }
+
+  /* Cards */
+  .note-card, .block-link {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: 0 2px 4px var(--card-shadow);
+  }
+  
+  .essay-preview {
+    background-color: transparent;
+    border-color: var(--card-border);
+  }
+  
+  /* Spacing between list items */
+  .essay-preview {
+    margin-bottom: 1.5rem;
+    padding: 1rem 0 0.75rem 0;
+  }
+  
+  .essay-preview-link {
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .essay-preview-link:last-child {
+    border-bottom: none;
+  }
+  
+  /* Essay preview link styling */
+  .essay-preview-link {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .essay-preview-link:visited {
+    color: var(--text-color);
+  }
+  
+  .essay-preview-link:hover {
+    color: var(--text-color);
+  }
+  
+  .essay-preview-title {
+    color: var(--heading-color);
+  }
+  
+  .essay-preview-abstract {
+    color: var(--text-color);
+  }
+  
+  /* Note preview styling - matching essay preview */
+  .note-preview {
+    margin-bottom: 1.5rem;
+    padding: 1rem 0 0.75rem 0;
+  }
+  
+  .note-preview-link {
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .note-preview-link:last-child {
+    border-bottom: none;
+  }
+  
+  .note-preview-link:visited {
+    color: var(--text-color);
+  }
+  
+  .note-preview-link:hover {
+    color: var(--text-color);
+  }
+  
+  .note-preview-title {
+    color: var(--heading-color);
+    margin-bottom: 0.75rem;
+  }
+  
+  .note-preview-excerpt {
+    color: var(--text-color);
+  }
+  
+  .note-preview-meta {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    color: var(--meta-text);
+  }
+
+  .block-link {
+    color: var(--text-color);
+  }
+
+  .block-link:visited {
+    color: var(--text-color);
+  }
+
+  .block-link:hover {
+    background-color: var(--tag-bg);
+  }
+
+  /* Forms */
+  input, textarea, select {
+    background-color: var(--code-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+
+  /* Tables */
+  table {
+    border-color: var(--border-color);
+  }
+
+  th {
+    background-color: var(--code-bg);
+    border-color: var(--border-color);
+  }
+
+  td {
+    border-color: var(--border-color);
+  }
+
+  /* Landing page specific */
+  /* Margin now handled in style.css */
+
+  /* Status badge adjustments for dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .status-badge {
+      filter: brightness(0.8);
+    }
+  }
+
+  [data-theme="dark"] .status-badge {
+    filter: brightness(0.8);
+  }
+
+  /* Smooth transitions */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Prevent FOUC */
+  .no-transitions * {
+    transition: none !important;
+  }
+</style>
+
+<script>
+  // Theme initialization - respects system preference, allows manual override
+  (function() {
+    // Check for saved preference, otherwise use system preference
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      // User has manually selected a theme
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    // If no saved preference, the CSS media query will handle it automatically
+    
+    // Prevent flash of unstyled content
+    document.documentElement.classList.add('no-transitions');
+    
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.documentElement.classList.remove('no-transitions');
+      }, 100);
+    });
+  })();
+</script>

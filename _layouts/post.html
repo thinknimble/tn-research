@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+{% include nav.html %}
+
+<main class="row-wrap post-body">
+  <article>
+    <header class="post-header">
+      <div class="post-meta-top">
+        {% if page.status %}
+          {% include status-badge.html status=page.status %}
+        {% endif %}
+        <span class="post-date">
+          <time datetime="{{page.date|date:" %F"}}">
+            {{page.date|date:"%b %-d, %Y"}}
+          </time>
+          {% if page.readtime %}
+          <span>&middot; {{page.readtime}} read</span>
+          {% endif %}
+        </span>
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+
+    <div class="entry">
+      {{ content }}
+    </div>
+
+    <footer class="post-footer">
+      <p>
+      {% for tag in page.tags %}
+        <span class="post-category-label">{{ tag }}</span>
+      {% endfor %}
+      </p>
+
+      <h2>Keep Reading...</h2>
+      {% for post in site.posts %}
+        {% if post.url == page.url %}
+          {% assign prev_post_index = forloop.index | minus: 1 %}
+          {% assign next_post_index = forloop.index | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% for post in site.posts %}
+      {% if prev_post_index == forloop.index %}
+        <p><a class="btn" rel="prev" href="{{ site.baseurl }}{{ post.url }}">[&uarr; newer] {{ post.title }}</a></p>
+      {% endif %}
+    
+      {% if next_post_index == forloop.index %}
+        <p><a class="btn" rel="next" href="{{ site.baseurl }}{{ post.url }}">[&darr; older] {{ post.title }}</a></p>
+      {% endif %}
+      {% endfor %}
+    </footer>
+  </article>
+</main>

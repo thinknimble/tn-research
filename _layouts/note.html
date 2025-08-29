@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% include nav.html %}
+
+<article class="note row-wrap">
+  <header class="note-header">
+    <div class="note-meta-top">
+      {% if page.status %}
+        {% include status-badge.html status=page.status %}
+      {% endif %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        Last updated: {{ page.date | date: "%B %d, %Y" }}
+      </time>
+    </div>
+    <h1 class="note-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="note-content">
+    {{ content }}
+  </div>
+
+  <nav class="note-nav">
+    <a href="/notes/">← All Notes</a>
+  </nav>
+</article>

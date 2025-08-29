@@ -1,0 +1,137 @@
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+  <svg class="theme-toggle-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg class="theme-toggle-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--toggle-bg, #f0f0f0);
+    border: 2px solid var(--toggle-border, #ddd);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.95);
+  }
+
+  .theme-toggle-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+    color: #666;
+  }
+
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+
+  [data-theme="dark"] .sun-icon {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  [data-theme="dark"] .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+
+  /* Dark mode specific toggle styles */
+  [data-theme="dark"] .theme-toggle {
+    --toggle-bg: #2a2a2a;
+    --toggle-border: #444;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .theme-toggle {
+      bottom: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+    }
+    
+    .theme-toggle-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Function to get current theme
+    function getCurrentTheme() {
+      // Check if user has manually set a theme
+      const dataTheme = document.documentElement.getAttribute('data-theme');
+      if (dataTheme) return dataTheme;
+      
+      // Otherwise check system preference
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    
+    // Function to toggle theme
+    function toggleTheme() {
+      const currentTheme = getCurrentTheme();
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Set the theme
+      document.documentElement.setAttribute('data-theme', newTheme);
+      
+      // Save user's manual choice
+      localStorage.setItem('theme', newTheme);
+      
+      // Dispatch event
+      window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: newTheme } }));
+    }
+    
+    // Set up click handler
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    // Listen for system theme changes (only if user hasn't manually set theme)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      // Only auto-switch if user hasn't manually selected a theme
+      if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        // Don't set data-theme attribute, let CSS handle it
+        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: newTheme } }));
+      }
+    });
+  })();
+</script>

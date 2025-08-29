@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+{% include nav.html %}
+
+<main class="photo-body">
+    <article class="row-wrap-wide photo-container">
+        <picture>
+            <source srcset="{{ page.image }}.webp" type="image/webp">
+            <img src="{{ page.image }}" width="{{ page['ImageWidth'] }}" height="{{ page['ImageHeight'] }}"
+                loading="eager" class="photo" title="{{ page.description }}" alt="{{ page['Description'] }}">
+        </picture>
+        <p>{{ page['Title'] }}</p>
+        <p><small>
+                {{ page['DateTimeOriginal'] | date:"%b %-d, %Y" }} &middot; {{ page['Model'] }} &middot; ISO {{
+                page['ISO'] }} &middot;
+                {{ page["ExposureTime"] }} &middot;
+                f{{ page["FNumber"] }} &middot;
+                {{ page["LensID"] }}
+            </small></p>
+    </article>
+    <div class="row-wrap" style="text-align: center;">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url }}">&laquo; prev</a>
+        {% endif %}
+        &nbsp;
+        {% if page.next.url %}
+        <a href="{{ page.next.url }}">next &raquo;</a>
+        {% endif %}
+    </div>
+</main>

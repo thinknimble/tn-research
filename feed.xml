@@ -1,0 +1,39 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.name | xml_escape }}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}/</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    
+    {% for post in site.posts limit:20 %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        <description>{{ post.excerpt | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ site.url }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+        {% for category in post.categories %}
+          <category>{{ category | xml_escape }}</category>
+        {% endfor %}
+      </item>
+    {% endfor %}
+    
+    {% for publication in site.publications limit:10 %}
+      <item>
+        <title>[Publication] {{ publication.title | xml_escape }}</title>
+        <description>{{ publication.abstract | xml_escape }}</description>
+        <pubDate>{{ publication.date | date_to_rfc822 }}</pubDate>
+        <link>{{ site.url }}{{ publication.url }}</link>
+        <guid isPermaLink="true">{{ site.url }}{{ publication.url }}</guid>
+        <category>publication</category>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

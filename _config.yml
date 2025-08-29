@@ -1,0 +1,43 @@
+name: ThinkNimble Research Institute
+description: Advancing understanding through thoughtful research and innovation
+author: ThinkNimble Research Institute
+author_email: hello@thinknimble.com
+category_dir: /
+url: https://research.thinknimble.com
+
+# Custom tag for default site image
+# Post pages will typically override this with a "featured" image.
+image: /static/images/facebook-image.jpg
+
+# Uncomment if you are planning to run the blog in a subdirectory
+# Note - if you enable this, and attempt to view your site locally you have to use the baseurl in your local path.
+# Example, you must use http://localhost:4000/path/to/blog
+#baseurl: /path/to/blog
+baseurl:
+
+#### Under the Hood Stuff #####
+
+# Makes pretty (descriptive) permalinks. See Jekyll docs for alternatives.
+permalink: /:title/
+
+# How many articles do you wish to appear on the front page:
+plugins: [jekyll-paginate]
+paginate: 3
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.md]
+
+# Collections
+collections:
+  publications:
+    output: true
+    permalink: /publications/:name/
+  notes:
+    output: true
+    permalink: /notes/:name/
+  essays:
+    output: true
+    permalink: /essays/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/

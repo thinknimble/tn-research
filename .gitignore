@@ -1,0 +1,7 @@
+_site/
+.jekyll-metadata
+.jekyll-cache/
+_config_dev.yml
+r2-blog-images/
+.DS_Store
+.env
