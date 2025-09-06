@@ -4,6 +4,7 @@ title: "AI Attribution Policy"
 date: 2025-09-06
 tags: [ai, ethics, attribution, transparency, writing]
 attribution: human-written
+status: budding
 ---
 
 William: I am cooking up another article about the game theory and ethics of AI attribution. Like how do you represent your work in an environment where other people have or have not adopted AI, or where the norms are such that everyone else is using AI, or they suspect you're using AI, or trust of AI is lower than you think it should be, etc etc.

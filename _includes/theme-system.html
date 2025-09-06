@@ -289,11 +289,23 @@
   
   .note-preview-link:hover {
     color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  /* Ensure badges inside links never get underlines */
+  .note-preview-link .status-badge,
+  .note-preview-link .attribution-badge {
+    text-decoration: none !important;
   }
   
   .note-preview-title {
     color: var(--heading-color);
     margin-bottom: 0.75rem;
+    text-decoration: none;
+  }
+  
+  .note-preview-link:hover .note-preview-title {
+    text-decoration: underline;
   }
   
   .note-preview-excerpt {
