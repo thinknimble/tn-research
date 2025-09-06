@@ -52,7 +52,7 @@ layout: default
     <h2>Articles by {{ page.name }}</h2>
     
     {% assign author_essays = site.essays | where_exp: "essay", "essay.authors contains page.name" %}
-    {% assign author_notes = site.notes | where_exp: "note", "note.author == page.slug" %}
+    {% assign author_notes = site.notes | where_exp: "note", "note.authors contains page.name" %}
     {% assign author_posts = site.posts | where_exp: "post", "post.author == page.slug" %}
     
     {% if author_essays.size > 0 %}
@@ -68,7 +68,7 @@ layout: default
     {% endif %}
     
     {% if author_notes.size > 0 %}
-      <h3>Notes</h3>
+      <h3>Digital Garden Notes</h3>
       <ul class="article-list">
         {% for note in author_notes %}
           <li>

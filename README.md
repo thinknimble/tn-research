@@ -73,6 +73,16 @@ Blog posts are stored in the `_posts/` directory following Jekyll's naming conve
 
 The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. CloudFlare handles DNS routing from research.thinknimble.com to the GitHub Pages site.
 
+## Development Resources
+
+### Placeholder Image Services
+
+For development and prototyping, these services can generate placeholder images:
+
+- **placehold.co** - Simple colored placeholders with text: `https://placehold.co/800x600/2E7D32/81C784?text=Text+Here`
+- **placeholders.io** - Abstract geometric patterns: `https://placeholders.io/800/600/abstract%20geometric?seed=12345` (requires numeric seed)
+- **picsum.photos** - Random photos: `https://picsum.photos/seed/yourtext/800/600`
+
 ## Future Features
 
 ### Backlinks System

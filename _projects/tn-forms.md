@@ -2,8 +2,10 @@
 layout: project
 title: "TN Forms"
 subtitle: "Type-safe form management for TypeScript"
-date: 2021-11-05
+date: 2021-11-01
+end_date: present
 status: active
+banner_image: "https://placehold.co/800x600/C62828/EF5350?text=TN+Forms"
 description: "A powerful TypeScript library for building and managing forms with full type safety, validation, and state management."
 technologies:
   - TypeScript

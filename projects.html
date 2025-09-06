@@ -18,9 +18,9 @@ title: Projects
     {% for project in sorted_projects %}
       <article class="project-card">
         <a href="{{ project.url | relative_url }}" class="project-card-link">
-          {% if project.image %}
+          {% if project.banner_image or project.image %}
             <div class="project-card-image">
-              <img src="{{ project.image }}" alt="{{ project.title }}" />
+              <img src="{{ project.banner_image | default: project.image }}" alt="{{ project.title }}" />
             </div>
           {% endif %}
           <div class="project-card-content">
@@ -34,7 +34,15 @@ title: Projects
             <div class="project-card-meta">
               {% if project.date %}
                 <time datetime="{{ project.date | date_to_xmlschema }}">
-                  {{ project.date | date: "%B %Y" }}
+                  {% if project.end_date %}
+                    {% if project.end_date == "present" %}
+                      {{ project.date | date: "%B %Y" }} – Present
+                    {% else %}
+                      {{ project.date | date: "%B %Y" }} – {{ project.end_date | date: "%B %Y" }}
+                    {% endif %}
+                  {% else %}
+                    {{ project.date | date: "%B %Y" }}
+                  {% endif %}
                 </time>
               {% endif %}
             </div>

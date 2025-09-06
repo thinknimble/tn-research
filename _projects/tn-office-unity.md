@@ -4,6 +4,7 @@ title: "TN Office Unity"
 subtitle: "Virtual office environment in the browser"
 date: 2020-08-16
 status: completed
+banner_image: "https://placehold.co/800x600/00838F/4DD0E1?text=TN+Office+Unity"
 description: "The ThinkNimble Office as a web-based Unity environment. An interactive 3D virtual office space accessible through any modern web browser."
 technologies:
   - Unity

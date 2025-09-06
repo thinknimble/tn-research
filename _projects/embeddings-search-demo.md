@@ -4,6 +4,7 @@ title: "AI Search with LLM Embeddings"
 subtitle: "Semantic search with vector embeddings"
 date: 2023-09-07
 status: archived
+banner_image: "https://placehold.co/800x600/455A64/90A4AE?text=AI+Search"
 description: "Prototype application demonstrating semantic search capabilities using natural language, enabling job description matching through vector embeddings and PostgreSQL with pgvector."
 technologies:
   - Python

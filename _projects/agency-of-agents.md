@@ -2,8 +2,10 @@
 layout: project
 title: "Agency of Agents"
 subtitle: "Specialized AI agents for software agency workflows"
-date: 2025-08-28
+date: 2025-08-01
+end_date: present
 status: active
+banner_image: "https://placehold.co/800x600/2E7D32/81C784?text=Agency+of+Agents"
 description: "A collection of specialized AI agents designed to streamline software agency workflows, from project management to code review and client communication."
 technologies:
   - Python

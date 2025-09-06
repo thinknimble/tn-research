@@ -2,8 +2,10 @@
 layout: project
 title: "TN Models"
 subtitle: "Frontend API model service builder"
-date: 2023-03-12
+date: 2021-10-01
+end_date: present
 status: active
+banner_image: "https://placehold.co/800x600/00695C/4DB6AC?text=TN+Models"
 description: "A library for creating API models that mirror a RESTful backend. Handles serialization, and data transformation with type safety."
 technologies:
   - TypeScript

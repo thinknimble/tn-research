@@ -4,7 +4,11 @@ layout: default
 
 {% include nav.html %}
 
-{% if page.image %}
+{% if page.banner_image %}
+<div class="project-banner">
+  <img src="{{ page.banner_image }}" alt="{{ page.title }}" />
+</div>
+{% elsif page.image %}
 <div class="project-banner">
   <img src="{{ page.image }}" alt="{{ page.title }}" />
 </div>
@@ -18,7 +22,15 @@ layout: default
       {% endif %}
       {% if page.date %}
         <time datetime="{{ page.date | date_to_xmlschema }}">
-          {{ page.date | date: "%B %d, %Y" }}
+          {% if page.end_date %}
+            {% if page.end_date == "present" %}
+              {{ page.date | date: "%B %Y" }} – Present
+            {% else %}
+              {{ page.date | date: "%B %Y" }} – {{ page.end_date | date: "%B %Y" }}
+            {% endif %}
+          {% else %}
+            {{ page.date | date: "%B %Y" }}
+          {% endif %}
         </time>
       {% endif %}
     </div>
@@ -31,16 +43,19 @@ layout: default
         {{ page.description }}
       </div>
     {% endif %}
-    {% if page.github_url or page.demo_url or page.website_url %}
+    {% if page.github_url or page.legacy_github_url or page.demo_url or page.website_url %}
       <div class="project-links">
         {% if page.github_url %}
           <a href="{{ page.github_url }}" class="project-link" target="_blank">GitHub</a>
+        {% endif %}
+        {% if page.legacy_github_url %}
+          <a href="{{ page.legacy_github_url }}" class="project-link" target="_blank">Legacy Version</a>
         {% endif %}
         {% if page.demo_url %}
           <a href="{{ page.demo_url }}" class="project-link" target="_blank">Demo</a>
         {% endif %}
         {% if page.website_url %}
-          <a href="{{ page.website_url }}" class="project-link" target="_blank">Website</a>
+          <a href="{{ page.website_url }}" class="project-link" target="_blank">Preview Site</a>
         {% endif %}
       </div>
     {% endif %}
@@ -68,25 +83,20 @@ layout: default
 <style>
 .project-banner {
   width: 100%;
-  height: 300px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+  max-height: 600px;
 }
 
 .project-banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-@media (min-width: 768px) {
-  .project-banner {
-    height: 400px;
-  }
 }
 
 .project-header {
@@ -173,8 +183,13 @@ layout: default
   transition: background 0.2s;
 }
 
+.project-link:visited {
+  color: white;
+}
+
 .project-link:hover {
   background: rgb(20, 107, 141);
+  color: white;
 }
 
 .project-content {

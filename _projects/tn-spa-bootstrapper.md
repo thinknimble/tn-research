@@ -2,19 +2,23 @@
 layout: project
 title: "The Bootstrapper"
 subtitle: "Production-ready Django SPA starter"
-date: 2021-08-23
+date: 2019-07-01
+end_date: present
 status: active
-description: "A production-ready app on Heroku in 20 minutes or less! Complete starter template for building modern single-page applications with Django backend."
+banner_image: "https://placehold.co/800x600/E65100/FFB74D?text=The+Bootstrapper"
+description: "A production-ready Django SPA app on Heroku in 20 minutes or less! Complete cookiecutter template for building modern single-page applications with Django backend and React frontend."
 # image: /static/images/projects/tn-spa-bootstrapper.jpg
 technologies:
-  - TypeScript
   - Django
   - Python
-  - Vue.js
   - React
+  - TypeScript
   - PostgreSQL
   - Heroku
+  - Docker
+  - uv
 github_url: "https://github.com/thinknimble/tn-spa-bootstrapper"
+legacy_github_url: "https://github.com/thinknimble/tn-bootstrapper"
 website_url: "https://tn-spa-bootstrapper-staging.herokuapp.com/"
 tags:
   - bootstrapping
@@ -25,26 +29,53 @@ tags:
 
 ## Overview
 
-TN SPA Bootstrapper is a comprehensive cookiecutter template that helps you create production-ready Django single-page applications in minutes. It provides a complete foundation with authentication, API setup, frontend framework integration, and deployment configuration.
+TN SPA Bootstrapper is a comprehensive cookiecutter template that helps you create production-ready Django single-page applications in minutes. Built with modern Python packaging (uv) and React, it provides a complete foundation with authentication, API setup, and deployment configuration.
 
-## Features
+## Current Version Features
 
-- **Full-Stack Setup**: Pre-configured Django backend with your choice of Vue.js or React frontend
-- **Authentication Ready**: JWT authentication and user management out of the box
-- **API First**: RESTful API structure with Django REST Framework
-- **Database Ready**: PostgreSQL configuration for development and production
-- **Deployment Configured**: One-click deployment to Heroku with all necessary configurations
-- **Development Tools**: Hot reloading, linting, and testing setup included
-- **TypeScript Support**: Full TypeScript configuration for type-safe frontend development
+The current bootstrapper (tn-spa-bootstrapper) includes:
+
+- **Django 4.2+** with Django REST Framework
+- **Python 3.12** by default with uv package manager
+- **React with TypeScript** frontend
+- **100% starting test coverage**
+- **Secure by default** with SSL everywhere
+- **Custom user model** ready to go
+- **Optional ASGI/Channels** setup for WebSockets
+- **Cloud Ready**: Amazon S3 or Google Cloud Storage for media
+- **Email Integration**: Mailgun (default) or Amazon SES
+- **Error Logging**: Rollbar integration
+- **Pre-commit hooks** for code quality
+- **Heroku Deployment** with Procfile included
 
 ## Quick Start
 
-```bash
-# Install cookiecutter if you haven't already
-pip install cookiecutter
+### Using TN CLI (Recommended)
 
-# Generate your project
-cookiecutter gh:thinknimble/tn-spa-bootstrapper
+If you have [TN CLI](/projects/tn-cli/) installed, you can bootstrap a new project with:
+
+```bash
+# Bootstrap a new Django SPA project
+tn new-project
+# or use the alias:
+tn bootstrap
+
+# Follow the interactive prompts
+```
+
+The TN CLI will use uvx (from the uv package manager) to run cookiecutter. If you don't have uv installed, run `tn install-uv` first.
+
+### Using pipx
+
+Alternatively, you can use pipx directly:
+
+```bash
+# Install pipx if you don't have it
+# See: https://pipx.pypa.io/stable/installation/
+
+# Install and run cookiecutter
+pipx install cookiecutter
+pipx run cookiecutter gh:thinknimble/tn-spa-bootstrapper
 
 # Follow the prompts to configure your project
 ```
@@ -53,25 +84,24 @@ cookiecutter gh:thinknimble/tn-spa-bootstrapper
 
 ### Backend
 
-- Django 4.x with Django REST Framework
+- Django 4.2+ with Django REST Framework
 - PostgreSQL database
-- JWT authentication
-- Celery for async tasks (optional)
+- Custom user model with authentication
+- Optional WebSocket support via Django Channels
 
-### Frontend Options
+### Frontend
 
-- Vue.js 3 with Composition API
-- React 18 with hooks
-- TypeScript for type safety
-- Tailwind CSS for styling
-- Vite for fast builds
+- React with TypeScript
+- Modern build tooling
+- Production-optimized configuration
 
-### DevOps
+### DevOps & Tools
 
-- Docker support for containerized development
-- Heroku deployment configuration
-- GitHub Actions CI/CD templates
-- Environment-based configuration
+- Heroku deployment ready
+- Docker support for development
+- Pre-commit hooks for code quality
+- Choice of unittest or pytest
+- Optional Whitenoise for static files
 
 ## Use Cases
 
