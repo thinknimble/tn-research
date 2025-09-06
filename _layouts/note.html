@@ -10,11 +10,20 @@ layout: default
       {% if page.status %}
         {% include status-badge.html status=page.status %}
       {% endif %}
+      {% if page.attribution %}
+        {% include attribution-badge.html attribution=page.attribution %}
+      {% endif %}
       <time datetime="{{ page.date | date_to_xmlschema }}">
         Last updated: {{ page.date | date: "%B %d, %Y" }}
       </time>
     </div>
     <h1 class="note-title">{{ page.title }}</h1>
+    {% if page.authors %}
+      {% include author-byline.html authors=page.authors %}
+    {% elsif page.author %}
+      {% assign author_array = page.author | split: "," %}
+      {% include author-byline.html authors=author_array %}
+    {% endif %}
   </header>
 
   <div class="note-content">

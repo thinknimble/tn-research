@@ -24,4 +24,67 @@ permalink: /about/
       <li>LinkedIn: <a href="https://linkedin.com/company/thinknimble">linkedin.com/company/thinknimble</a></li>
     </ul>
   </section>
+
+  <section class="contributors">
+    <h2>Contributors</h2>
+    <div class="authors-list">
+      {% assign sorted_authors = site.authors | sort: 'order' %}
+      {% for author in sorted_authors %}
+        <a href="{{ author.url }}" class="author-item">
+          <img src="{{ author.profile_pic }}" alt="{{ author.name }}" class="author-avatar-mini">
+          <span class="author-name">{{ author.name }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
 </div>
+
+<style>
+  .contributors {
+    margin: 3rem 0;
+  }
+
+  .authors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .author-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .author-item:visited {
+    color: inherit;
+  }
+
+  .author-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .author-avatar-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-name {
+    font-size: 1.1rem;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .author-item:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+</style>

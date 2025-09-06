@@ -3,6 +3,7 @@ layout: note
 title: "The AI Adoption Divide - Junior vs Senior Developers"
 date: 2024-08-17
 status: seed
+attribution: ai-generated
 tags:
   [
     AI,

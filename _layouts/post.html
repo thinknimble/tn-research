@@ -11,6 +11,9 @@ layout: default
         {% if page.status %}
           {% include status-badge.html status=page.status %}
         {% endif %}
+        {% if page.attribution %}
+          {% include attribution-badge.html attribution=page.attribution %}
+        {% endif %}
         <span class="post-date">
           <time datetime="{{page.date|date:" %F"}}">
             {{page.date|date:"%b %-d, %Y"}}

@@ -955,10 +955,36 @@ pre[class="highlight"] > code {
   margin-bottom: 1rem;
 }
 
+/* Note preview styles */
+.note-preview-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.note-preview-link:hover {
+  text-decoration: none;
+}
+
+/* Note and essay separators */
+.note-preview,
+.essay-preview {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.note-preview-link:last-child .note-preview,
+.essay-preview-link:last-child .essay-preview {
+  border-bottom: none !important;
+  margin-bottom: 0;
+}
+
 /* Dark mode adjustments for essay elements */
 @media (prefers-color-scheme: dark) {
   .essay-subtitle {
     color: #999;
+  }
+  
+  .note-preview,
+  .essay-preview {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
   }
   
   .essay-authors {

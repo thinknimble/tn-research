@@ -41,3 +41,6 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+  authors:
+    output: true
+    permalink: /authors/:name/

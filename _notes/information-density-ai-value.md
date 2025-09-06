@@ -3,6 +3,9 @@ layout: note
 title: "Information Density - The Core Value in AI-Assisted Work"
 date: 2024-08-17
 status: seed
+attribution: ai-supported
+authors: ["William Huster"]
+summary: "In the AI era, value comes not from writing ability but from having something worth writing about—humans provide the information density that makes AI output valuable."
 tags:
   [
     AI,

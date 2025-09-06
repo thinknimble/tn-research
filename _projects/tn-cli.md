@@ -3,7 +3,9 @@ layout: project
 title: "TN CLI"
 subtitle: "Command-line tools for nimble thinkers"
 date: 2024-09-01
+end_date: present
 status: active
+banner_image: "https://placehold.co/800x600/5E35B1/B39DDB?text=TN+CLI"
 description: "Convenient and sharable command-line tools for nimble thinkers. A collection of productivity-enhancing CLI utilities for modern development workflows."
 technologies:
   - Just

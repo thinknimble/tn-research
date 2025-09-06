@@ -23,13 +23,19 @@ permalink: /notes/
         <article class="note-preview">
           <h2 class="note-preview-title">{{ note.title }}</h2>
           
-          {% if note.excerpt %}
+          {% if note.summary %}
+            <p class="note-preview-excerpt">{{ note.summary }}</p>
+          {% elsif note.excerpt %}
             <p class="note-preview-excerpt">{{ note.excerpt | strip_html | truncate: 100 }}</p>
           {% endif %}
 
           <div class="note-preview-meta">
             {% if note.status %}
               {% include status-badge.html status=note.status %}
+              <span class="meta-separator">•</span>
+            {% endif %}
+            {% if note.attribution %}
+              {% include attribution-badge.html attribution=note.attribution %}
               <span class="meta-separator">•</span>
             {% endif %}
             <time datetime="{{ note.date | date_to_xmlschema }}">

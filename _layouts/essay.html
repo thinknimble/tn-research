@@ -10,6 +10,9 @@ layout: default
       {% if page.status %}
         {% include status-badge.html status=page.status %}
       {% endif %}
+      {% if page.attribution %}
+        {% include attribution-badge.html attribution=page.attribution %}
+      {% endif %}
       <time datetime="{{ page.date | date_to_xmlschema }}">
         {{ page.date | date: "%B %d, %Y" }}
       </time>
@@ -22,9 +25,7 @@ layout: default
       <h2 class="essay-subtitle">{{ page.subtitle }}</h2>
     {% endif %}
     {% if page.authors %}
-      <div class="essay-authors">
-        By {{ page.authors | join: ", " }}
-      </div>
+      {% include author-byline.html authors=page.authors %}
     {% endif %}
   </header>
 

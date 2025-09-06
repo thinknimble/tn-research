@@ -1,0 +1,79 @@
+{% comment %}
+  Author Byline Component
+  Shows author avatar and name with link to profile
+  Usage: {% include author-byline.html authors=page.authors %}
+{% endcomment %}
+
+{% if include.authors %}
+  <div class="author-byline">
+    <span class="byline-label">By</span>
+    {% for author_name in include.authors %}
+      {% assign author_slug = author_name | downcase | replace: ' ', '-' | replace: '(ai assistant)', '' | strip %}
+      {% assign author = site.authors | where: "slug", author_slug | first %}
+      
+      {% if author %}
+        <a href="{{ author.url }}" class="author-link-inline">
+          <img src="{{ author.profile_pic }}" alt="{{ author.name }}" class="author-avatar-mini">
+          <span class="author-name">{{ author.name }}</span>
+        </a>
+      {% else %}
+        <span class="author-name">{{ author_name }}</span>
+      {% endif %}
+      
+      {% unless forloop.last %}<span class="author-separator">, </span>{% endunless %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+  .author-byline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .byline-label {
+    color: #666;
+  }
+
+  .author-link-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .author-link-inline:hover {
+    opacity: 0.8;
+  }
+
+  .author-avatar-mini {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-name {
+    font-weight: 500;
+  }
+
+  .author-separator {
+    color: #999;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .byline-label {
+      color: #999;
+    }
+    
+    .author-separator {
+      color: #666;
+    }
+  }
+</style>
