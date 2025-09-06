@@ -4,6 +4,7 @@ title: "You Should Have 'A Reasonable Starter Opinion' on How AI Will Change You
 subtitle: "Why every knowledge worker needs an informed perspective on AI's trajectory"
 date: 2025-08-28
 authors: ["Neil Shah"]
+attribution: human-written
 abstract: "For the past few years, we have been working with AI and AI tooling here at ThinkNimble. We've tested tools, tracked developments and watched as AI capabilities evolved from casual slack conversations to real things that we're applying in production environments with our clients."
 readtime: "8 min"
 tags: [ai, research, future-of-work]

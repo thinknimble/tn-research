@@ -23,7 +23,9 @@ permalink: /notes/
         <article class="note-preview">
           <h2 class="note-preview-title">{{ note.title }}</h2>
           
-          {% if note.excerpt %}
+          {% if note.summary %}
+            <p class="note-preview-excerpt">{{ note.summary }}</p>
+          {% elsif note.excerpt %}
             <p class="note-preview-excerpt">{{ note.excerpt | strip_html | truncate: 100 }}</p>
           {% endif %}
 

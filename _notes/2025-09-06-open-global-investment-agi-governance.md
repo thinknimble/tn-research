@@ -5,9 +5,11 @@ date: 2025-09-06
 status: seed
 tags: [ai-governance, economics, agi, alignment, policy, decision-theory]
 attribution: ai-generated
+authors: ["Claude (AI Assistant)"]
 source_url: "https://www.lesswrong.com/posts/LtT24cCAazQp4NYc5/open-global-investment-as-a-governance-model-for-agi"
 source_title: "Open Global Investment as a Governance Model for AGI"
 source_author: "Nick Bostrom"
+summary: "Nick Bostrom's proposal for AGI governance through open international investment under enhanced regulatory frameworks, essentially formalizing current market-based approaches."
 ---
 
 ## Summary

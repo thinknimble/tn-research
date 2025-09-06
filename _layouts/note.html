@@ -18,7 +18,9 @@ layout: default
       </time>
     </div>
     <h1 class="note-title">{{ page.title }}</h1>
-    {% if page.author %}
+    {% if page.authors %}
+      {% include author-byline.html authors=page.authors %}
+    {% elsif page.author %}
       {% assign author_array = page.author | split: "," %}
       {% include author-byline.html authors=author_array %}
     {% endif %}

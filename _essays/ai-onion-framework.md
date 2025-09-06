@@ -4,6 +4,7 @@ title: "The AI Onion"
 subtitle: "A Framework for Incremental AI Implementation"
 date: 2025-08-28
 authors: ["William Huster"]
+attribution: ai-supported
 abstract: "Most AI implementations fail due to unnecessary complexity. Drawing from clinical trial methodology and personal loss, this essay presents a layered approach to AI deployment that starts simple and adds complexity only when measurement demands it."
 readtime: "15 min read"
 status: seed
