@@ -3,6 +3,7 @@ layout: note
 title: "Information Density - The Core Value in AI-Assisted Work"
 date: 2024-08-17
 status: seed
+attribution: ai-generated
 tags:
   [
     AI,

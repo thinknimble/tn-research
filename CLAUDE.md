@@ -6,6 +6,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ThinkNimble Research Institute website - a Jekyll-based static site for publishing research papers, technical reports, and blog posts. Hosted on GitHub Pages at research.thinknimble.com.
 
+## Available Sub-Agents
+
+### Project-Specific Agents
+
+#### research-note-generator
+**Location:** `.claude/agents/research-note-generator.md`
+
+Use this agent to create concise research notes from web links. The agent will:
+- Fetch and analyze web content
+- Extract key arguments and insights
+- Generate a properly formatted Jekyll note with front matter
+- Create wiki-style links to related concepts
+- Suggest appropriate tags for discoverability
+
+Example usage: When you find an interesting article, paper, or blog post that should be added to the research knowledge base.
+
+### Global Agents (Available Across All Projects)
+
+#### git-commit-pr-manager
+**Location:** `~/.claude/agents/git-commit-pr-manager.md`
+
+Use for creating git commits and pull request descriptions. See global CLAUDE.md for details.
+
 ## Development Commands
 
 ### Building and Running
@@ -43,6 +66,26 @@ The site uses Jekyll collections for different content types:
 
 ### Front Matter Requirements
 
+#### Authors
+```yaml
+---
+layout: author
+name: "Full Name"
+slug: author-slug
+bio: "Brief bio/description"
+profile_pic: https://url-to-image-or-placeholder
+email: email@example.com # optional
+twitter: handle # optional
+linkedin: profile # optional
+github: username # optional
+website: https://website.com # optional
+---
+```
+
+To reference authors in content:
+- Essays: Use `authors: ["Author Name"]` in front matter
+- The author byline will automatically display with mini avatar and link to author profile
+
 #### Publications
 ```yaml
 ---
@@ -52,6 +95,7 @@ date: YYYY-MM-DD
 authors:
   - Author Name
 abstract: "Brief description"
+attribution: [human-written/ai-supported/ai-generated] # required
 pdf_url: "/path/to/pdf" # optional
 arxiv_url: "https://arxiv.org/..." # optional
 doi: "10.xxxx/xxxxx" # optional
@@ -66,6 +110,7 @@ title: "Title"
 date: YYYY-MM-DD
 authors: [optional]
 abstract: [optional]
+attribution: [human-written/ai-supported/ai-generated] # required
 status: [draft/published] # optional
 related_notes: [note-slug-1, note-slug-2] # optional
 ---
@@ -78,6 +123,7 @@ layout: note
 title: "Title"
 date: YYYY-MM-DD
 tags: [tag1, tag2]
+attribution: [human-written/ai-supported/ai-generated] # required
 ---
 ```
 
@@ -98,7 +144,12 @@ Main stylesheet: `static/css/style.css`
 
 ## Project-Specific Conventions
 
-1. **Attribution**: When building upon existing work, always credit original authors (see CONTRIBUTING.md).
+1. **Attribution Policy**: All content must include an `attribution` field in the front matter with one of three values:
+   - `human-written`: Content created entirely by human effort
+   - `ai-supported`: Content created through human-AI collaboration
+   - `ai-generated`: Content primarily created by AI with minimal human intervention
+   
+   Attribution badges are displayed on all content and link to the attribution policy note. When building upon existing work, always credit original authors (see CONTRIBUTING.md).
 
 2. **Content Focus**: Research papers, technical insights, and educational content related to technology, software engineering, and HCI.
 

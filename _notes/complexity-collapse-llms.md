@@ -3,6 +3,7 @@ layout: note
 title: "Evidence of Complexity Collapse in LLMs"
 date: 2024-08-17
 status: seed
+attribution: ai-generated
 tags: [AI, llm-limitations, reasoning, complexity, architecture, benchmarking]
 ---
 

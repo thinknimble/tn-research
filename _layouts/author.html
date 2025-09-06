@@ -1,0 +1,247 @@
+---
+layout: default
+---
+
+{% include nav.html %}
+
+<article class="author-profile row-wrap">
+  <header class="author-header">
+    <div class="author-avatar">
+      {% if page.profile_pic %}
+        <img src="{{ page.profile_pic }}" alt="{{ page.name }}" />
+      {% endif %}
+    </div>
+    <div class="author-info">
+      <h1 class="author-name">{{ page.name }}</h1>
+      {% if page.bio %}
+        <p class="author-bio">{{ page.bio }}</p>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="author-content">
+    {{ content }}
+  </div>
+
+  <!-- Contact Section -->
+  {% if page.email or page.website or page.github or page.twitter or page.linkedin %}
+  <section class="author-contact">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      {% if page.email %}
+        <li>Email: <a href="mailto:{{ page.email }}">{{ page.email }}</a></li>
+      {% endif %}
+      {% if page.website %}
+        <li>Website: <a href="{{ page.website }}" target="_blank" rel="noopener">{{ page.website | remove: "https://" | remove: "http://" }}</a></li>
+      {% endif %}
+      {% if page.github %}
+        <li>GitHub: <a href="https://github.com/{{ page.github }}" target="_blank" rel="noopener">github.com/{{ page.github }}</a></li>
+      {% endif %}
+      {% if page.twitter %}
+        <li>Twitter: <a href="https://twitter.com/{{ page.twitter }}" target="_blank" rel="noopener">@{{ page.twitter }}</a></li>
+      {% endif %}
+      {% if page.linkedin %}
+        <li>LinkedIn: <a href="https://linkedin.com/in/{{ page.linkedin }}" target="_blank" rel="noopener">linkedin.com/in/{{ page.linkedin }}</a></li>
+      {% endif %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <!-- Author's Articles -->
+  <section class="author-articles">
+    <h2>Articles by {{ page.name }}</h2>
+    
+    {% assign author_essays = site.essays | where_exp: "essay", "essay.authors contains page.name" %}
+    {% assign author_notes = site.notes | where_exp: "note", "note.author == page.slug" %}
+    {% assign author_posts = site.posts | where_exp: "post", "post.author == page.slug" %}
+    
+    {% if author_essays.size > 0 %}
+      <h3>Essays</h3>
+      <ul class="article-list">
+        {% for essay in author_essays %}
+          <li>
+            <a href="{{ essay.url }}">{{ essay.title }}</a>
+            <time datetime="{{ essay.date | date_to_xmlschema }}">{{ essay.date | date: "%B %d, %Y" }}</time>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    
+    {% if author_notes.size > 0 %}
+      <h3>Notes</h3>
+      <ul class="article-list">
+        {% for note in author_notes %}
+          <li>
+            <a href="{{ note.url }}">{{ note.title }}</a>
+            <time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%B %d, %Y" }}</time>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    
+    {% if author_posts.size > 0 %}
+      <h3>Blog Posts</h3>
+      <ul class="article-list">
+        {% for post in author_posts %}
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </section>
+</article>
+
+<style>
+  .author-profile {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  .author-header {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .author-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-info {
+    flex: 1;
+  }
+
+  .author-name {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .author-bio {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;  /* Light mode: darker for better readability */
+    margin-bottom: 1rem;
+  }
+
+  .author-contact {
+    margin: 2rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .author-contact h2 {
+    margin-bottom: 1rem;
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact-list li {
+    margin-bottom: 0.5rem;
+    color: #333;  /* Light mode: darker gray for better readability */
+  }
+
+  .contact-list a {
+    color: rgb(24, 127, 168);  /* Light mode: blue */
+    text-decoration: none;
+  }
+
+  .contact-list a:hover {
+    text-decoration: underline;
+  }
+
+  .author-content {
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+
+  .author-articles {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .author-articles h2 {
+    margin-bottom: 2rem;
+  }
+
+  .author-articles h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #333;  /* Light mode: darker for better readability */
+  }
+
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .article-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .article-list time {
+    font-size: 0.9rem;
+    color: #999;
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .author-header {
+      border-bottom-color: #333;
+    }
+
+    .author-bio {
+      color: #aaa;
+    }
+
+    .author-contact {
+      border-top-color: #333;
+    }
+
+    .contact-list li {
+      color: #bbb;  /* Dark mode: lighter gray for better visibility */
+    }
+
+    .contact-list a {
+      color: #6db3f2;  /* Dark mode: brighter blue for better visibility */
+    }
+
+    .author-articles {
+      border-top-color: #333;
+    }
+
+    .author-articles h3 {
+      color: #999;
+    }
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .author-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .author-links {
+      justify-content: center;
+    }
+  }
+</style>
