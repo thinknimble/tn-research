@@ -88,25 +88,25 @@
   /* Attribution-specific colors */
   .attribution-ai-generated {
     background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-    color: #1565c0;
+    color: #1565c0 !important;
     border: 1px solid #90caf9;
   }
 
   .attribution-ai-supported {
     background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-    color: #6a1b9a;
+    color: #6a1b9a !important;
     border: 1px solid #ce93d8;
   }
 
   .attribution-human-written {
     background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-    color: #2e7d32;
+    color: #2e7d32 !important;
     border: 1px solid #a5d6a7;
   }
 
   /* Dark mode support */
   @media (prefers-color-scheme: dark) {
-    /* Keep original colors in dark mode for better contrast */
+    /* Colors stay the same due to !important above */
   }
 
   /* Ensure proper spacing in meta sections */
