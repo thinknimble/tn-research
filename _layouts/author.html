@@ -128,7 +128,7 @@ layout: default
   .author-bio {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #333;  /* Light mode: darker for better readability */
+    color: var(--text-color);  /* Use theme variable for proper light/dark mode */
     margin-bottom: 1rem;
   }
 
@@ -149,11 +149,11 @@ layout: default
 
   .contact-list li {
     margin-bottom: 0.5rem;
-    color: #333;  /* Light mode: darker gray for better readability */
+    color: var(--text-color);  /* Use theme variable */
   }
 
   .contact-list a {
-    color: rgb(24, 127, 168);  /* Light mode: blue */
+    color: var(--link-color);  /* Use theme variable for link color */
     text-decoration: none;
   }
 
@@ -179,7 +179,7 @@ layout: default
   .author-articles h3 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #333;  /* Light mode: darker for better readability */
+    color: var(--heading-color);  /* Use theme variable for headings */
   }
 
   .article-list {
@@ -201,34 +201,18 @@ layout: default
     margin-left: 1rem;
   }
 
-  /* Dark mode support */
+  /* Dark mode support - only need to override border colors */
   @media (prefers-color-scheme: dark) {
     .author-header {
       border-bottom-color: #333;
-    }
-
-    .author-bio {
-      color: #aaa;
     }
 
     .author-contact {
       border-top-color: #333;
     }
 
-    .contact-list li {
-      color: #bbb;  /* Dark mode: lighter gray for better visibility */
-    }
-
-    .contact-list a {
-      color: #6db3f2;  /* Dark mode: brighter blue for better visibility */
-    }
-
     .author-articles {
       border-top-color: #333;
-    }
-
-    .author-articles h3 {
-      color: #999;
     }
   }
 
