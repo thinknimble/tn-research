@@ -35,6 +35,11 @@ source_author: "Author Name(s)"
 3. **Critical Analysis** (1-2 paragraphs): Strengths, weaknesses, and implications
 4. **Connections**: Links to related concepts using `[[Wiki Link]]` syntax where appropriate
 5. **Questions & Further Research** (2-3 items): Open questions or areas for exploration
+6. **Source**: ALWAYS include the original article link at the bottom in the format:
+   ```
+   ## Source
+   [Article Title](URL) - Author Name, Publication/Website, Date
+   ```
 
 ## Guidelines
 - Keep total note length under 500 words
