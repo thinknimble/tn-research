@@ -44,3 +44,7 @@ collections:
   authors:
     output: true
     permalink: /authors/:name/
+
+# Build unpublished content (for draft/unlisted access)
+show_drafts: false
+unpublished: true
