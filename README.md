@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://research.thinknimble.com"><img src="https://img.shields.io/badge/Website-research.thinknimble.com-blue" alt="Website"></a>
-  <a href="https://github.com/thinknimble/tn-research/actions"><img src="https://github.com/thinknimble/tn-research/actions/workflows/pages/pages-build-deployment/badge.svg" alt="Build Status"></a>
+  <a href="https://github.com/thinknimble/tn-research/actions"><img src="https://github.com/thinknimble/tn-research/actions/workflows/jekyll.yml/badge.svg" alt="Build Status"></a>
   <a href="https://jekyllrb.com"><img src="https://img.shields.io/badge/Jekyll-4.0-CC0000" alt="Jekyll"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-green" alt="License"></a>
 </p>
