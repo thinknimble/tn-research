@@ -16,7 +16,7 @@
     <!-- Lora for body text and headlines, Inter for UI elements -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ '/static/css/style.css?0b883c766cfc9b17af3974867c52f8f4' | prepend: site.baseurl}}" />
+    <link rel="stylesheet" href="{{ '/static/css/style.css' | prepend: site.baseurl}}?v={{ site.time | date: '%s' }}" />
     <meta name="description"
         content="{% if page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}" />
     <meta name="author" content="{{site.author}}" />
