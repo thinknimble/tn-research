@@ -212,9 +212,17 @@
   .note-badges,
   .essay-badges {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
+  }
+  
+  /* Remove individual margins when in badge container */
+  .note-badges .status-badge,
+  .note-badges .attribution-badge,
+  .essay-badges .status-badge,
+  .essay-badges .attribution-badge {
+    margin: 0;
   }
 
   /* Meta info below title */
