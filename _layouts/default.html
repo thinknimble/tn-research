@@ -69,6 +69,11 @@
     <!-- Theme System -->
     {% include theme-system.html %}
 
+    <!-- Analytics -->
+    {% if jekyll.environment == 'production' %}
+    {% include analytics.html %}
+    {% endif %}
+
 </head>
 
 <body>
@@ -84,9 +89,6 @@
     {% include theme-toggle.html %}
 
     <!-- <script src="{{site.baseurl}}/scripts.js"></script> -->
-    {% if jekyll.environment == 'production' %}
-    {% include analytics.html %}
-    {% endif %}
 </body>
 
 </html>
