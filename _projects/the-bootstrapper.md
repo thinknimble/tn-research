@@ -5,7 +5,7 @@ subtitle: "Production-ready Django SPA starter"
 date: 2019-07-01
 end_date: present
 status: active
-banner_image: "https://placehold.co/800x600/E65100/FFB74D?text=The+Bootstrapper"
+banner_image: "https://placehold.co/800x600/bbdefb/1565c0?text=The+Bootstrapper"
 description: "A production-ready Django SPA app on Heroku in 20 minutes or less! Complete cookiecutter template for building modern single-page applications with Django backend and React frontend."
 # image: /static/images/projects/tn-spa-bootstrapper.jpg
 technologies:

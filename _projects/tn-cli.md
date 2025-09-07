@@ -1,11 +1,11 @@
 ---
 layout: project
-title: "TN CLI"
+title: "tn-cli"
 subtitle: "Command-line tools for nimble thinkers"
 date: 2024-09-01
 end_date: present
 status: active
-banner_image: "https://placehold.co/800x600/5E35B1/B39DDB?text=TN+CLI"
+banner_image: "https://placehold.co/800x600/ffeb3b/f57c00?text=tn-cli"
 description: "Convenient and sharable command-line tools for nimble thinkers. A collection of productivity-enhancing CLI utilities for modern development workflows."
 technologies:
   - Just
@@ -50,6 +50,7 @@ just setup
 ## Key Commands
 
 The CLI provides various commands for:
+
 - Project initialization and scaffolding
 - Development environment setup
 - Code generation and boilerplate reduction

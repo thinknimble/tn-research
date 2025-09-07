@@ -1,11 +1,11 @@
 ---
 layout: project
-title: "TN Models"
+title: "tn-models"
 subtitle: "Frontend API model service builder"
 date: 2021-10-01
 end_date: present
 status: active
-banner_image: "https://placehold.co/800x600/00695C/4DB6AC?text=TN+Models"
+banner_image: "https://placehold.co/800x600/f8bbd0/c2185b?text=tn-models"
 description: "A library for creating API models that mirror a RESTful backend. Handles serialization, and data transformation with type safety."
 technologies:
   - TypeScript
@@ -24,7 +24,7 @@ tags:
 
 ## Overview
 
-TN Models FP is a TypeScript library that brings functional programming principles to API model management. It provides a type-safe, composable approach to handling data serialization, deserialization, and transformation between your frontend and backend.
+`tn-models` is a TypeScript library that brings functional programming principles to API model management. It provides a type-safe, composable approach to handling data serialization, deserialization, and transformation between your frontend and backend.
 
 ## Features
 

@@ -1,10 +1,10 @@
 ---
 layout: project
-title: "TN Office Unity"
+title: "The Office (Unity Game)"
 subtitle: "Virtual office environment in the browser"
 date: 2020-08-16
 status: completed
-banner_image: "https://placehold.co/800x600/00838F/4DD0E1?text=TN+Office+Unity"
+banner_image: "https://placehold.co/800x600/e0f2f1/00897b?text=The+Office"
 description: "The ThinkNimble Office as a web-based Unity environment. An interactive 3D virtual office space accessible through any modern web browser."
 technologies:
   - Unity
@@ -22,7 +22,7 @@ tags:
 
 ## Overview
 
-TN Office Unity brings the ThinkNimble office to life as an interactive 3D environment accessible directly in your web browser. This project showcases the potential of WebGL and Unity for creating immersive virtual spaces without requiring any downloads or installations.
+"The Office" brings the ThinkNimble office to life as an interactive 3D environment accessible directly in your web browser. This project showcases the potential of WebGL and Unity for creating immersive virtual spaces without requiring any downloads or installations.
 
 ## Features
 
@@ -35,6 +35,7 @@ TN Office Unity brings the ThinkNimble office to life as an interactive 3D envir
 ## Technical Implementation
 
 Built with Unity's WebGL export capabilities, the project demonstrates:
+
 - Efficient 3D asset optimization for web delivery
 - Custom shader development for unique visual effects
 - Cross-browser compatibility and performance optimization
@@ -47,6 +48,7 @@ This project was created during the shift to remote work, exploring how virtual 
 ## Browser Compatibility
 
 The virtual office runs best on:
+
 - Chrome 86+
 - Firefox 79+
 - Safari 14+

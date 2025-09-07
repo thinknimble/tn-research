@@ -5,7 +5,7 @@ subtitle: "Orchestration framework for AI agents"
 date: 2025-08-01
 end_date: present
 status: active
-banner_image: "https://placehold.co/800x600/1565C0/64B5F6?text=TN+Agent+Launcher"
+banner_image: "https://placehold.co/800x600/e1bee7/6a1b9a?text=TN+Agent+Launcher"
 description: "A Python framework for launching, managing, and orchestrating AI agents with support for multiple LLM providers and agent architectures."
 technologies:
   - Python

@@ -151,63 +151,51 @@ title: Projects
 
 .project-status {
   display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
   margin-bottom: 0.75rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.025em;
+  transition: all 0.2s ease;
 }
 
-/* Light mode status tags - original colored backgrounds */
+/* Light mode status tags - gradient backgrounds matching other badges */
 .project-status.status-active {
-  background: #e8f5e9 !important;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
   color: #2e7d32 !important;
+  border: 1px solid #a5d6a7;
 }
 
 .project-status.status-completed {
-  background: #e3f2fd !important;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
   color: #1565c0 !important;
+  border: 1px solid #90caf9;
 }
 
 .project-status.status-archived {
-  background: #f5f5f5 !important;
-  color: #757575 !important;
+  background: linear-gradient(135deg, #fafafa 0%, #eeeeee 100%) !important;
+  color: #616161 !important;
+  border: 1px solid #bdbdbd;
 }
 
-/* Dark mode status tags - darker colored backgrounds */
+.project-status.status-paused {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%) !important;
+  color: #e65100 !important;
+  border: 1px solid #ffcc80;
+}
+
+/* Dark mode - slightly dimmed for consistency */
 @media (prefers-color-scheme: dark) {
-  .project-status.status-active {
-    background: #1b5e20 !important;
-    color: #81c784 !important;
-  }
-  
-  .project-status.status-completed {
-    background: #0d47a1 !important;
-    color: #64b5f6 !important;
-  }
-  
-  .project-status.status-archived {
-    background: #424242 !important;
-    color: #9e9e9e !important;
+  .project-status {
+    filter: brightness(0.9);
   }
 }
 
 /* Manual dark theme override */
-[data-theme="dark"] .project-status.status-active {
-  background: #1b5e20 !important;
-  color: #81c784 !important;
-}
-
-[data-theme="dark"] .project-status.status-completed {
-  background: #0d47a1 !important;
-  color: #64b5f6 !important;
-}
-
-[data-theme="dark"] .project-status.status-archived {
-  background: #424242 !important;
-  color: #9e9e9e !important;
+[data-theme="dark"] .project-status {
+  filter: brightness(0.9);
 }
 
 .project-card-title {

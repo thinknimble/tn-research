@@ -1,11 +1,11 @@
 ---
 layout: project
-title: "TN Forms"
+title: "tn-forms"
 subtitle: "Type-safe form management for TypeScript"
 date: 2021-11-01
 end_date: present
 status: active
-banner_image: "https://placehold.co/800x600/C62828/EF5350?text=TN+Forms"
+banner_image: "https://placehold.co/800x600/ffe0b2/e65100?text=tn-forms"
 description: "A powerful TypeScript library for building and managing forms with full type safety, validation, and state management."
 technologies:
   - TypeScript
@@ -52,38 +52,43 @@ pnpm add @thinknimble/tn-forms
 ## Basic Usage
 
 ```typescript
-import { createForm } from '@thinknimble/tn-forms';
+import { createForm } from "@thinknimble/tn-forms";
 
 const form = createForm({
   email: {
-    value: '',
-    validators: ['required', 'email']
+    value: "",
+    validators: ["required", "email"],
   },
   password: {
-    value: '',
-    validators: ['required', 'minLength:8']
-  }
+    value: "",
+    validators: ["required", "minLength:8"],
+  },
 });
 
 // Full type safety
-form.fields.email.value = 'user@example.com';
+form.fields.email.value = "user@example.com";
 form.validate();
 ```
 
 ## Key Concepts
 
 ### Type-Safe Forms
+
 Every form field is fully typed, providing autocomplete and compile-time checking for field names, values, and validation rules.
 
 ### Validation Pipeline
+
 A flexible validation system that supports:
+
 - Built-in validators (required, email, min/max, patterns)
 - Custom validators with full type inference
 - Async validation for server-side checks
 - Cross-field validation and dependencies
 
 ### State Management
+
 Efficient state updates with:
+
 - Minimal re-renders in React/Vue
 - Dirty state tracking
 - Touch state for better UX
@@ -92,35 +97,33 @@ Efficient state updates with:
 ## Framework Integration
 
 ### React
+
 ```typescript
-import { useForm } from '@thinknimble/tn-forms/react';
+import { useForm } from "@thinknimble/tn-forms/react";
 
 function MyForm() {
   const form = useForm({
     // form config
   });
-  
-  return (
-    <form onSubmit={form.handleSubmit}>
-      {/* form fields */}
-    </form>
-  );
+
+  return <form onSubmit={form.handleSubmit}>{/* form fields */}</form>;
 }
 ```
 
 ### Vue
+
 ```typescript
-import { useForm } from '@thinknimble/tn-forms/vue';
+import { useForm } from "@thinknimble/tn-forms/vue";
 
 export default {
   setup() {
     const form = useForm({
       // form config
     });
-    
+
     return { form };
-  }
-}
+  },
+};
 ```
 
 ## Use Cases
