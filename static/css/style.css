@@ -1090,9 +1090,9 @@ pre[class="highlight"] > code {
 .conversation {
   margin: 1.5rem 0;
   padding: 1rem;
-  background: #f8f8f8;
+  background: #f9f9f9;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e5e5e5;
 }
 
 .conversation-message {
@@ -1150,6 +1150,12 @@ html[data-theme="dark"] .inline-author .author-link:hover .author-name {
 
 html[data-theme="dark"] .conversation-timestamp {
   color: #999;
+}
+
+/* Light mode conversation styles */
+html[data-theme="light"] .conversation {
+  background: #f9f9f9;
+  border-color: #e5e5e5;
 }
 
 /* Message reactions styling */

@@ -7,7 +7,7 @@ authors: ["William Huster"]
 tags: [ai, ui-design, product-design, genai, software-architecture]
 attribution: human-written
 status: budding
-summary: "The real difference between traditional and GenAI software isn't determinism—it's the practically infinite state space that transforms products into explorable territories rather than fixed paths."
+summary: "The real difference between traditional and GenAI software is not determinism, but instead the much large state spaces GenAI can represent. Products are now explorable territories rather than fixed paths."
 ---
 
 This is a draft of an article / idea I might term "Infinite UI" - which ties into the "command line for everyone" and is sort of my rebuttal to the recent (over)focus on determinism.
