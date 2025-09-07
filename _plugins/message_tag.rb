@@ -32,13 +32,13 @@ module Jekyll
       
       author_url = author.url
       
-      # Get the content inside the block and preserve formatting
+      # Get the content inside the block
       message_content = super.strip
       
-      # Convert line breaks to HTML paragraphs
-      # Split by double newlines for paragraphs
-      paragraphs = message_content.split(/\n\n+/)
-      message_content = paragraphs.map { |p| "<p>#{p.strip}</p>" }.join("\n")
+      # Convert Markdown to HTML
+      # Use Jekyll's markdown converter
+      converter = site.find_converter_instance(::Jekyll::Converters::Markdown)
+      message_content = converter.convert(message_content)
       
       # Build the HTML
       timestamp_html = time ? %(<span class="conversation-timestamp">#{time}</span>) : ""
@@ -61,7 +61,7 @@ module Jekyll
               <img src="#{profile_pic}" alt="#{display_name}" class="author-mini-pic" />
               <span class="author-name">#{display_name}</span>
             </a>
-          </span>#{timestamp_html}<br>
+          </span>#{timestamp_html}
           #{message_content}
           #{reactions_html}
         </div>

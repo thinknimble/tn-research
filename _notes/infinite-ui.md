@@ -31,17 +31,17 @@ I think people are using the language of non/determinism to approximate this con
 
 The more I think about this, the more I believe that stochasticity is incidental. The real difference is in the sheer size of the state space of the user interface.
 
-The hard part of UI programming has always been juggling all the possible states that the UI could end up in. It's a natural fact that as you develop a UI and add features, the size of state space undergoes a combinatorial explosion. This is what leads to all sorts of weird and unpredictable bugs. I experienced this on OpenMaster just this week. I added two new features: board flipping and an autoplay toggle. These new features interacted with almost every existing feature. That means that adding board flipping multiplied the state space by two. And then adding the autoplay toggle again multiplied the state space by two. Let's say the number of possible states before those features was 24. After these features it is 24 x 4 = 96 possible states. Our test plan just got a lot longer.
+The hard part of UI programming has always been juggling all the possible states that the UI could end up in. It's a natural fact that as you develop a UI and add features, the size of state space undergoes a combinatorial explosion. This is what leads to all sorts of weird and unpredictable bugs. I experienced this just this week on a chess app I've been building for a client. I added two new features: board flipping and an autoplay toggle. These new features interacted with almost every existing feature. That means that adding board flipping multiplied the state space by two. And then adding the autoplay toggle again multiplied the state space by two. Let's say the number of possible states before those features was 24. After these features it is 24 x 4 = 96 possible states. Our test plan just got a lot longer.
 
 But 96 is still a manageable number! We can reasonably enumerate and test all 96 cases. It's possible to walk through the code and examine the connection points. It's even possible to choose to ignore or block certain connections to deliberately prune the possible states. It's an explicitly defined and bounded problem.
 
 By contrast, the number of possible states you get out of the box with a GenAI is practically infinite. I say "practically," because LLMs have a finite number of parameters and tokens, so there does exist an (astronomically large) finite number that represents the size of the state space. But it's such a large number that we cannot hope to manually or even automatically test all of them before the end of this universe or the next. So, fine, it's "infinite."
 
-## Unpredictable Random
+## Unpredictable is NOT Random
 
 Anyway, after all of this, I do think it is fair to say that unpredictability is very real consequence of this new paradigm. If you imagine this state space as a giant haunted mansion: that is now your product. And the users of your product will inevitably find a candelabra in the study that makes a bookshelf spin around, revealing a secret corkscrew slide to a Frankenstein lab, and there they will make monsters.
 
-But people are conflating unpredictability with randomness. A temperature=0 (deterministic) model still has the "haunted mansion" property. Even with zero randomness, users can still find a Frankenstein lab candelabra. Importantly, this unpredictability does not come down to dice rolls. It originates from the sheer impossibility of comprehensively mapping the space beforehand so you can find and uninstall the problematic candle holders.
+But people are conflating unpredictability with randomness. A `temperature=0` (deterministic) model still has the "haunted mansion" property. Even with zero randomness, users can still find a Frankenstein lab candelabra. Importantly, this unpredictability does not come down to dice rolls. It originates from the sheer impossibility of comprehensively mapping the space beforehand so you can find and uninstall the problematic candle holders.
 
 I get that unpredictability is closely associated with randomness, but just because you can't predict something, does not mean its cause was random.
 
@@ -72,14 +72,33 @@ I mean, I think those kinds of orgs (and people and patterns of thought) also de
 After sharing this note, we had an engaging discussion about these concepts:
 
 <div class="conversation">
+
+{% message author-id="william-huster" name="first" time="Tuesday at 6:11 PM" %}
+I am hopeful that there is still a place for high quality, opinionated SaaS apps, and that many of them won't include any AI. After all, we still print books and I think I heard vinyl album sales are at an all-time high.
+
+With this article I'm mostly preoccupied with making a statement about the structure of "what is different" about doing product design and building apps with GenAI, compared to the traditional methods. And the central thesis of my article is (a) it is a paradigm shift, and (b) the paradigm shift comes down to this massive state space concept (and not determinism vs. nondeterminism as many are saying right now).
+
+The result of having an infinite function with an incomprehensible state space (that also varies from model to model) is that we have to _remove_ features and put up guardrails to build a useful app. I say, this chipping away, carving, and molding is a process we are applying to the massive state space to restrict the pathing through it so the AI works more predictably and doesn't run amok, wasting users' time (or worse).
+
+Compare that to how we worked previously - we actually had to _add_ features to build paths, now we get features "for free" and must remove them!
+
+> So if the argument is well the problem is that you are thinking about software in an antiquated way, the point is that user's won't be using single service apps anymore and instead we will all have access to an AI that can do anything you want.
+
+I think some people are making this argument, but not me. My conclusion is that although the product design and build process with GenAI is different, the meta-processes of building successful apps and businesses is not really different — hence the last couple of sentences in my article. I still think there's plenty of room for bespoke / standalone apps
+
+ChatGPT has explicitly positioned itself as an "Operating System" and is definitely going to make a platform play to unseat Google as the nexus of information on the Internet. They are strategically targeting the younger generation to get them used to asking "chat" for everything they want.
+
+So I expect that they will carve out specific "pathways" that will threaten or destroy other specific SaaS apps, but at the end of the day, my prediction is that they will always be a bland average trying to be everything to everyone, so standalone SaaS apps will never die, and if anything, _good_ SaaS products will be even more appreciated.
+{% endmessage %}
+
 {% message author-id="marcy-ewald" name="first" time="Wednesday at 3:52 PM" %}
 this is fascinating. I have a few thoughts I'll add later
 {% endmessage %}
 
 {% message author-id="marcy-ewald" name="first" time="Wednesday at 4:46 PM" reactions="‼️:1" %}
-This is quite the flip in user experience design: "we actually had to add features to build paths, now we get features 'for free' and must remove them!"
+This is quite the flip in user experience design: "we actually had to _add_ features to build paths, now we get features 'for free' and must remove them!"
 
-Adding comparative context has been the most effective way I've been able to constrain answers from the AI in my own work. I've been thinking about it more as a spotlight rather than guardrails — showing the AI which path has been walked frequently, and letting it tell me what it thinks about those paths. Flipping the script in GP in that way helped; instead of corralling the agent, now we ask what it thinks about all of the new information it has about the student and how it would use that information moving forward, given the role you mentioned above. That type of pattern was useful on Cue too — refining the question before releasing the agent.
+Adding comparative context has been the most effective way I've been able to constrain answers from the AI in my own work. I've been thinking about it more as a spotlight rather than guardrails — showing the AI which path has been walked frequently, and letting it tell me what it thinks about those paths. Flipping the script in one of my projects in that way helped; instead of corralling the agent, now we ask what it thinks about all of the new information it has about the student and how it would use that information moving forward, given the role you mentioned above. That type of pattern was useful on another project too — refining the question before releasing the agent.
 
 On the topic of restricting features, it's almost like shortcuts or paths of least resistance. The constraints around what you consider success as a business (quickness to haircut booking, matching users original parameters, exposing what the user actually wanted and building them a perfectly customized experience) really require that refinement you talked about.
 

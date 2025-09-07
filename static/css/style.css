@@ -1108,16 +1108,9 @@ pre[class="highlight"] > code {
   margin-bottom: 0;
 }
 
-.conversation-message p {
-  margin: 0.5rem 0;
-}
-
-.conversation-message p:first-child {
+/* Remove top margin from first paragraph to align with Slack style */
+.conversation-message > p:first-of-type {
   margin-top: 0;
-}
-
-.conversation-message p:last-child {
-  margin-bottom: 0;
 }
 
 .conversation-timestamp {
