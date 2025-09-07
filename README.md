@@ -1,122 +1,284 @@
-# ThinkNimble Research Institute
+<p align="center">
+  <a href="https://thinknimble.com">
+    <img src="assets/thinknimble-logo.png" alt="ThinkNimble Logo" width="300">
+  </a>
+</p>
 
-This is the Jekyll-based static site for the ThinkNimble Research Institute, hosted at [research.thinknimble.com](https://research.thinknimble.com).
+<h1 align="center">ThinkNimble Research Institute</h1>
 
-## Overview
+<p align="center">
+  <a href="https://research.thinknimble.com"><img src="https://img.shields.io/badge/Website-research.thinknimble.com-blue" alt="Website"></a>
+  <a href="https://github.com/thinknimble/tn-research/actions"><img src="https://github.com/thinknimble/tn-research/actions/workflows/pages/pages-build-deployment/badge.svg" alt="Build Status"></a>
+  <a href="https://jekyllrb.com"><img src="https://img.shields.io/badge/Jekyll-4.0-CC0000" alt="Jekyll"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-green" alt="License"></a>
+</p>
 
-The ThinkNimble Research Institute website serves as a platform for publishing research papers, technical reports, and blog posts related to our work in technology, software engineering, and human-computer interaction.
+<p align="center">
+  <b>We don't know what "it" is, but we've been doing it for a long time.</b>
+</p>
 
-## Technology Stack
+<p align="center">
+  The world is like that. We are a group of builders, entrepreneurs, and downright<br>
+  curious people trying to figure things out — just like you are, we expect.<br>
+  <br>
+  The mission of our so-called "Research Institute" is to share what we've learned<br>
+  in order to help others navigate the world.
+</p>
 
-- **Jekyll** - Static site generator
-- **GitHub Pages** - Hosting
-- **CloudFlare** - DNS and CDN
+---
+
+## What We Share
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### Essays
+**Deep explorations**
+
+Long-form pieces that synthesize research, explore complex topics, and present original thinking on technology and its implications.
+
+</td>
+<td width="33%" valign="top">
+
+### Digital Garden
+**Knowledge building blocks**
+
+Our collection of interconnected notes — short-form insights and observations that serve as atomic units of thought, linked wiki-style to form a knowledge graph.
+
+</td>
+<td width="33%" valign="top">
+
+### Projects
+**Things we've built**
+
+Showcases of our work in software engineering, AI systems, and human-computer interaction — tools, experiments, and solutions we've created along the way.
+
+</td>
+</tr>
+</table>
+
+## Key Features
+
+### Content Organization
+- **Wiki-style linking** - Interconnected notes that build a knowledge graph
+- **AI attribution system** - Transparent labeling of human-written, AI-supported, and AI-generated content
+- **Status indicators** - Track content maturity from seed ideas to evergreen pieces
+- **Author profiles** - Learn about our contributors and their areas of expertise
+
+### Technical Excellence
+- **Lightning-fast static site** - Built with Jekyll for optimal performance
+- **Privacy-focused analytics** - Using Fathom instead of invasive tracking
+- **Dark/light themes** - Automatic theme switching based on system preferences
+- **Mobile-responsive** - Optimal reading experience on any device
+- **Syntax highlighting** - Beautiful code examples with language-specific highlighting
 
 ## Local Development
 
 ### Prerequisites
 
-- Ruby (2.7 or higher)
-- Bundler
-- Jekyll
+- Ruby 2.7 or higher
+- Bundler (`gem install bundler`)
+- Git
 
-### Setup
-
-1. Clone the repository:
+### Quick Start
 
 ```bash
+# Clone the repository
 git clone https://github.com/thinknimble/tn-research.git
 cd tn-research
-```
 
-2. Install dependencies:
-
-```bash
+# Install dependencies
 bundle install
+
+# Start the development server
+bundle exec jekyll serve
+
+# Visit http://localhost:4000
 ```
 
-3. Run the development server:
+### Development Commands
 
 ```bash
-bundle exec jekyll serve
-```
+# Build the site
+bundle exec jekyll build
 
-4. Open your browser to `http://localhost:4000`
+# Run with production environment
+JEKYLL_ENV=production bundle exec jekyll serve
+
+# Check for broken internal links
+python3 scripts/check_internal_links.py
+```
 
 ## Content Structure
 
-### Publications
+### Collections
 
-Research publications are stored in the `_publications/` directory. Each publication should be a Markdown file with the following front matter:
+The site uses Jekyll collections to organize different content types:
+
+```
+_essays/          # Long-form essays and analysis
+_notes/           # Atomic notes and knowledge fragments  
+_posts/           # Blog posts (YYYY-MM-DD-title.md format)
+_publications/    # Formal research publications
+_projects/        # Project showcases and case studies
+_authors/         # Author profiles and bios
+```
+
+### Front Matter Templates
+
+<details>
+<summary>Essay Template</summary>
+
+```yaml
+---
+layout: essay
+title: "Your Essay Title"
+date: YYYY-MM-DD
+authors: ["Author Name"]  # optional
+abstract: "Brief summary"  # optional
+attribution: human-written  # or ai-supported, ai-generated
+status: draft  # or published
+related_notes: [note-slug-1, note-slug-2]  # optional
+---
+```
+</details>
+
+<details>
+<summary>Note Template</summary>
+
+```yaml
+---
+layout: note
+title: "Note Title"
+date: YYYY-MM-DD
+tags: [tag1, tag2]
+attribution: human-written
+status: seed  # or budding, evergreen
+---
+```
+</details>
+
+<details>
+<summary>Publication Template</summary>
 
 ```yaml
 ---
 layout: publication
-title: "Your Publication Title"
-date: 2024-01-01
+title: "Publication Title"
+date: YYYY-MM-DD
 authors:
   - Author One
   - Author Two
-abstract: "Brief description of the publication"
-pdf_url: "/path/to/pdf" # optional
-arxiv_url: "https://arxiv.org/..." # optional
-doi: "10.xxxx/xxxxx" # optional
+abstract: "Brief description"
+attribution: human-written
+pdf_url: "/path/to/pdf"  # optional
+arxiv_url: "https://arxiv.org/..."  # optional
+doi: "10.xxxx/xxxxx"  # optional
 ---
 ```
+</details>
 
-### Blog Posts
+## AI Attribution Policy
 
-Blog posts are stored in the `_posts/` directory following Jekyll's naming convention:
-`YYYY-MM-DD-post-title.md`
+We believe in transparency about AI use in content creation. All content includes an attribution field:
+
+- **Human Written** - Created entirely by human effort
+- **AI Supported** - Human-AI collaboration
+- **AI Generated** - Primarily AI-created with human oversight
+
+Learn more in our [AI Attribution Policy](https://research.thinknimble.com/notes/ai-attribution-policy).
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. CloudFlare handles DNS routing from research.thinknimble.com to the GitHub Pages site.
+The site automatically deploys to GitHub Pages when changes are pushed to the `main` branch. CloudFlare handles DNS and CDN services.
 
-## Development Resources
+### Deployment Pipeline
 
-### Placeholder Image Services
+1. Push to `main` triggers GitHub Actions
+2. Jekyll builds the static site
+3. Deploys to GitHub Pages
+4. CloudFlare serves from research.thinknimble.com
 
-For development and prototyping, these services can generate placeholder images:
+## Project Structure
 
-- **placehold.co** - Simple colored placeholders with text: `https://placehold.co/800x600/2E7D32/81C784?text=Text+Here`
-- **placeholders.io** - Abstract geometric patterns: `https://placeholders.io/800/600/abstract%20geometric?seed=12345` (requires numeric seed)
-- **picsum.photos** - Random photos: `https://picsum.photos/seed/yourtext/800/600`
+```
+tn-research/
+├── _includes/        # Reusable components
+├── _layouts/         # Page templates
+├── _essays/          # Essay content
+├── _notes/           # Note content
+├── _posts/           # Blog posts
+├── _publications/    # Research publications
+├── _projects/        # Project showcases
+├── _authors/         # Author profiles
+├── assets/           # Images and media
+├── static/           
+│   ├── css/         # Stylesheets
+│   └── images/      # Site images
+├── scripts/         # Utility scripts
+├── _config.yml      # Jekyll configuration
+└── index.html       # Homepage
+```
 
-## Future Features
+## Tools & Utilities
 
-### Backlinks System
+### Link Checker
+Check for broken internal links:
 
-A bidirectional linking system for essays and notes that would automatically display "References to this page" showing all other pages that link to the current content. This would help create a knowledge graph where ideas are interconnected.
+```bash
+python3 scripts/check_internal_links.py
+```
 
-**Implementation Notes:**
-
-- Requires generating a `/search-index.json` file during Jekyll build
-- Would scan all content for internal links and create reverse references
-- Useful for building a digital garden with interconnected ideas
-- Similar to backlinks in tools like Obsidian or Roam Research
-
-To implement:
-
-1. Create a Jekyll plugin to generate the search index at build time
-2. Add the backlinks sections back to `_layouts/essay.html` and `_layouts/note.html`
-3. Include JavaScript to fetch and display the backlinks
+This tool:
+- Scans all content for internal links
+- Warns about missing wiki-style links (expected for planned content)
+- Identifies actual broken links
+- Ignores template variables and documentation files
 
 ## Contributing
 
-For ThinkNimble team members:
+We welcome contributions from the ThinkNimble team and the broader community.
 
-1. Create a feature branch
+### For ThinkNimble Team
+
+1. Create a feature branch: `git checkout -b feature-name`
 2. Make your changes
-3. Submit a pull request for review
+3. Test locally: `bundle exec jekyll serve`
+4. Check links: `python3 scripts/check_internal_links.py`
+5. Submit a pull request
+
+### For External Contributors
+
+1. Fork the repository
+2. Create your feature branch
+3. Make your changes
+4. Submit a pull request with a clear description
+
+### Content Guidelines
+
+- Follow existing formatting and style conventions
+- Include appropriate front matter
+- Add AI attribution when applicable
+- Use wiki-style links `[[Note Title]]` to connect ideas
+- Test your changes locally before submitting
 
 ## License
 
-Copyright © ThinkNimble. All rights reserved.
+- **Code**: Apache License 2.0
+- **Content**: Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-## Contact
+See [LICENSE](LICENSE) for details.
 
-For questions about the website or research inquiries:
+## Support & Contact
 
-- Email: hello@thinknimble.com
-- GitHub: [github.com/thinknimble](https://github.com/thinknimble)
+- **Website**: [thinknimble.com](https://thinknimble.com)
+- **Email**: hello@thinknimble.com
+- **GitHub**: [@thinknimble](https://github.com/thinknimble)
+- **Research Site**: [research.thinknimble.com](https://research.thinknimble.com)
+
+---
+
+<p align="center">
+  Built with Jekyll • Hosted on GitHub Pages • Powered by curiosity
+</p>
