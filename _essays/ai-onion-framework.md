@@ -12,6 +12,8 @@ published: false
 related_notes: [ai-implementation, complexity-collapse, statistical-learning]
 ---
 
+[NOTE: THIS IS AN AI-GENERATED MOCK DRAFT BASED ON WILLIAM'S PRESENTATION NOTES. WILLIAM PLANS TO REWRITE THIS IN HIS OWN WORDS.]
+
 ## I. The Statistical Foundation of Hope
 
 Two years ago, my mother died of triple-negative breast cancer. She had spent her career as a biostatistician, designing clinical trials and analyzing whether new medicines actually worked. The irony wasn't lost on me: she dedicated her life to the mathematical machinery that validates cures, only to succumb to a cancer for which we haven't found one.

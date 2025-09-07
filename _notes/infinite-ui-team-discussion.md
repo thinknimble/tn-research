@@ -7,6 +7,8 @@ attribution: human-written
 published: false
 ---
 
+[NOTE: THIS IS A MOCK CONVERSATION TO DEMONSTRATE THE MESSAGE TEMPLATE TAG]
+
 Our team discussed William's [[Infinite UI]] concept, focusing on the idea that GenAI software has a practically infinite state space compared to traditional software. Here's how the conversation unfolded:
 
 <div class="conversation">
@@ -59,6 +61,7 @@ This reframes our entire approach to AI product development. Instead of feature 
 
 Should we prototype this thinking with one of our internal tools? Start documenting the "haunted mansion rooms" we discover?
 {% endmessage %}
+
 </div>
 
 ## Key Takeaways

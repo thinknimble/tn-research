@@ -12,6 +12,8 @@ published: false
 related_notes: [multi-agent-systems, unix-philosophy, ai-collaboration]
 ---
 
+[NOTE: THIS IS AN AI-GENERATED MOCK DRAFT BASED ON WILLIAM'S PRESENTATION NOTES. WILLIAM PLANS TO REWRITE THIS IN HIS OWN WORDS.]
+
 ## I. The Limits of Individual Intelligence
 
 There's a moment in every complex AI project when you realize a single model, no matter how sophisticated, isn't going to be enough. For us at ThinkNimble, that moment came while building a comprehensive research system for a client. We had GPT-4, arguably the most powerful language model available, carefully prompted and equipped with retrieval systems. It could answer questions brilliantly. It could synthesize information beautifully. But ask it to research a topic, validate its findings, format them for different audiences, and maintain consistency across a large document, and it would begin to hallucinate, contradict itself, or simply lose the thread.
