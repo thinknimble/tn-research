@@ -37,7 +37,7 @@ But 96 is still a manageable number! We can reasonably enumerate and test all 96
 
 By contrast, the number of possible states you get out of the box with a GenAI is practically infinite. I say "practically," because LLMs have a finite number of parameters and tokens, so there does exist an (astronomically large) finite number that represents the size of the state space. But it's such a large number that we cannot hope to manually or even automatically test all of them before the end of this universe or the next. So, fine, it's "infinite."
 
-## Unpredictable is NOT Random
+## Unpredictable is NOT the same as random
 
 Anyway, after all of this, I do think it is fair to say that unpredictability is very real consequence of this new paradigm. If you imagine this state space as a giant haunted mansion: that is now your product. And the users of your product will inevitably find a candelabra in the study that makes a bookshelf spin around, revealing a secret corkscrew slide to a Frankenstein lab, and there they will make monsters.
 
