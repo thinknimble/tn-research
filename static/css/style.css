@@ -1113,6 +1113,11 @@ pre[class="highlight"] > code {
   margin-top: 0;
 }
 
+/* Remove bottom margin from last paragraph before reactions */
+.conversation-message > p:last-of-type {
+  margin-bottom: 0;
+}
+
 .conversation-timestamp {
   font-size: 0.85em;
   color: #666;
