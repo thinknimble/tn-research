@@ -5,6 +5,7 @@ date: 2024-08-17
 updated: 2024-08-17
 status: seed
 attribution: ai-generated
+summary: "Analysis of Steve Yegge's thesis that AI is inverting developer hierarchies, giving junior developers advantages through aggressive AI adoption while senior developers resist change."
 tags:
   [
     AI,

@@ -5,6 +5,7 @@ date: 2024-08-17
 updated: 2024-08-17
 status: seed
 attribution: ai-generated
+summary: "Apple research reveals LLMs hit sharp performance cliffs at complexity thresholds, failing even when given explicit algorithms to follow—suggesting fundamental architectural limits."
 tags: [AI, llm-limitations, reasoning, complexity, architecture, benchmarking]
 ---
 

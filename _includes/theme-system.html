@@ -191,14 +191,12 @@
   }
 
   /* Meta information styling */
-  .post-date, .note-meta, .essay-meta-top, time, .readtime, .authors {
+  .post-date, .note-meta, time, .readtime, .authors {
     color: var(--meta-text);
   }
 
   /* Layout for meta sections */
-  .post-meta-top,
-  .essay-meta-top,
-  .note-meta-top {
+  .post-meta-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -208,6 +206,56 @@
 
   .post-meta-top .post-date {
     order: -1;
+  }
+
+  /* Badges - left justified */
+  .note-badges,
+  .essay-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Meta info below title */
+  .note-meta-info,
+  .essay-meta-info {
+    color: var(--meta-text);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+  }
+
+  .note-authors,
+  .essay-authors {
+    color: var(--meta-text);
+  }
+
+  .meta-separator {
+    margin: 0 0.25rem;
+    color: var(--meta-text);
+  }
+
+  /* Mobile: Stack date and authors */
+  @media (max-width: 768px) {
+    .note-meta-info,
+    .essay-meta-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .meta-separator {
+      display: none;
+    }
+  }
+
+  /* Desktop: Inline date and authors */
+  @media (min-width: 769px) {
+    .note-meta-info,
+    .essay-meta-info {
+      display: block;
+    }
   }
 
   /* Tags and labels */

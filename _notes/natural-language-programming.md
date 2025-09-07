@@ -5,6 +5,7 @@ date: 2024-08-17
 updated: 2024-08-17
 status: seed
 attribution: ai-generated
+summary: "Natural language may be the final evolution of programming syntax—translating human intent directly to machine instructions without cryptic syntax barriers."
 tags:
   [
     AI,

@@ -8,6 +8,7 @@ attribution: ai-supported
 abstract: "Most AI implementations fail due to unnecessary complexity. Drawing from clinical trial methodology and personal loss, this essay presents a layered approach to AI deployment that starts simple and adds complexity only when measurement demands it."
 readtime: "15 min read"
 status: seed
+published: false
 related_notes: [ai-implementation, complexity-collapse, statistical-learning]
 ---
 

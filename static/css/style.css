@@ -919,15 +919,10 @@ pre[class="highlight"] > code {
 }
 
 /* Essay and Note page title spacing */
-.essay-meta-top,
-.note-meta-top {
-  margin-bottom: 0.5rem; /* Reduce space between meta and title */
-}
-
 .essay-title,
 .note-title {
-  margin-top: 0.5rem; /* Less space above title */
-  margin-bottom: 1rem; /* Space below title (reduced since subtitle/author may follow) */
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Small space below title before meta info */
 }
 
 .essay-subtitle {
@@ -1055,6 +1050,141 @@ pre[class="highlight"] > code {
       color: #999;
     }
   }
+}
+
+/* Author inline styles for conversation format */
+.inline-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  vertical-align: middle;
+}
+
+.inline-author .author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.inline-author .author-mini-pic {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.inline-author .author-name {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.inline-author .author-link:hover .author-name {
+  color: rgb(24, 127, 168);
+  text-decoration: underline;
+}
+
+/* Slack-style conversation formatting */
+.conversation {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.conversation-message {
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+
+.conversation-message:first-child {
+  margin-top: 0;
+}
+
+.conversation-message:last-child {
+  margin-bottom: 0;
+}
+
+.conversation-message p {
+  margin: 0.5rem 0;
+}
+
+.conversation-message p:first-child {
+  margin-top: 0;
+}
+
+.conversation-message p:last-child {
+  margin-bottom: 0;
+}
+
+.conversation-timestamp {
+  font-size: 0.85em;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .conversation {
+    background: #1a1a1a;
+    border-color: #333;
+  }
+  
+  .inline-author .author-link:hover .author-name {
+    color: rgb(34, 194, 255);
+  }
+  
+  .conversation-timestamp {
+    color: #999;
+  }
+}
+
+html[data-theme="dark"] .conversation {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+html[data-theme="dark"] .inline-author .author-link:hover .author-name {
+  color: rgb(34, 194, 255);
+}
+
+html[data-theme="dark"] .conversation-timestamp {
+  color: #999;
+}
+
+/* Message reactions styling */
+.message-reactions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.message-reactions .reaction {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.375rem;
+  background: rgba(24, 127, 168, 0.1);
+  border: 1px solid rgba(24, 127, 168, 0.2);
+  border-radius: 12px;
+  font-size: 0.85em;
+  color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  .message-reactions .reaction {
+    background: rgba(34, 194, 255, 0.1);
+    border-color: rgba(34, 194, 255, 0.2);
+    color: #aaa;
+  }
+}
+
+html[data-theme="dark"] .message-reactions .reaction {
+  background: rgba(34, 194, 255, 0.1);
+  border-color: rgba(34, 194, 255, 0.2);
+  color: #aaa;
 }
 
 /* IMPORTANT: Theme overrides must come last to take precedence */

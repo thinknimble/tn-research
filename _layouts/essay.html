@@ -6,24 +6,28 @@ layout: default
 
 <article class="essay row-wrap">
   <header class="essay-header">
-    <div class="essay-meta-top">
+    <div class="essay-badges">
       {% if page.status %}
         {% include status-badge.html status=page.status %}
       {% endif %}
       {% if page.attribution %}
         {% include attribution-badge.html attribution=page.attribution %}
       {% endif %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      {% if page.readtime %}
-        <span class="readtime">• {{ page.readtime }} read</span>
-      {% endif %}
     </div>
     <h1 class="essay-title">{{ page.title }}</h1>
     {% if page.subtitle %}
       <h2 class="essay-subtitle">{{ page.subtitle }}</h2>
     {% endif %}
+    <div class="essay-meta-info">
+      {% assign display_date = page.updated | default: page.date %}
+      <time datetime="{{ display_date | date_to_xmlschema }}">
+        {{ display_date | date: "%B %d, %Y" }}
+      </time>
+      {% if page.readtime %}
+        <span class="meta-separator">•</span>
+        <span class="readtime">{{ page.readtime }} read</span>
+      {% endif %}
+    </div>
     {% if page.authors %}
       {% include author-byline.html authors=page.authors %}
     {% endif %}
@@ -40,7 +44,7 @@ layout: default
     <div class="notes-grid">
       {% for note_id in page.related_notes %}
         {% assign note = site.notes | where: "slug", note_id | first %}
-        {% if note %}
+        {% if note and note.published != false %}
         <div class="note-card">
           <h3><a href="{{ note.url }}">{{ note.title }}</a></h3>
           <p>{{ note.excerpt | strip_html | truncate: 100 }}</p>

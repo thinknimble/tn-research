@@ -51,8 +51,8 @@ layout: default
   <section class="author-articles">
     <h2>Articles by {{ page.name }}</h2>
     
-    {% assign author_essays = site.essays | where_exp: "essay", "essay.authors contains page.name" %}
-    {% assign author_notes = site.notes | where_exp: "note", "note.authors contains page.name" %}
+    {% assign author_essays = site.essays | where_exp: "essay", "essay.authors contains page.name and essay.published != false" %}
+    {% assign author_notes = site.notes | where_exp: "note", "note.authors contains page.name and note.published != false" %}
     {% assign author_posts = site.posts | where_exp: "post", "post.author == page.slug" %}
     
     {% if author_essays.size > 0 %}

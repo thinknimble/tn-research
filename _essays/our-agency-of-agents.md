@@ -8,6 +8,7 @@ attribution: ai-supported
 abstract: "Single AI models, no matter how powerful, collapse under complexity. By distributing tasks across specialized agents—following the Unix philosophy of doing one thing well—we can build systems that exceed the capabilities of any individual model while preserving human agency and avoiding vendor lock-in."
 readtime: "18 min read"
 status: seed
+published: false
 related_notes: [multi-agent-systems, unix-philosophy, ai-collaboration]
 ---
 

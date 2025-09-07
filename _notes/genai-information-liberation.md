@@ -6,6 +6,7 @@ updated: 2025-09-07
 tags: [ai, genai, information-access, knowledge-democratization]
 attribution: human-written
 status: seed
+summary: "GenAI fundamentally changes information access by breaking down barriers between technical and non-technical knowledge, enabling new forms of synthesis."
 ---
 
 GenAI is liberating information unlike ever before.

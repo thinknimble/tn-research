@@ -17,7 +17,7 @@ permalink: /notes/
   </header>
 
   <section class="notes-list">
-    {% assign sorted_notes = site.notes | sort: 'updated' | reverse %}
+    {% assign sorted_notes = site.notes | where_exp: "item", "item.published != false" | sort: 'updated' | reverse %}
     {% for note in sorted_notes %}
       <a href="{{ note.url | relative_url }}" class="note-preview-link">
         <article class="note-preview">

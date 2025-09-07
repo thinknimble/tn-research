@@ -1,12 +1,13 @@
 ---
 layout: note
-title: "Infinite UI: The Real Difference Between Traditional and GenAI Software"
+title: "Infinite UI: What's Really Different about GenAI Software"
 date: 2025-09-07
 updated: 2025-09-07
 authors: ["William Huster"]
 tags: [ai, ui-design, product-design, genai, software-architecture]
 attribution: human-written
 status: budding
+summary: "The real difference between traditional and GenAI software isn't determinism—it's the practically infinite state space that transforms products into explorable territories rather than fixed paths."
 ---
 
 This is a draft of an article / idea I might term "Infinite UI" - which ties into the "command line for everyone" and is sort of my rebuttal to the recent (over)focus on determinism.
@@ -36,6 +37,8 @@ But 96 is still a manageable number! We can reasonably enumerate and test all 96
 
 By contrast, the number of possible states you get out of the box with a GenAI is practically infinite. I say "practically," because LLMs have a finite number of parameters and tokens, so there does exist an (astronomically large) finite number that represents the size of the state space. But it's such a large number that we cannot hope to manually or even automatically test all of them before the end of this universe or the next. So, fine, it's "infinite."
 
+## Unpredictable Random
+
 Anyway, after all of this, I do think it is fair to say that unpredictability is very real consequence of this new paradigm. If you imagine this state space as a giant haunted mansion: that is now your product. And the users of your product will inevitably find a candelabra in the study that makes a bookshelf spin around, revealing a secret corkscrew slide to a Frankenstein lab, and there they will make monsters.
 
 But people are conflating unpredictability with randomness. A temperature=0 (deterministic) model still has the "haunted mansion" property. Even with zero randomness, users can still find a Frankenstein lab candelabra. Importantly, this unpredictability does not come down to dice rolls. It originates from the sheer impossibility of comprehensively mapping the space beforehand so you can find and uninstall the problematic candle holders.
@@ -63,3 +66,30 @@ Sounds like an excerpt from the ThinkNimble product playbook!
 > Organizations that build using an empirical approach, think in probabilities, and measure complex trajectories will define the next era of technology.
 
 I mean, I think those kinds of orgs (and people and patterns of thought) also defined every previous era of technology. The more things change, the more they stay the same. It's still solid advice.
+
+## Team Discussion
+
+After sharing this note, we had an engaging discussion about these concepts:
+
+<div class="conversation">
+{% message author-id="marcy-ewald" name="first" time="Wednesday at 3:52 PM" %}
+this is fascinating. I have a few thoughts I'll add later
+{% endmessage %}
+
+{% message author-id="marcy-ewald" name="first" time="Wednesday at 4:46 PM" reactions="‼️:1" %}
+This is quite the flip in user experience design: "we actually had to add features to build paths, now we get features 'for free' and must remove them!"
+
+Adding comparative context has been the most effective way I've been able to constrain answers from the AI in my own work. I've been thinking about it more as a spotlight rather than guardrails — showing the AI which path has been walked frequently, and letting it tell me what it thinks about those paths. Flipping the script in GP in that way helped; instead of corralling the agent, now we ask what it thinks about all of the new information it has about the student and how it would use that information moving forward, given the role you mentioned above. That type of pattern was useful on Cue too — refining the question before releasing the agent.
+
+On the topic of restricting features, it's almost like shortcuts or paths of least resistance. The constraints around what you consider success as a business (quickness to haircut booking, matching users original parameters, exposing what the user actually wanted and building them a perfectly customized experience) really require that refinement you talked about.
+
+Very interesting read, thanks for sharing.
+{% endmessage %}
+
+{% message author-id="william-huster" name="first" time="Thursday at 11:16 PM" reactions="❤️:1" %}
+Yes, I think the reversal of adding <> removing features is the real core paradigm shift here for product and by extension business design.
+
+I like the metaphor of spotlighting. That gives me the image of a "brain" / network of neural connections in a neural net lighting up with indistinct edges. And I think it raises a good point that not only can things be blocked or chipped away ("dimmed" perhaps?) in GenAI systems, they can also be intensified and we should look at that as an equally useful tool.
+{% endmessage %}
+
+</div>

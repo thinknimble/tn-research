@@ -12,7 +12,7 @@ permalink: /essays/
   </header>
 
   <section class="essays-list">
-    {% assign sorted_essays = site.essays | sort: 'date' | reverse %}
+    {% assign sorted_essays = site.essays | where_exp: "item", "item.published != false" | sort: 'date' | reverse %}
     {% for essay in sorted_essays %}
       <a href="{{ essay.url | relative_url }}" class="essay-preview-link">
         <article class="essay-preview">
