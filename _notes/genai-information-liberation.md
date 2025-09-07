@@ -2,6 +2,7 @@
 layout: note
 title: "GenAI and the Liberation of Information"
 date: 2025-09-07
+updated: 2025-09-07
 tags: [ai, genai, information-access, knowledge-democratization]
 attribution: human-written
 status: seed

@@ -17,7 +17,7 @@ permalink: /notes/
   </header>
 
   <section class="notes-list">
-    {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+    {% assign sorted_notes = site.notes | sort: 'updated' | reverse %}
     {% for note in sorted_notes %}
       <a href="{{ note.url | relative_url }}" class="note-preview-link">
         <article class="note-preview">
@@ -28,6 +28,16 @@ permalink: /notes/
           {% elsif note.excerpt %}
             <p class="note-preview-excerpt">{{ note.excerpt | strip_html | truncate: 100 }}</p>
           {% endif %}
+          
+          {% assign display_date = note.updated | default: note.date %}
+          <div class="note-preview-date-line">
+            <time datetime="{{ display_date | date_to_xmlschema }}">
+              {{ display_date | date: "%b %d, %Y" }}
+            </time>
+            {% if note.authors %}
+              <span class="authors">• {{ note.authors | join: ", " }}</span>
+            {% endif %}
+          </div>
 
           <div class="note-preview-meta">
             {% if note.status %}
@@ -35,11 +45,7 @@ permalink: /notes/
             {% endif %}
             {% if note.attribution %}
               {% include attribution-badge.html attribution=note.attribution %}
-              <span class="meta-separator">•</span>
             {% endif %}
-            <time datetime="{{ note.date | date_to_xmlschema }}">
-              {{ note.date | date: "%b %d, %Y" }}
-            </time>
           </div>
         </article>
       </a>

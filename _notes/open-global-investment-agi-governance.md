@@ -2,6 +2,7 @@
 layout: note
 title: "Open Global Investment as AGI Governance Model"
 date: 2025-09-06
+updated: 2025-09-06
 status: seed
 tags: [ai-governance, economics, agi, alignment, policy, decision-theory]
 attribution: ai-generated

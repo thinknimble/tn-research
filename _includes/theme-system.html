@@ -224,13 +224,9 @@
     box-shadow: 0 2px 4px var(--card-shadow);
   }
   
-  .essay-preview {
-    background-color: transparent;
-    border-color: var(--card-border);
-  }
-  
   /* Spacing between list items */
   .essay-preview {
+    background-color: transparent;
     margin-bottom: 1.5rem;
     padding: 1rem 0 0.75rem 0;
   }
@@ -240,7 +236,6 @@
     display: block;
     text-decoration: none;
     color: var(--text-color);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
   }
   
   .essay-preview-link:visited {
@@ -253,17 +248,31 @@
   
   .essay-preview-title {
     color: var(--heading-color);
+    margin-bottom: 0.75rem;
   }
   
   .essay-preview-abstract {
     color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .essay-preview-date-line {
+    display: block;
+    color: var(--meta-text);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  
+  .essay-preview-meta {
+    font-size: 0.85rem;
   }
   
   /* Note preview styling - matching essay preview */
   .note-preview {
     margin-bottom: 1.5rem;
     padding: 1rem 0 0.75rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   }
   
   /* Note preview link styling */
@@ -294,18 +303,25 @@
     text-decoration: none;
   }
   
+  .note-preview-excerpt {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .note-preview-date-line {
+    display: block;
+    color: var(--meta-text);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  
   .note-preview-link:hover .note-preview-title {
     text-decoration: underline;
   }
   
-  .note-preview-excerpt {
-    color: var(--text-color);
-  }
-  
   .note-preview-meta {
     font-size: 0.85rem;
-    margin-top: 0.5rem;
-    color: var(--meta-text);
   }
 
   .block-link {
@@ -344,31 +360,28 @@
   /* Landing page specific */
   /* Margin now handled in style.css */
 
-  /* Status badge adjustments for dark mode */
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .status-badge {
-      filter: brightness(0.8);
-    }
-    
-    :root:not([data-theme="light"]) .essay-preview-link {
-      border-bottom-color: rgba(255, 255, 255, 0.35);
-    }
-    
-    :root:not([data-theme="light"]) .note-preview {
-      border-bottom-color: rgba(255, 255, 255, 0.35);
-    }
+  /* Manual theme overrides - these take precedence over system preference */
+  [data-theme="light"] .note-preview {
+    border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  [data-theme="dark"] .note-preview {
+    border-bottom-color: rgba(255, 255, 255, 0.15) !important;
   }
 
   [data-theme="dark"] .status-badge {
     filter: brightness(0.8);
   }
-  
-  [data-theme="dark"] .essay-preview-link {
-    border-bottom-color: rgba(255, 255, 255, 0.35);
-  }
-  
-  [data-theme="dark"] .note-preview {
-    border-bottom-color: rgba(255, 255, 255, 0.35);
+
+  /* System preference fallback when no manual theme is set */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .status-badge {
+      filter: brightness(0.8);
+    }
+    
+    :root:not([data-theme="light"]):not([data-theme="dark"]) .note-preview {
+      border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+    }
   }
 
   /* Smooth transitions */

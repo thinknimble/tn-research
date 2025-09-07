@@ -2,6 +2,8 @@
 layout: note
 title: "Infinite UI: The Real Difference Between Traditional and GenAI Software"
 date: 2025-09-07
+updated: 2025-09-07
+authors: ["William Huster"]
 tags: [ai, ui-design, product-design, genai, software-architecture]
 attribution: human-written
 status: budding

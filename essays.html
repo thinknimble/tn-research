@@ -24,19 +24,24 @@ permalink: /essays/
             <p class="essay-preview-abstract">{{ essay.excerpt | strip_html | truncate: 160 }}</p>
           {% endif %}
           
-          <div class="essay-preview-meta">
-            {% if essay.status %}
-              {% include status-badge.html status=essay.status %}
-              <span class="meta-separator">•</span>
-            {% endif %}
+          <div class="essay-preview-date-line">
             <time datetime="{{ essay.date | date_to_xmlschema }}">
-              {{ essay.date | date: "%B %d, %Y" }}
+              {{ essay.date | date: "%b %d, %Y" }}
             </time>
             {% if essay.readtime %}
               <span class="readtime">• {{ essay.readtime }}</span>
             {% endif %}
             {% if essay.authors %}
               <span class="authors">• {{ essay.authors | join: ", " }}</span>
+            {% endif %}
+          </div>
+          
+          <div class="essay-preview-meta">
+            {% if essay.status %}
+              {% include status-badge.html status=essay.status %}
+            {% endif %}
+            {% if essay.attribution %}
+              {% include attribution-badge.html attribution=essay.attribution %}
             {% endif %}
           </div>
         </article>

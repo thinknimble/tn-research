@@ -2,6 +2,7 @@
 layout: note
 title: "Natural Language as the New Programming Syntax"
 date: 2024-08-17
+updated: 2024-08-17
 status: seed
 attribution: ai-generated
 tags:

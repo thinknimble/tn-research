@@ -985,6 +985,12 @@ pre[class="highlight"] > code {
 .essay-preview {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
+
+.note-preview-link:first-child .note-preview,
+.essay-preview-link:first-child .essay-preview {
+  border-top: none !important;
+  padding-top: 0;
+}
 .note-preview-link:last-child .note-preview,
 .essay-preview-link:last-child .essay-preview {
   border-bottom: none !important;
@@ -997,8 +1003,8 @@ pre[class="highlight"] > code {
     color: #999;
   }
   
-  .note-preview,
-  .essay-preview {
+  :root:not([data-theme="light"]) .note-preview,
+  :root:not([data-theme="light"]) .essay-preview {
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
   }
   
@@ -1049,4 +1055,16 @@ pre[class="highlight"] > code {
       color: #999;
     }
   }
+}
+
+/* IMPORTANT: Theme overrides must come last to take precedence */
+/* These explicitly override any media query rules when theme is manually set */
+html[data-theme="light"] .note-preview,
+html[data-theme="light"] .essay-preview {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme="dark"] .note-preview,
+html[data-theme="dark"] .essay-preview {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
