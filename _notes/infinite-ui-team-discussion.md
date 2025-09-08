@@ -4,7 +4,7 @@ title: "Team Discussion: Infinite UI State Space"
 date: 2025-01-07
 tags: [ui-paradigm, team-discussion, ai-interfaces, product-design, state-space]
 attribution: human-written
-authors: ["William Huster"]
+authors: ["William Huster", "Neil Shah", "Marcy Ewald"]
 published: false
 ---
 
