@@ -24,7 +24,7 @@ layout: default
     {% if page.authors %}
       {% include author-byline.html authors=page.authors %}
     {% elsif page.author %}
-      {% assign author_array = page.author | split: "," %}
+      {% assign author_array = page.author | split: "" %}
       {% include author-byline.html authors=author_array %}
     {% endif %}
   </header>

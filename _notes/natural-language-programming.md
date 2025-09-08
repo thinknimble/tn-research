@@ -1,11 +1,12 @@
 ---
 layout: note
-title: "Natural Language as the New Programming Syntax"
-date: 2024-08-17
-updated: 2024-08-17
+title: "A Command Line for Everyone"
+date: 2025-06-30
+updated: 2025-09-07
 status: seed
-attribution: ai-generated
-summary: "Natural language may be the final evolution of programming syntax. We can now translate human intent directly to machine instructions without cryptic syntax barriers."
+attribution: ai-supported
+authors: ["William Huster", "Marcy Ewald"]
+summary: "Chatbots are the new command line interface - making complex computer operations accessible through natural language conversation."
 tags:
   [
     AI,
@@ -20,44 +21,106 @@ tags:
 
 Programming languages have always been about translating human intent into machine instructions. Natural language with LLMs may be the final evolution of this translation layer.
 
-## Traditional vs Natural Language Syntax
+<div class="conversation">
+{% message author-id="william-huster" name="first" time="June 30th at 12:23 PM" %}
+Good arguments in favor of Chatbots as the interface: [https://www.geoffreylitt.com/2025/06/29/chat-ai-dialogue](https://www.geoffreylitt.com/2025/06/29/chat-ai-dialogue)
+
+I think chatbots are like "a command line for everyone."
+
+Along those lines, this [30m talk by Karpathy](https://youtu.be/LCEmiRjPEtQ?feature=shared) is also worth watching - The key thing is that AI/ML models were like one-shot functions in the beginning, but now LLMs have made neural nets programmable and by extension computers are now increasingly programmable in natural language.
+{% endmessage %}
+
+{% message author-id="william-huster" name="first" time="Jul 1st at 11:36 AM" reactions="‼️:1" %}
+I thought Marcy would find this particularly interesting in terms of product design and advice we give clients about what interfaces to build. I personally have steered clear of recommending chatbots as an interface, perhaps because it feels too cliche. The first article here made me rethink that.
+
+I think we can develop a framework of when and where chatbots are appropriate. I think that like the command line, they work well as a liminal space between actions, like a hallway or intersection. They definitely help with routing people, And with tool use, they can actually "take you there" and do things for you. This also makes them a good way to compose multiple actions together in a flexible and custom way, which is not so easy to provide with a fixed graphical interface, because there is a multiplicative explosion of possible action combinations.
+{% endmessage %}
+
+{% message author-id="marcy-ewald" name="first" time="Jul 1st at 11:37 AM" %}
+Yeah, I worked down this for a client a bit a couple weeks ago. A chat was a bit too open field for getting specific answers to recommend a student to an org, but the bounds of the chat we originally deployed got a lot of negative feedback from students.
+{% endmessage %}
+
+{% message author-id="marcy-ewald" name="first" time="Jul 1st at 11:42 AM" %}
+I did some research with my boy claude here, that would probably extend to this conversation.
+
+_Why We Chose Conversational Scaffolding_
+
+The traditional onboarding approaches we researched - like Slack's 2024 evolution and Notion's AI-enhanced personalization - showed us that the most effective approaches treat conversation as scaffolding for value discovery rather than information delivery. Instead of progressive disclosure that forces predetermined paths, we needed something that could handle students taking the conversation in a ton of ways while still moving them toward structured outcomes.
+
+The key breakthrough was realizing we needed invisible guardrails - students feel they're having a natural conversation while we systematically guide them through discovery milestones. This required conversational jujitsu (redirecting energy rather than blocking it) with **progressive state tracking**.
+{% endmessage %}
+
+{% message author-id="william-huster" name="first" time="Jul 1st at 12:01 PM" %}
+Yeah, that's great. I like the framing of conversational scaffolding versus progressive disclosure. To put it another way, in this specific case the chatbot replaces the boring old survey → recommendations flow.
+
+I wonder if students were frustrated because they didn't feel like they had enough control over what was going on. I realize the whole idea is to put them on rails, but if they are just answering questions and not told what actions they can take (or given any actions to take), then the chatbot is in control and the only fun and agency left to you is to try to break the chatbot.
+{% endmessage %}
+
+{% message author-id="marcy-ewald" name="first" time="Jul 1st at 12:04 PM" %}
+Yeah, using the chatbot to address blank states in the app (Why don't I have any interviews scheduled? Why don't I have any industries selected?) helped me think about how to use the chatbot to elicit certain information, but then also allow students a place to just talk freely.
+{% endmessage %}
+
+</div>
+
+## Examples of Traditional vs. Natural Language Syntax
+
+Let's look at some examples of classic command-line and coding tasks. GenAI and coding assistants excel at translating these requests.
 
 ### File Search
 
-**Bash**: `find . -name "*.py" -type f -mtime -7 | xargs grep "def process"`
-**Natural**: "Show me all Python files modified in the last week that contain a process function"
+**Natural**:
+
+> "Show me all Python files modified in the last week that contain a process function"
+
+**Bash**:
+
+```bash
+find . -name "*.py" -type f -mtime -7 | xargs grep "def process"
+```
+
+<div class="conversation">
+{% message author-id="william-huster" name="first" time="Sep 7th, 2025 at 12:23 PM" %}
+I'll be honest: even after 20 years using Linux, I would struggle to write this command on my own.
+{% endmessage %}
+</div>
 
 ### Data Transformation
 
-**SQL**: `SELECT COUNT(*), category FROM products WHERE price > 100 GROUP BY category HAVING COUNT(*) > 5`
-**Natural**: "Count products over $100 by category, but only show categories with more than 5 items"
+**Natural**:
+
+> "Count products over $100 by category, but only show categories with more than 5 items"
+
+**SQL**:
+
+```sql
+SELECT COUNT(*), category
+  FROM products
+  WHERE price > 100
+  GROUP BY category
+  HAVING COUNT(*) > 5;
+```
 
 ### Text Processing
 
-**Unix**: `grep -r "pattern" . | head -10 | awk '{print $2}'`
-**Natural**: "Find all mentions of 'pattern' and show me the second word from the first 10 matches"
+**Natural**:
 
-## What Makes Natural Language a "Programming Language"
+> "Find all mentions of 'pattern' and show me the second word from the first 10 matches"
 
-### It Has:
+**Unix**:
 
-1. **Syntax** - Grammar and structure rules
-2. **Semantics** - Meaning and intent
-3. **Context** - Variables and state (conversation history)
-4. **Control flow** - "First do X, then if Y, do Z"
-5. **Functions** - "Using the method from earlier..."
-6. **Error handling** - "If that doesn't work, try..."
+```bash
+grep -r "pattern" . | head -10 | awk '{print $2}'
+```
 
-### It Lacks:
+### And Beyond...
 
-1. **Determinism** - Same prompt may yield different results
-2. **Precision** - Ambiguity is inherent
-3. **Debugging** - No stack traces or line numbers
-4. **Version control** - Prompts evolve organically
+It can get so much more sophisticated than this! Coding assistants like Claude Code can draft, execute, and refine their own bash commands and scripts on the fly. They can translate vague high-level requests like "summarize how Feature X works in this codebase" into a structured exploration that uses the common Linux search tools demonstrated above like `sed`, `grep`, `find`, and `awk`.
 
-## The Prompt Engineering Discipline
+The bash command example are particularly interesting because they use the pipe `|` operator to compose multiple single-purpose commands. This idea is core to the Unix design philosophy. Because GenAIs fundamentally operate on text, they can interoperate directly with these commands. So not only can they put Unix commands together like a human engineer, they can compose themselves into the data processing pipeline, too.
 
-Natural language as code creates a new discipline: **prompt engineering**.
+## Prompt Engineering
+
+Natural language as code has created a new discipline: **prompt engineering**.
 
 ### Core Skills
 
@@ -91,24 +154,6 @@ Natural language as code creates a new discipline: **prompt engineering**.
 4. **Graceful degradation** - Partial understanding still yields results
 5. **Universal interface** - Same "syntax" for any domain
 
-## Limitations and Challenges
-
-1. **Reproducibility** - Natural language is inherently ambiguous
-2. **Performance** - Orders of magnitude slower than compiled code
-3. **Cost** - Each "execution" has API costs
-4. **Audit trail** - Harder to track what exactly was "run"
-5. **Security** - Injection attacks through prompt manipulation
-
-## The Hybrid Future
-
-Natural language won't replace traditional programming but augment it:
-
-```
-User Prompt → LLM interprets → Generates traditional code → Executes → Returns results
-     ↑                                                                        ↓
-     ←──────────────── Natural language feedback ←───────────────────────────
-```
-
 ## Implications
 
 ### For Developers
@@ -138,8 +183,6 @@ If natural language is the new programming syntax, then:
 - **Prompt libraries** are the new code repositories
 - **LLM interfaces** are the new IDEs
 
-We're not eliminating the need for precision—we're changing how we express it.
-
 ## Research & Sources
 
 ### Academic Perspectives
@@ -148,10 +191,13 @@ We're not eliminating the need for precision—we're changing how we express it.
 - **[ACM Transactions on Software Engineering](https://dl.acm.org/doi/10.1145/3672456)**: "Self-Planning Code Generation with Large Language Models" - Demonstrates that self-planning approaches outperform direct generation
 - **[AutoIOT Research (2024)](https://arxiv.org/html/2503.05346)**: "LLM-Driven Automated Natural Language Programming for AIoT Applications" - Shows decomposition of programming tasks using chain-of-thought prompts
 
-### Industry Insights
+### Industry Takes & Further Reading
 
 - **[Stack Overflow Interview with Prof. Greg Benson](https://stackoverflow.blog/2024/11/07/no-code-only-natural-language-q-and-a-on-prompt-engineering-with-professor-greg-benson/)**: "No code, only natural language" - Discusses how prompts can be thought of as programs
 - **[GitHub Blog](https://github.blog/ai-and-ml/generative-ai/prompt-engineering-guide-generative-ai-llms/)**: "A developer's guide to prompt engineering and LLMs" - Comprehensive guide on prompt engineering as new form of programming
+- **[GitHub Awesome-Code-LLM](https://github.com/codefuse-ai/Awesome-Code-LLM)**: Curated list of language modeling research for code
+- **[Prompting Guide for Code Generation](https://www.promptingguide.ai/prompts/coding)**: Practical guide for code generation with LLMs
+- **[ArXiv Papers on Code Synthesis](https://ar5iv.labs.arxiv.org/html/2305.01598)**: "From Words to Code: Harnessing Data for Program Synthesis from Natural Language"
 
 ### Key Research Findings
 
@@ -164,16 +210,4 @@ We're not eliminating the need for precision—we're changing how we express it.
 
 - "Developers are already building software with LLMs using basic HTTP requests and natural language prompts"
 - "There will likely be an entire generation of technical workers who will be able to generate useful computer programs without a formal computer science degree"
-- "Prompts and LLMs can be used to either replace complex code, or perform functions that would be nearly impossible to achieve in conventional code"
-
-### Challenges Identified
-
-- **Cross-Model Incompatibility**: Prompts that work with one LLM may not work with another
-- **Non-Determinism**: Even with temperature 0.0, LLMs can produce different outputs
-- **Hallucinations**: LLMs confidently produce information that isn't real or true
-
-### Resources for Further Reading
-
-- **[GitHub Awesome-Code-LLM](https://github.com/codefuse-ai/Awesome-Code-LLM)**: Curated list of language modeling research for code
-- **[Prompting Guide for Code Generation](https://www.promptingguide.ai/prompts/coding)**: Practical guide for code generation with LLMs
-- **[ArXiv Papers on Code Synthesis](https://ar5iv.labs.arxiv.org/html/2305.01598)**: "From Words to Code: Harnessing Data for Program Synthesis from Natural Language"
+- "Prompts and LLMs can be used to either replace complex code, or perform functions that would be nearly impossible to achieve in conventional code"d
