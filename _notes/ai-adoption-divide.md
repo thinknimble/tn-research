@@ -5,6 +5,7 @@ date: 2024-08-17
 updated: 2024-08-17
 status: seed
 attribution: ai-generated
+authors: ["Claude (AI Assistant)"]
 summary: "Analysis of Steve Yegge's thesis that AI is inverting developer hierarchies, giving junior developers advantages through aggressive AI adoption while senior developers resist change."
 tags:
   [
@@ -155,6 +156,3 @@ The "revenge of the junior developer" narrative is compelling but oversimplified
 The real winners won't be junior or senior developers, but those who most effectively integrate AI into their workflow while maintaining critical thinking about its limitations.
 
 ---
-
-Tags: #AI #SoftwareDevelopment #CareerStrategy #GenerationalDivide #FutureOfWork
-Related: [[The Evolving Learn to Code Narrative]] [[LLM Agents - Command Line for Everyone]] [[Evidence of Complexity Collapse in LLMs]]

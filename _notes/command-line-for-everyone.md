@@ -5,7 +5,7 @@ date: 2025-06-30
 updated: 2025-09-07
 status: seed
 attribution: ai-supported
-authors: ["William Huster", "Marcy Ewald"]
+authors: ["William Huster", "Marcy Ewald", "Claude (AI Assistant)"]
 summary: "Chatbots are the new command line interface - making complex computer operations accessible through natural language conversation."
 tags:
   [

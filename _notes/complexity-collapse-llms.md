@@ -5,6 +5,7 @@ date: 2024-06-10
 updated: 2024-09-07
 status: budding
 attribution: ai-supported
+authors: ["William Huster", "Claude (AI Assistant)"]
 summary: "Apple research suggests LLMs hit sharp performance cliffs at complexity thresholds, failing even when given explicit algorithms to follow. This suggests fundamental architectural limits."
 tags: [AI, llm-limitations, reasoning, complexity, architecture, benchmarking]
 ---

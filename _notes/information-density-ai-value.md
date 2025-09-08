@@ -5,7 +5,7 @@ date: 2024-08-17
 updated: 2024-08-17
 status: seed
 attribution: ai-supported
-authors: ["William Huster"]
+authors: ["William Huster", "Claude (AI Assistant)"]
 summary: "In the AI era, value comes not from writing ability but from having something worth writing about! Humans provide the essential information that makes AI output valuable."
 tags:
   [
@@ -268,6 +268,3 @@ Recent papers addressing information quality in LLMs:
 - "The Curse of Recursion: Training on Generated Data Makes Models Forget" (Shumailov et al., 2024)
 
 ---
-
-Tags: #AI #ValueCreation #InformationTheory #HumanAICollaboration #BusinessStrategy #ClaudeShannon
-Related: [[Agency of Agents - ThinkNimble's AI Collaboration Framework]] [[Evidence of Complexity Collapse in LLMs]] [[The AI Onion - Layered Approach to AI Implementation]]

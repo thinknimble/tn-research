@@ -8,7 +8,12 @@
   <div class="author-byline">
     <span class="byline-label">By</span>
     {% for author_name in include.authors %}
-      {% assign author_slug = author_name | downcase | replace: ' ', '-' | replace: '(ai assistant)', '' | strip %}
+      {% comment %} Special case for Claude {% endcomment %}
+      {% if author_name == "Claude (AI Assistant)" %}
+        {% assign author_slug = "claude" %}
+      {% else %}
+        {% assign author_slug = author_name | downcase | replace: ' ', '-' %}
+      {% endif %}
       {% assign author = site.authors | where: "slug", author_slug | first %}
       
       {% if author %}
@@ -29,6 +34,7 @@
   .author-byline {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin: 0.5rem 0;
     font-size: 0.95rem;

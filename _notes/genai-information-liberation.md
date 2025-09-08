@@ -4,6 +4,7 @@ title: "GenAI and the Liberation of Information"
 date: 2025-09-07
 updated: 2025-09-07
 tags: [ai, genai, information-access, knowledge-democratization]
+authors: ["William Huster"]
 attribution: human-written
 status: seed
 summary: "GenAI fundamentally changes information access by breaking down barriers between technical and non-technical knowledge, enabling new forms of synthesis."
