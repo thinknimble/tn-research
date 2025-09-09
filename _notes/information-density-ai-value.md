@@ -1,8 +1,8 @@
 ---
 layout: note
 title: "Information Density - The Core Value in AI-Assisted Work"
-date: 2024-08-17
-updated: 2024-08-17
+date: 2025-08-17
+updated: 2025-09-07
 status: seed
 attribution: ai-supported
 authors: ["William Huster", "Claude (AI Assistant)"]

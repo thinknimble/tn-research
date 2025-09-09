@@ -1,7 +1,8 @@
 ---
 layout: note
 title: "AI in Education"
-date: 2025-01-08
+date: 2025-09-08
+updated: 2025-09-08
 tags: [ai, education, higher-education, admissions, automation, ethics, edtech]
 attribution: ai-supported
 authors: ["William Huster"]

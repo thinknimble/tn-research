@@ -1,8 +1,8 @@
 ---
 layout: note
 title: "The AI Adoption Divide - Junior vs Senior Developers"
-date: 2024-08-17
-updated: 2024-08-17
+date: 2025-08-17
+updated: 2025-09-06
 status: seed
 attribution: ai-generated
 authors: ["Claude (AI Assistant)"]
