@@ -54,7 +54,7 @@ We plan to document what makes for good automation, how we're evaluating the use
 ## How to Use This
 
 **If you're not a developer:**
-Download the app (coming soon) and point it at the repetitive task you want to automate. The app walks you through describing what you need, tests if an agent can handle it, and shows you the results before it runs for real.
+Try [the app](https://agent-launcher-production-57f5c9d5c0ed.herokuapp.com/home){:target="_blank"} and point it at the repetitive task you want to automate. The app walks you through describing what you need, tests if an agent can handle it, and shows you the results before it runs for real.
 
 **If you're a developer:**
 Install the Python framework and build custom agents:
