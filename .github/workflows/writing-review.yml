@@ -6,7 +6,8 @@ on:
       - '_notes/**/*.md'
       - '_essays/**/*.md'
       - '_posts/**/*.md'
-    types: [ready_for_review, synchronize]
+    types: [ready_for_review]
+  workflow_dispatch:
 
 permissions:
   pull-requests: write
