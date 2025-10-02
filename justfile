@@ -1,22 +1,19 @@
-# Development server (default port 4001)
-serve:
-    bundle exec jekyll serve --livereload --port 4001
+# Start development server (default port 4001)
+up:
+    docker-compose up
 
-# Build the site
+# Stop Docker containers
+down:
+    docker-compose down
+
+# Build the Docker image
 build:
-    bundle exec jekyll build
+    docker-compose build
 
-# Install dependencies
-install:
-    bundle install
-
-# Clean build artifacts
-clean:
-    bundle exec jekyll clean
-
-# Run development server with drafts
-drafts:
-    bundle exec jekyll serve --livereload --drafts
+# Clean build artifacts and Docker resources
+reset:
+    docker-compose down -v
+    rm -rf _site .jekyll-cache .sass-cache
 
 # Check for broken links (requires htmlproofer gem)
 check-links:

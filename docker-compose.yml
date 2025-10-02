@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  jekyll:
+    build: .
+    ports:
+      - "4001:4001"
+      - "35729:35729"  # LiveReload port
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    environment:
+      - JEKYLL_ENV=development
+      - JEKYLL_DRAFTS=${JEKYLL_DRAFTS:-false}
+    command: >
+      sh -c "
+      if [ \"$$JEKYLL_DRAFTS\" = \"true\" ]; then
+        bundle exec jekyll serve --livereload --port 4001 --host 0.0.0.0 --drafts
+      else
+        bundle exec jekyll serve --livereload --port 4001 --host 0.0.0.0
+      fi
+      "
+
+volumes:
+  bundle_cache:
