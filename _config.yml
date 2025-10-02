@@ -3,7 +3,7 @@ description: A collection of essays, research notes, and experiments to share wh
 author: ThinkNimble Research Institute
 author_email: hello@thinknimble.com
 category_dir: /
-url: "" # Empty for relative URLs, gets overridden in production
+url: "https://research.thinknimble.com"
 
 # Custom tag for default site image
 # Post pages will typically override this with a "featured" image.
