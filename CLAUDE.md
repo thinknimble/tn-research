@@ -31,19 +31,52 @@ Use for creating git commits and pull request descriptions. See global CLAUDE.md
 
 ## Development Commands
 
-### Building and Running
+The project uses [Just](https://github.com/casey/just) for task management and Docker for containerized development.
+
+### Docker Development (Recommended)
+
 ```bash
-# Install dependencies
-bundle install
+# Start development server (with live reload on port 4001)
+just up
 
-# Run development server
-bundle exec jekyll serve
+# Stop Docker containers
+just down
 
-# Build site
-bundle exec jekyll build
+# Build Docker image
+just build
+
+# Clean all artifacts and Docker resources
+just reset
 ```
 
-**IMPORTANT**: The user will ALWAYS run build and serve commands themselves. Never execute `bundle exec jekyll build` or `bundle exec jekyll serve` - just make the code changes and the user will handle building and serving.
+To run with drafts enabled:
+```bash
+JEKYLL_DRAFTS=true just up
+```
+
+### Content Creation
+
+```bash
+# Create a new note
+just new-note "Your Note Title"
+
+# Create a new essay
+just new-essay "Your Essay Title"
+
+# Create a new project
+just new-project "Your Project Title"
+```
+
+These commands will create properly formatted markdown files with all required frontmatter fields.
+
+### Utilities
+
+```bash
+# Check for broken links
+just check-links
+```
+
+**IMPORTANT**: The user will ALWAYS run build and serve commands themselves. Never execute these commands - just make the code changes and the user will handle building and serving.
 
 ## Architecture and Key Components
 
