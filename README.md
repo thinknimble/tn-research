@@ -77,8 +77,8 @@ Showcases of our work in software engineering, AI systems, and human-computer in
 
 ### Prerequisites
 
-- Ruby 2.7 or higher
-- Bundler (`gem install bundler`)
+- [Docker](https://www.docker.com/get-started) and Docker Compose
+- [Just](https://github.com/casey/just) command runner (`brew install just`)
 - Git
 
 ### Quick Start
@@ -88,27 +88,50 @@ Showcases of our work in software engineering, AI systems, and human-computer in
 git clone https://github.com/thinknimble/tn-research.git
 cd tn-research
 
-# Install dependencies
-bundle install
+# Start the development server (with live reload)
+just up
 
-# Start the development server
-bundle exec jekyll serve
-
-# Visit http://localhost:4000
+# Visit http://localhost:4001
 ```
+
+The Docker setup automatically installs all dependencies and starts Jekyll with live reload enabled.
 
 ### Development Commands
 
 ```bash
-# Build the site
-bundle exec jekyll build
+# Start development server
+just up
 
-# Run with production environment
-JEKYLL_ENV=production bundle exec jekyll serve
+# Stop Docker containers
+just down
+
+# Rebuild Docker image
+just build
+
+# Clean all artifacts and Docker resources
+just reset
+
+# Run with drafts enabled
+JEKYLL_DRAFTS=true just up
 
 # Check for broken internal links
-python3 scripts/check_internal_links.py
+just check-links
 ```
+
+### Creating Content
+
+```bash
+# Create a new note
+just new-note "Your Note Title"
+
+# Create a new essay
+just new-essay "Your Essay Title"
+
+# Create a new project
+just new-project "Your Project Title"
+```
+
+These commands create properly formatted markdown files with all required frontmatter fields in the appropriate directories.
 
 ## Content Structure
 
@@ -127,22 +150,7 @@ _authors/         # Author profiles and bios
 
 ### Front Matter Templates
 
-<details>
-<summary>Essay Template</summary>
-
-```yaml
----
-layout: essay
-title: "Your Essay Title"
-date: YYYY-MM-DD
-authors: ["Author Name"]  # optional
-abstract: "Brief summary"  # optional
-attribution: human-written  # or ai-supported, ai-generated
-status: draft  # or published
-related_notes: [note-slug-1, note-slug-2]  # optional
----
-```
-</details>
+> **Note**: Use `just new-note`, `just new-essay`, or `just new-project` to automatically create files with proper frontmatter.
 
 <details>
 <summary>Note Template</summary>
@@ -152,9 +160,54 @@ related_notes: [note-slug-1, note-slug-2]  # optional
 layout: note
 title: "Note Title"
 date: YYYY-MM-DD
+updated: YYYY-MM-DD
 tags: [tag1, tag2]
-attribution: human-written
-status: seed  # or budding, evergreen
+attribution: human-written  # or ai-supported, ai-generated
+authors: ["Author Name"]
+status: budding  # or seed, evergreen
+summary: "Brief description"
+---
+```
+</details>
+
+<details>
+<summary>Essay Template</summary>
+
+```yaml
+---
+layout: essay
+title: "Your Essay Title"
+subtitle: "Optional subtitle"
+date: YYYY-MM-DD
+authors: ["Author Name"]
+attribution: human-written  # or ai-supported, ai-generated
+abstract: "Brief summary"
+readtime: "15 min read"
+status: draft  # or seed, published
+published: false  # or true
+related_notes: [note-slug-1, note-slug-2]
+---
+```
+</details>
+
+<details>
+<summary>Project Template</summary>
+
+```yaml
+---
+layout: project
+title: "Project Title"
+subtitle: "Brief tagline"
+date: YYYY-MM-DD
+end_date: present  # or YYYY-MM-DD
+status: active  # or completed, archived
+banner_image: "https://..."
+description: "Detailed description"
+technologies:
+  - Technology One
+  - Technology Two
+github_url: "https://github.com/..."
+tags: [tag1, tag2]
 ---
 ```
 </details>
