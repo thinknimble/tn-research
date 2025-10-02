@@ -4,6 +4,9 @@ title: "Distribution vs Depth: Thoughts on Learning Reinvestment"
 date: 2025-01-15
 tags: [leverage, learning, consulting, productization, agency-work]
 attribution: human-written
+status: seed
+authors: ["Marcy Ewald"]
+summary: "<How to extend deep, specific learning into broad applications in consulting work.>"
 ---
 
 We love our agency clients, and we love building bespoke answers to their specific needs. But, as we think about the next phase of ThinkNimble and how to extend our impact beyond the hundreds of excellent entrepreneurs we've worked with, we're asking: how can we use the Agency for a larger good? We've built hundreds of apps and provided leverage to our entreprenuers. We've learned a lot along the way. But for every learning we've had, it's extremely difficult to reinvest it. How do you extract the deep, narrow insights from bespoke client work and transform them into broadly applicable solutions? If we could do that well, how would that change our scale of impact?

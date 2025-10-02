@@ -4,6 +4,9 @@ title: "Pricing for Value Instead of Time"
 date: 2025-01-15
 tags: [future-of-work, consulting, pricing, value-creation]
 attribution: ai-supported
+status: seed
+authors: ["Marcy Ewald"]
+summary: <Pricing not just time, but value.>"
 ---
 
 Peter and I were brainstorming last week, mostly circling around how to charge for expertise when AI makes hourly pricing obsolete.

@@ -4,6 +4,9 @@ title: "Tour of Duty in the AI Era"
 date: 2025-01-15
 tags: [future-of-work, labor-markets, consulting, ai-augmentation]
 attribution: human-written
+status: budding
+authors: ["Marcy Ewald"]
+summary: "<A new way of thinking about your career path.>"
 ---
 
 
@@ -143,15 +146,12 @@ You bring a set of skills that fit an organization in a specific state, get paid
 
 ## Tours of [Traded] Duty
 
-
 Deep engagement model where experts:
 - Embed for concentrated periods (e.g., 6 months on, 6 months off)
 - Actually build and implement solutions
 - Bring proven expertise from multiple similar engagements
 - Command premium compensation for compressed delivery
 - Move on when the specific expertise is no longer the bottleneck
-
-
 
 ## Open Questions
 
