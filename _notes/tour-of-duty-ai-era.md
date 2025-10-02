@@ -1,16 +1,15 @@
 ---
 layout: note
 title: "Tour of Duty in the AI Era"
-date: 2025-01-15
+date: 2025-10-02
 tags: [future-of-work, labor-markets, consulting, ai-augmentation]
 attribution: human-written
 status: budding
 authors: ["Marcy Ewald"]
-summary: "<A new way of thinking about your career path.>"
+summary: "A new way of thinking about your career path."
 ---
 
-
-> We wrote about our concept of [tours of duty a few years ago](https://medium.com/the-business-of-tech/tours-of-duty-d4089fa9a490), and have been mulling over how to update it in the new world of AI-assisted productivty, and changes in hiring, retention, and consolidation of capital in a very few, large conglomerates. 
+> We wrote about our concept of [tours of duty a few years ago](https://medium.com/the-business-of-tech/tours-of-duty-d4089fa9a490), and have been mulling over how to update it in the new world of AI-assisted productivty, and changes in hiring, retention, and consolidation of capital in a very few, large conglomerates.
 
 We expect that the trend toward consolidation of resources in the hands of a few (think FANG, but with an AI spin) will continue. There will be long-tail careers available in large companies, but there will also be a huge market for talent grabbing. [there's a lot of evidence on this, from insane signing bonsues for AI talent, to layoffs of middle management. Note to self to gather these so it's easy to see what we've been reading].
 
@@ -39,10 +38,10 @@ From our [earlier work on tours of duty](https://medium.com/the-business-of-tech
 > Recently, we've gotten clearer on the actual numbers behind that investment, and their impact on pieces of our business (revenue, speed to delivery, customer value, etc.). We're slowly starting to share this with our team, hoping it helps our team understand the risks and rewards we're evaluating as we collectively invest in the tour of duty together.
 
 **Our take on tours of duty (2019 version):**
+
 1. Define what someone could actually accomplish in 2 years (skills they bring to the table, skills they'll work on, etc.)
 2. Then, once you're clearer on the small things people can accomplish in 2 years, figure out how that translates to revenue.
 3. You can do 1 without 2, but if you do 1, at some point, 2 will become clear to you, and you'll want to share it with them.
-
 
 ## Agents as Hiring Signal
 
@@ -84,23 +83,22 @@ From our [earlier work on tours of duty](https://medium.com/the-business-of-tech
 </div>
 
 **What could a Tour of Duty look like? (2026 version):**
+
 1. Define what zone of genius someone has demonstrated (agents who support them, wins on their resume, etc.)
 2. Understand the gaps in your competitive strategy, and whether that person plays a role in the team you need to win the next game.
 
 [link to infinite games]
 
-
-
 ## The Sports Model: A Third Path
 
 Professional sports already work this way:
+
 - Athletes are constantly traded between teams
 - They bring specific, concentrated expertise
 - Compensation is front-loaded into peak years (10 years of high earnings vs. 30 years of moderate earnings)
 - The compressed earnings support career pivots when demand for their skills drops
 
 You bring a set of skills that fit an organization in a specific state, get paid well to "win games" together, then reinvest to retrain for the next org. You move from player, to coach, to owner. Both parties benefit from the trade when your skills and their needs overlap.
-
 
 <div class="conversation">
   <div class="conversation-message">
@@ -143,10 +141,10 @@ You bring a set of skills that fit an organization in a specific state, get paid
     <p>exactly, I could go to a startup and say "you need someone who's built a product process three times, has zero interest in working here long term because they have no interest in working for a large org, and will be traded to another team as soon as you both win this Super Bowl.</p>
   </div>
 
-
 ## Tours of [Traded] Duty
 
 Deep engagement model where experts:
+
 - Embed for concentrated periods (e.g., 6 months on, 6 months off)
 - Actually build and implement solutions
 - Bring proven expertise from multiple similar engagements

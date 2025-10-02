@@ -1,12 +1,12 @@
 ---
 layout: note
 title: "Distribution vs Depth: Thoughts on Learning Reinvestment"
-date: 2025-01-15
+date: 2025-10-02
 tags: [leverage, learning, consulting, productization, agency-work]
 attribution: human-written
 status: seed
 authors: ["Marcy Ewald"]
-summary: "<How to extend deep, specific learning into broad applications in consulting work.>"
+summary: "How to extend deep, specific learning into broad applications in consulting work."
 ---
 
 We love our agency clients, and we love building bespoke answers to their specific needs. But, as we think about the next phase of ThinkNimble and how to extend our impact beyond the hundreds of excellent entrepreneurs we've worked with, we're asking: how can we use the Agency for a larger good? We've built hundreds of apps and provided leverage to our entreprenuers. We've learned a lot along the way. But for every learning we've had, it's extremely difficult to reinvest it. How do you extract the deep, narrow insights from bespoke client work and transform them into broadly applicable solutions? If we could do that well, how would that change our scale of impact?
@@ -84,10 +84,12 @@ When we started ThinkNimble, we thought that by working with dozens of entrepren
 ## Two Triangles
 
 **Hormozi's Leverage Triangle**: Time → Code/Capital/Content (ascending leverage)
+
 - Bottom: Consulting (time-intensive)
 - Top: Capital, code, content (scale without more time)
 
 **Our Learning Triangle**: Deep → Productized → Scaled
+
 - Bottom: Deep agency work (1-5 clients, bespoke solutions, maximum learning depth) [this is where we've lived for 10 years]
 - Middle: Productized services (50-100 similar clients, templated approach, pattern recognition) [we've dabbled here]
 - Top: Scaled products (1:∞ scale) [the dream]
@@ -95,9 +97,11 @@ When we started ThinkNimble, we thought that by working with dozens of entrepren
 The key insight: These triangles should feed each other. Deep work generates insights that become productized services that become scaled products. Without intentional extraction, you stay trapped at the bottom. [Ask me how I know.]
 
 ## The Reinvestment Cycle
+
 Often, companies emerge in an opposite way - find a broad problem, create a solution, and then go down customization rabbit holes to fit it to clients' exact needs. What kind of company could we build if we reversed that learning reinvestment?
 
 The cycle could be:
+
 1. **Deep Work**: Solve complex problem for 1 client (e.g., billing workflow for a PT client)
 2. **Extract Pattern**: Identify the reusable core (e.g., agent launcher framework)
 3. **Broaden Application**: Find 50+ others with same need, productize the solution
@@ -105,6 +109,7 @@ The cycle could be:
 ### The Distribution Test
 
 **New year bet**: If we take an agency client on, and we:
+
 1. Identify 50+ other organizations with the same problem
 2. Build the solution with reusability in mind
 3. Extract and market a generic version

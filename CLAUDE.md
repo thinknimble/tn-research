@@ -22,6 +22,19 @@ Use this agent to create concise research notes from web links. The agent will:
 
 Example usage: When you find an interesting article, paper, or blog post that should be added to the research knowledge base.
 
+#### writing-style-reviewer
+**Location:** `.claude/agents/writing-style-reviewer.md`
+
+Use this agent to review markdown content against ThinkNimble Research writing style guidelines. The agent provides:
+- Critical but constructive feedback on writing quality
+- Specific suggestions for improvement with examples
+- Checks for citation quality, clarity, and audience accessibility
+- Focus on substance over grammar/spelling
+
+This agent is also used automatically in GitHub Actions to review PRs that modify notes, essays, or posts.
+
+Example usage: When reviewing draft content before publishing, or when you want feedback on how well a piece adheres to our style guidelines.
+
 ### Global Agents (Available Across All Projects)
 
 #### git-commit-pr-manager
