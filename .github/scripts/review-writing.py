@@ -108,7 +108,7 @@ def post_review_as_code_review(review_text, filepath, commit_sha):
     pr = repo.get_pull(pr_number)
 
     # Format the review body
-    review_body = f"""## 📝 Writing Style Review
+    review_body = f"""## 📝 Writing Style Review: `{filepath}`
 
 {review_text}
 

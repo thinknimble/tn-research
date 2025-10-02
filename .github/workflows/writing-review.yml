@@ -6,7 +6,7 @@ on:
       - '_notes/**/*.md'
       - '_essays/**/*.md'
       - '_posts/**/*.md'
-    types: [opened, synchronize]
+    types: [ready_for_review, synchronize]
 
 permissions:
   pull-requests: write
