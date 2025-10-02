@@ -1,21 +1,22 @@
 ---
 layout: note
 title: "Pricing for Value Instead of Time"
-date: 2025-01-15
+date: 2025-10-02
 tags: [future-of-work, consulting, pricing, value-creation]
 attribution: ai-supported
 status: seed
 authors: ["Marcy Ewald"]
-summary: <Pricing not just time, but value.>"
+summary: "Pricing not just time, but value."
 ---
 
 Peter and I were brainstorming last week, mostly circling around how to charge for expertise when AI makes hourly pricing obsolete.
 
-Here's the problem: Half the MVPs we used to build can be vibe coded. Half the other half can use a good one shot prompt, some compelling UX, and excellent evals, and can solve problems that used to be only solvable by humans. If it takes me 2 months to deliver an MVP instead of 4, should I charge half as much? (I know, a lot of halves for one whole). 
+Here's the problem: Half the MVPs we used to build can be vibe coded. Half the other half can use a good one shot prompt, some compelling UX, and excellent evals, and can solve problems that used to be only solvable by humans. If it takes me 2 months to deliver an MVP instead of 4, should I charge half as much? (I know, a lot of halves for one whole).
 
 Maybe, if the rest of the industry has the same expertise as I do and can compete directly. Maybe, if I'm charging on hours. But, I think I'm actually now delivering value very few others can. How do I charge for that?
 
 The traditional models are breaking:
+
 - **W2 employment**: Paid for time and "potential" over 30 years
 - **1099 contracting**: Paid for deliverables, usually small engagements
 - **Consulting**: Paid by the hour, directly punishing efficiency
@@ -34,43 +35,50 @@ Translating that dark side of the moon into value-based pricing is a struggle. W
 
 ## Five Dimensions of Value
 
-If we start to break down the value we provide outside of hours worked, it gets messy, quick. But here's one version that looks at value across five dimensions. For ThinkNimble [we've taken dozens pre-revenue companies through their seed rounds], that looks like: 
+If we start to break down the value we provide outside of hours worked, it gets messy, quick. But here's one version that looks at value across five dimensions. For ThinkNimble [we've taken dozens pre-revenue companies through their seed rounds], that looks like:
 
 **1. Knowledge & Learning Value** (10-30% premium)
+
 - Multiple hypotheses to test rapidly
 - High pivot probability requiring flexibility
 - Unknown market dynamics requiring exploration
 - The value of preventing 6-12 months building the wrong thing
 
 **2. Speed to Market Premium** (15-50% premium)
+
 - Racing competitors to market position
 - Event/demo deadlines (investor meetings, conferences)
 - Seasonal opportunity windows
 - Compressed delivery timelines
 
 **3. Future Option Value** (10-25% premium)
+
 - Platform potential (not just single product)
 - API/ecosystem play possibilities
 - Multiple customer segment opportunities
 - Building flexibility for future pivots
 
 **4. Funding Catalyst Value** (20-30% of funding target)
+
 - Active investor conversations requiring demo
 - Traction proof needed for raise
 - Fundable prototype that demonstrates viability
 - Typically 2-5% of next funding round target
 
 **5. Risk Mitigation Value** (10-25% premium)
+
 - High technical uncertainty de-risking
 - Regulatory complexity navigation
 - First-time founder knowledge transfer
 - Strategic insights that prevent expensive mistakes
 
 **Traditional Model:**
+
 - 400 hours × $150/hr = $60,000
 
 **Value-Based Model:**
 So, if we charge on value, not time, where does that leave us?
+
 - Base development: $60,000
 - Knowledge premium (+20%): $12,000
 - Speed premium (+25%): $15,000
@@ -80,7 +88,6 @@ So, if we charge on value, not time, where does that leave us?
 - **Total: $112,000 (1.87x multiplier)**
 
 The frame: "You're not buying hours. You're buying the learning that prevents building the wrong thing, the speed that captures market timing, and the optionality that enables your next three pivots." Will that work in the real world? I don't know. But we are thinking about it, and others who have deep expertise are too. I think we'll see major changes in outcomes based pricing, especially in tech, in the next 2-3 years.
-
 
 ## Related Concepts
 
