@@ -92,6 +92,8 @@ Furthermore, the creative provenance of an artwork might lead to an interesting 
 
 In some respects, I'm actually excited by how [GenAI has liberated information](/notes/genai-information-liberation), but we will continue to grapple with what it means to "own" ideas, to take credit, and to have the work we produce continuously subsumed into the training corpora of GenAI models to be melted down and blended with everyone else's ideas.
 
+Here's a test edit!
+
 ---
 
 [^1]: [Oxford English Dictionary, via Google](https://www.google.com/search?q=define+moral+hazard+oxford)
