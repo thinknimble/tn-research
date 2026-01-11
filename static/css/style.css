@@ -118,6 +118,51 @@ img, video {
   }
 }
 
+/* Figure and figcaption styles */
+.essay-content figure,
+.note-content figure {
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+/* Mobile: remove horizontal margins */
+@media (max-width: 767px) {
+  .essay-content figure,
+  .note-content figure {
+    margin-left: -0.66rem;
+    margin-right: -0.66rem;
+  }
+}
+
+.essay-content figcaption,
+.note-content figcaption {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #737373; /* 70% gray for light mode */
+  margin-top: 0.5rem;
+  padding: 0 0.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Dark mode figcaption */
+@media (prefers-color-scheme: dark) {
+  .essay-content figcaption,
+  .note-content figcaption {
+    color: #999;
+  }
+}
+
+html[data-theme="dark"] .essay-content figcaption,
+html[data-theme="dark"] .note-content figcaption {
+  color: #999;
+}
+
+html[data-theme="light"] .essay-content figcaption,
+html[data-theme="light"] .note-content figcaption {
+  color: #737373;
+}
+
 blockquote {
   border-left: 4px solid rgba(180, 255, 180, 0.75);
   margin: 1em 0;
