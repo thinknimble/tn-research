@@ -73,7 +73,10 @@ Organizations that build using an empirical approach will succeed in this new er
 
 _This essay prompted an [engaging team discussion](/notes/infinite-ui/) about the implications of infinite state spaces for product design and the future of SaaS applications._
 
+**Acknowledgments:** Thanks to [Marcy Ewald](/authors/marcy-ewald/) and [Neil Shah](/authors/neil-shah/) for reviewing drafts of this essay and contributing their thoughts and feedback.
+
 ---
 
 [^1]: [Combinatorial explosion](https://en.wikipedia.org/wiki/Combinatorial_explosion) refers to the rapid growth in complexity that occurs when combining multiple elements, where the number of possible combinations grows exponentially rather than linearly.
 [^2]: [Temperature](<https://en.wikipedia.org/wiki/Temperature_(machine_learning)>) is a parameter in language models that controls randomness in output generation. Temperature=0 makes the model deterministic, always selecting the most likely next token, while higher values introduce more randomness and creativity.
+[^3]: In gaming and software contexts, to "nerf" means to weaken or reduce the effectiveness of something, typically through updates or changes that make it less powerful than it was before.
