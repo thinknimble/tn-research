@@ -10,6 +10,10 @@ status: budding
 summary: "The real difference between traditional and GenAI software is not determinism, but instead the much large state spaces GenAI can represent. Products are now explorable territories rather than fixed paths."
 ---
 
+_This note has been developed into a full essay: [Infinite UI: What's Really Different about GenAI Software](/essays/infinite-ui/)_
+
+---
+
 This is a draft of an article / idea I might term "Infinite UI" - which ties into the "command line for everyone" and is sort of my rebuttal to the recent (over)focus on determinism.
 
 Here's a post by an early engineer at replit who recently switched to Anthropic [https://giansegato.com/essays/probabilistic-era](https://giansegato.com/essays/probabilistic-era) IMO he is also falling into this trap focusing too much on deterministic vs. probabilistic thing. But I liked these ideas:

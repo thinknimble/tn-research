@@ -18,7 +18,9 @@ permalink: /essays/
         <article class="essay-preview">
           <h2 class="essay-preview-title">{{ essay.title }}</h2>
           
-          {% if essay.abstract %}
+          {% if essay.summary %}
+            <p class="essay-preview-abstract">{{ essay.summary | truncate: 160 }}</p>
+          {% elsif essay.abstract %}
             <p class="essay-preview-abstract">{{ essay.abstract | truncate: 160 }}</p>
           {% elsif essay.excerpt %}
             <p class="essay-preview-abstract">{{ essay.excerpt | strip_html | truncate: 160 }}</p>

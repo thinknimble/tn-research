@@ -1,18 +1,18 @@
 # Start development server (default port 4001)
 up:
-    docker-compose up
+    docker compose up
 
 # Stop Docker containers
 down:
-    docker-compose down
+    docker compose down
 
 # Build the Docker image
 build:
-    docker-compose build
+    docker compose build
 
 # Clean build artifacts and Docker resources
 reset:
-    docker-compose down -v
+    docker compose down -v
     rm -rf _site .jekyll-cache .sass-cache
 
 # Check for broken links (requires htmlproofer gem)
