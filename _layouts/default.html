@@ -25,14 +25,22 @@
 
     <!-- Page Meta for SEO and Social Sharing -->
     <!-- Default Facebook Open Graph tags -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{% if page.layout == 'essay' or page.layout == 'post' %}article{% else %}website{% endif %}">
     <meta property="og:url" content="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}">
     <meta property="og:title" content="{{ site.name }}{% if page.title %} &middot; {{ page.title }}{% endif %}">
     <meta property="og:description"
         content="{% if page.summary %}{{page.summary}}{% elsif page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
     <meta property="og:image"
         content="{% if page.image %}{% if page.image contains 'http' %}{{page.image}}{% else %}{{site.url}}{{site.baseurl}}{{page.image}}{% endif %}{% else %}{{site.url}}{{site.baseurl}}{{site.image}}{% endif %}">
-    <meta property="og:image:alt" content="ThinkNimble Research Institute">
+    <meta property="og:image:alt" content="{% if page.title %}{{ page.title }}{% else %}ThinkNimble Research Institute{% endif %}">
+
+    <!-- Article-specific meta tags -->
+    {% if page.layout == 'essay' or page.layout == 'post' %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    {% if page.updated %}
+    <meta property="article:modified_time" content="{{ page.updated | date_to_xmlschema }}">
+    {% endif %}
+    {% endif %}
 
     <!-- Default Twitter Card tags (additive to FB tags) -->
     <meta name="twitter:card" content="summary_large_image">

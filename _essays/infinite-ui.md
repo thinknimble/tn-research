@@ -7,13 +7,13 @@ authors: ["William Huster"]
 tags: [ai, ui-design, product-design, genai, software-architecture]
 attribution: human-written
 status: evergreen
-summary: "The real difference between traditional and GenAI software is not determinism, but instead the much larger state spaces GenAI can represent. Products are now explorable territories rather than fixed paths."
-image: "https://placehold.co/1200x630/667eea/ffffff?text=Infinite+UI"
+summary: "The real difference between traditional and GenAI software is not nondeterminism, but instead the much larger state spaces GenAI can represent. Products are now explorable territories rather than fixed paths."
+image: /static/images/essays/infinite-ui-og.png
 ---
 
 People keep saying the paradigm shift with GenAI is about determinism versus nondeterminism, and I'll admit that it bothers me. I think they're pointing at the right thing but using the wrong words. The real difference is the sheer size of the state space of the user interface.
 
-In case it's unfamiliar, engineers think a lot about "state spaces." That is, the set of all possible configurations a system can be in. It might sound technical, but the concept is simple. If traditional software is a small town with a grid of streets you can memorize, then GenAI software is a sprawling metropolis where you can't possibly walk every street before new neighborhoods emerge. They are huge virtual spaces.
+In case the term is unfamiliar, engineers think a lot about "state spaces." That is, the set of all possible configurations a system can be in. It might sound technical, but the concept is simple. If traditional software is a small town with a grid of streets you can memorize, then GenAI software is a sprawling metropolis where you can't possibly walk every street before new neighborhoods emerge. They are huge virtual spaces.
 
 The hard part of building user interfaces has always been juggling all the possible states that the UI could end up in. As you develop a UI and add features, the state space undergoes a combinatorial explosion.[^1] This leads to all sorts of weird and unpredictable bugs.
 
