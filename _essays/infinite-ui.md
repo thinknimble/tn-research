@@ -1,5 +1,5 @@
 ---
-layout: note
+layout: essay
 title: "Infinite UI: What's Really Different about GenAI Software"
 date: 2025-09-07
 updated: 2025-09-07

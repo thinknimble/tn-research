@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="{{ '/static/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
     <meta name="description"
-        content="{% if page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}" />
+        content="{% if page.summary %}{{page.summary}}{% elsif page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}" />
     <meta name="author" content="{{site.author}}" />
     <link rel="author" href="humans.txt" />
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{ '/feed.xml' | relative_url }}" />
@@ -29,9 +29,9 @@
     <meta property="og:url" content="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}">
     <meta property="og:title" content="{{ site.name }}{% if page.title %} &middot; {{ page.title }}{% endif %}">
     <meta property="og:description"
-        content="{% if page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
+        content="{% if page.summary %}{{page.summary}}{% elsif page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
     <meta property="og:image"
-        content="{{site.url}}{{site.baseurl}}{% if page.image %}{{page.image}}{% else %}{{site.image}}{% endif %}">
+        content="{% if page.image %}{% if page.image contains 'http' %}{{page.image}}{% else %}{{site.url}}{{site.baseurl}}{{page.image}}{% endif %}{% else %}{{site.url}}{{site.baseurl}}{{site.image}}{% endif %}">
     <meta property="og:image:alt" content="ThinkNimble Research Institute">
 
     <!-- Default Twitter Card tags (additive to FB tags) -->
@@ -39,9 +39,9 @@
     <meta name="twitter:domain" value="{% if page.url %}{{ site.url }}{{ page.url }}{% else %}{{ site.url }}{% endif %}" />
     <meta name="twitter:title" value="{{ site.name }}{% if page.title %} &middot; {{ page.title }}{% endif %}" />
     <meta name="twitter:description"
-        value="{% if page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
+        value="{% if page.summary %}{{page.summary}}{% elsif page.description %}{% if page.readtime %}({{ page.readtime }} read) {% endif %}{{page.description}}{% else %}{{site.description}}{% endif %}">
     <meta name="twitter:image"
-        content="{{site.url}}{{site.baseurl}}{% if page.image %}{{page.image}}{% else %}{{site.image}}{% endif %}" />
+        content="{% if page.image %}{% if page.image contains 'http' %}{{page.image}}{% else %}{{site.url}}{{site.baseurl}}{{page.image}}{% endif %}{% else %}{{site.url}}{{site.baseurl}}{{site.image}}{% endif %}" />
     <meta name="twitter:url" value="{{site.url}}" />
 
     <!-- Favicons -->
