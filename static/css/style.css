@@ -163,7 +163,6 @@ html[data-theme="light"] .note-content figcaption {
   color: #737373;
 }
 
-
 @media (min-width: 768px) {
   .essay-content figcaption,
   .note-content figcaption {
