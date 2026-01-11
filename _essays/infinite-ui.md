@@ -39,17 +39,17 @@ I get that unpredictability is closely associated with randomness, but just beca
 
 [Gian Segato recently wrote](https://giansegato.com/essays/probabilistic-era) that GenAI is "ontologically different... moving away from deterministic mechanicism, a world of perfect information and perfect knowledge." I don't think the difference is entirely ontological or that it hinges on determinism. But I agree with the second half of his sentence. The difference is epistemological - _how do we know what we know_ about the spaces within the LLM and by extension our applications? Whether the space is emergent or randomly generated, this should be the central question.
 
-And as I wrote in my [AI Onion essay](/essays/ai-onion-framework/), the issue for founders and product designers is epistemological because we cannot know all the nooks and crannies of our own product. We have to build from the ground up, carefully probing at every layer of our AI solution. To try to know our own GenAI product is now a science like studying the world—well, a fun-house mirror image of the world.
+And as I wrote in my [AI Onion essay](/essays/ai-onion-framework/), the issue for founders and product designers is epistemological because we cannot know all the nooks and crannies of our own product. We have to build from the ground up, carefully probing at every layer of our AI solution. To try to know our own GenAI product is now a science like studying the world - well, a fun-house mirror image of the world.
 
-So people are using "nondeterminism" as a shorthand for this large state space phenomenon. My point is that this user interface unpredictability is not a direct result of the stochasticity in the models (though that complicates things). It is rather the result of the huge unmapped state space of the LLM—a massive, multi-billion parameter function that is directly handed to users to execute.
+So people are using "nondeterminism" as a shorthand for this large state space phenomenon. My point is that this user interface unpredictability is not a direct result of the stochasticity in the models (though that complicates things). It is rather the result of the huge unmapped state space of the LLM, this massive, multi-billion parameter function that is directly handed to users to execute.
 
 ## The inversion
 
 The result of having an infinite function with an incomprehensible state space is that we have to _remove_ features and put up guardrails to build a useful app. This chipping away, carving, and molding is a process we apply to the massive state space to restrict the pathing through it so the AI works more predictably and doesn't run amok, wasting users' time (or worse).
 
-Compare that to how we worked previously—we actually had to _add_ features to build paths. Now we get features "for free" and must remove them.
+Compare that to how we worked previously. We actually had to _add_ features to build paths. Now we get features "for free" and must remove them.
 
-The old paradigm of software design was a "railroad experience," whereas AI presents a "sandbox experience." Traditional software was an elevator; GenAI software is a Wonkavator—an elevator that moves in all directions, not just up and down. Traditional software had limited dimensionality; GenAI software has unquantifiable dimensionality.
+The old paradigm of software design was a "railroad experience," whereas AI presents a "sandbox experience." Traditional software was an elevator; GenAI software is a Wonkavator, an elevator that moves in all directions. Traditional software had limited dimensionality; GenAI software has unquantifiable dimensionality.
 
 This is why security is such a big problem with AI. It's like you've created a REST API with a billion billion billion endpoints, and now after the fact you have to figure out how to test and manage permissions on all of them.
 
@@ -61,17 +61,17 @@ We experienced this when prompting our GoPursue coach agent. Our early attempts 
 
 Role-playing is one technique that works well. Simply telling an agent something like "you are a cancer research assistant" is extremely effective. It immediately snaps its responses into a more clinical space while preserving its capacity for reasoning, tool use, and so on.
 
-There are other approaches too. Marcy Ewald on our team has been thinking about constraints as a "spotlight" rather than guardrails—showing the AI which path has been walked frequently and letting it tell you what it thinks about those paths. This suggests that not only can things be blocked or chipped away in GenAI systems, they can also be intensified, and we should look at that as an equally useful tool.
+There are other approaches too. Marcy Ewald on our team has been thinking about constraints as a "spotlight" rather than guardrails, which means showing the AI which path has been walked frequently and letting it tell you what it thinks about those paths. This suggests that not only can things be blocked or chipped away in GenAI systems, they can also be intensified, and we should look at that as an equally useful tool.
 
 ## Conclusion
 
 I very much support Segato's conclusion that an empirical, scientific approach is necessary. Because this is fundamentally an epistemological problem, the state space is too large to reason about deductively. You have to explore it like actual territory, just like the real world.
 
-Organizations that build using an empirical approach, think in probabilities, and measure complex trajectories will define the next era of technology. But I think those kinds of organizations—and people and patterns of thought—also defined every previous era of technology. The more things change, the more they stay the same.
+Organizations that build using an empirical approach will succeed in this new era of technology. So if you're building AI applications, stop worrying about nondeterminism and randomness. Focus instead on carving useful paths through the massive state space LLMs hand us. That's the real challenge and opportunity.
 
 ---
 
-_This essay prompted an [engaging team discussion](/notes/infinite-ui-team-discussion/) about the implications of infinite state spaces for product design and the future of SaaS applications._
+_This essay prompted an [engaging team discussion](/notes/infinite-ui/) about the implications of infinite state spaces for product design and the future of SaaS applications._
 
 ---
 
