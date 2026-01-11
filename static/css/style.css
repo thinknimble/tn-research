@@ -99,6 +99,25 @@ img, video {
   height: auto;
 }
 
+/* Responsive images in essay/note content */
+/* Mobile: crop to square for better visibility */
+.essay-content img,
+.note-content img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Desktop: show natural aspect ratio */
+@media (min-width: 768px) {
+  .essay-content img,
+  .note-content img {
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
 blockquote {
   border-left: 4px solid rgba(180, 255, 180, 0.75);
   margin: 1em 0;

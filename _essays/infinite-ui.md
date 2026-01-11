@@ -8,11 +8,12 @@ tags: [ai, ui-design, product-design, genai, software-architecture]
 attribution: human-written
 status: evergreen
 summary: "The real difference between traditional and GenAI software is not determinism, but instead the much larger state spaces GenAI can represent. Products are now explorable territories rather than fixed paths."
+image: "https://placehold.co/1200x630/667eea/ffffff?text=Infinite+UI"
 ---
 
 People keep saying the paradigm shift with GenAI is about determinism versus nondeterminism, and I'll admit that it bothers me. I think they're pointing at the right thing but using the wrong words. The real difference is the sheer size of the state space of the user interface.
 
-Engineers think a lot about "state spaces"—the set of all possible configurations a system can be in. It might sound technical, but the concept is simple: traditional software is a small town with a grid of streets you can memorize. GenAI software is a sprawling metropolis where you can't possibly walk every street before new neighborhoods emerge.
+In case it's unfamiliar, engineers think a lot about "state spaces." That is, the set of all possible configurations a system can be in. It might sound technical, but the concept is simple. If traditional software is a small town with a grid of streets you can memorize, then GenAI software is a sprawling metropolis where you can't possibly walk every street before new neighborhoods emerge. They are huge virtual spaces.
 
 The hard part of building user interfaces has always been juggling all the possible states that the UI could end up in. As you develop a UI and add features, the state space undergoes a combinatorial explosion.[^1] This leads to all sorts of weird and unpredictable bugs.
 
@@ -32,15 +33,15 @@ The number of possible states you get out of the box with a GenAI is practically
 
 It is fair to say that unpredictability is a very real consequence of this new paradigm. Imagine this state space as a giant haunted mansion: that is now your product. The users of your product will inevitably find a candelabra in the study that makes a bookshelf spin around, revealing a secret corkscrew slide to a Frankenstein lab, and there they will make monsters.
 
-But people are conflating unpredictability with randomness. A `temperature=0`[^2] (deterministic) model still has the "haunted mansion" property. Even with zero randomness, users can still find a Frankenstein lab candelabra. This unpredictability does not come down to dice rolls. It originates from the sheer impossibility of comprehensively mapping the space beforehand so you can find and uninstall the problematic candle holders.
+But people are conflating unpredictability with randomness. A `temperature=0`[^2] (deterministic) model still has the "haunted mansion" property, but _it has zero randomness_. Even so, the space is so large and sensitive to input that the results will feel random. Users can find a Frankenstein lab candelabra. This unpredictability does not come down to dice rolls. It originates from the sheer impossibility of comprehensively mapping the space beforehand so you can find and uninstall the problematic candle holders.
 
 I get that unpredictability is closely associated with randomness, but just because you can't predict something does not mean its cause was random.
 
-[Gian Segato recently wrote](https://giansegato.com/essays/probabilistic-era) that GenAI is "ontologically different... moving away from deterministic mechanicism, a world of perfect information and perfect knowledge." I don't think the difference is ontological or that it hinges on determinism. But I agree with the second half of his sentence. The difference is epistemological. Whether the space is emergent or randomly generated does not matter.
+[Gian Segato recently wrote](https://giansegato.com/essays/probabilistic-era) that GenAI is "ontologically different... moving away from deterministic mechanicism, a world of perfect information and perfect knowledge." I don't think the difference is entirely ontological or that it hinges on determinism. But I agree with the second half of his sentence. The difference is epistemological - _how do we know what we know_ about the spaces within the LLM and by extension our applications? Whether the space is emergent or randomly generated, this should be the central question.
 
-The issue for product design is epistemological because we cannot know all the nooks and crannies of our own product. To try to know our own GenAI product is now a science like studying the world—well, a fun-house mirror image of the world.
+And as I wrote in my [AI Onion essay](/essays/ai-onion-framework/), the issue for founders and product designers is epistemological because we cannot know all the nooks and crannies of our own product. We have to build from the ground up, carefully probing at every layer of our AI solution. To try to know our own GenAI product is now a science like studying the world—well, a fun-house mirror image of the world.
 
-So people are using "nondeterminism" as a shorthand for this large state space phenomenon. My point is that this user interface unpredictability is not a direct result of the stochasticity in the models (though it doesn't hurt). It is rather the result of the huge unmapped state space of the LLM—a massive, multi-billion parameter function that is directly handed to users to execute.
+So people are using "nondeterminism" as a shorthand for this large state space phenomenon. My point is that this user interface unpredictability is not a direct result of the stochasticity in the models (though that complicates things). It is rather the result of the huge unmapped state space of the LLM—a massive, multi-billion parameter function that is directly handed to users to execute.
 
 ## The inversion
 
@@ -75,5 +76,4 @@ _This essay prompted an [engaging team discussion](/notes/infinite-ui-team-discu
 ---
 
 [^1]: [Combinatorial explosion](https://en.wikipedia.org/wiki/Combinatorial_explosion) refers to the rapid growth in complexity that occurs when combining multiple elements, where the number of possible combinations grows exponentially rather than linearly.
-
-[^2]: [Temperature](https://en.wikipedia.org/wiki/Temperature_(machine_learning)) is a parameter in language models that controls randomness in output generation. Temperature=0 makes the model deterministic, always selecting the most likely next token, while higher values introduce more randomness and creativity.
+[^2]: [Temperature](<https://en.wikipedia.org/wiki/Temperature_(machine_learning)>) is a parameter in language models that controls randomness in output generation. Temperature=0 makes the model deterministic, always selecting the most likely next token, while higher values introduce more randomness and creativity.
