@@ -16,6 +16,11 @@ My mom came from a family of sharecroppers in Southern Maryland. She grew up in 
 
 She was the first of her family to go to college - the first in 300 years of tobacco farming in America. She wanted to major in math, and she recounted often her high school math teacher who told her "girls can't do math." Well, that motivated her all the more. She graduated college in three years and went on to complete a Masters in biostatistics at Johns Hopkins.
 
+<figure>
+  <img src="/static/images/essays/williams-mom-in-navy-flight-suit.jpg" alt="William's mom in Navy flight suit">
+  <figcaption>After being told 'girls can't do math,' my mom paid her way through college working with the Navy, graduated in three years, and earned a Master's in biostatistics at Johns Hopkins before dedicating her career to public health.</figcaption>
+</figure>
+
 I will take any opportunity to brag about my mom, and I promise this connects to AI, so bear with me!
 
 A biostatistician is essentially a data scientist for medicine. At work in a research hospital, my mom designed clinical trials and analyzed the data. The mission was to determine whether treatments under trial actually worked to improve patient outcomes. Her job was epistemological: _how do we know a treatment is working?_ How do we know what we know?
@@ -54,7 +59,10 @@ The AI Onion is the framework I developed to sequence these conversations. It's 
 
 The goal is minimum investment for maximum impact. Start at the core, verify it works, and only add outer layers as needed.
 
-![The AI Onion Framework - Eight concentric layers from foundation model at the core to fine-tuning at the outer edge](/static/images/essays/ai-onion.png)
+<figure>
+  <img src="/static/images/essays/ai-onion.png" alt="The AI Onion Framework diagram showing eight concentric circles">
+  <figcaption>The AI Onion Framework: Eight layers from inside out - (1) Foundation Model, (2) Chat Interface, (3) Prompting, (4) Dataset Integration, (5) Evaluations, (6) Tool Use, (7) Agent Flows, (8) Fine-Tuning.</figcaption>
+</figure>
 
 ## Layers 1-2: Foundation Model and Chat Interface
 
