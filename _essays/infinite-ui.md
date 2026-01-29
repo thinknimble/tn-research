@@ -71,7 +71,7 @@ Organizations that build using an empirical approach will succeed in this new er
 
 ---
 
-_This essay prompted an [engaging team discussion](/notes/infinite-ui/) about the implications of infinite state spaces for product design and the future of SaaS applications._
+_This essay prompted an [engaging team discussion](/notes/infinite-ui/#team-discussion) about the implications of infinite state spaces for product design and the future of SaaS applications._
 
 **Acknowledgments:** Thanks to [Marcy Ewald](/authors/marcy-ewald/) and [Neil Shah](/authors/neil-shah/) for reviewing drafts of this essay and contributing their thoughts and feedback.
 
