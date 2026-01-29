@@ -71,13 +71,13 @@ The goal is minimum investment for maximum impact. Start at the core, verify it 
 
 ## Layers 1-2: Foundation Model and Chat Interface
 
-At the heart of the onion is the large language model, a machine learning model trained on what people like to say is "all the text on the internet." You won't build your own; this costs millions of dollars. You buy it off the shelf from OpenAI, Anthropic, Google, or Meta. That's why we call these **foundation models**.
+At the heart of the onion is the large language model, a machine learning model trained on what people like to say is "all the text on the internet." You won't build your own; this costs millions of dollars. Instead, you'll buy it off the shelf from a frontier AI Lab like OpenAI, Anthropic, Google, or Meta. These are the smartest and most versatile models available, and are therefore the best starting point for any new AI project. That's why we call these **foundation models**.
 
 The next layer is the chat interface, the back-and-forth interaction pattern that made ChatGPT explode into mainstream consciousness. You won't build this from scratch either.
 
 But these layers still matter for decision-making. Different foundation models have different personalities, capabilities, and cost structures. ChatGPT is often the default, but some projects have requirements that suggest an open-source model or a secure environment like AWS Bedrock. There is a lot to talk about here, and we have various frameworks to support the decision process.
 
-As for chat, while most AI applications look like "chatbots" to end users, many wrap the LLM in a service that takes advantage of chat functionality "behind the scenes." They take advantage of system prompts and user/agent exchanges without exposing a chat interface at all. It's not a chatbot, but it's still an "AI tool."
+As for chat, while most AI applications look like "chatbots" to end users, many wrap the LLM in a service that takes advantage of chat functionality "behind the scenes." They use system prompts and user/agent exchanges without exposing a chat interface at all. These solutions don't look at all like a chatbot, but they're still "AI tools."
 
 For the cancer research assistant, we started with ChatGPT as our foundation model and have since added Gemini for large context analysis. We are trying to build such that we are not locked into the same LLM over the long run. We have a hybrid conversational interface for exploratory research and a behind-the-scenes engine that does constant background research and generates structured patient reports. Clinicians receive real-time updates and insights about the latest research relevant to their patients. They don't have to actively seek it out.
 
@@ -147,7 +147,7 @@ This is where a single user input might set off a cascade: multiple prompts, man
 
 The patient report feature is a good example. When I click "generate new report," I don't type anything into a chatbot. The system takes the patient's genetic profile, sends it to the LLM, which then autonomously searches PubMed for each relevant genetic mutation. It reads and scores the articles, cross-references with active clinical trials, and assembles a structured report with citations. It just thinks independently, guided by prompts and workflows that mimic how a real oncologist would do their research. When it's done, it comes back with a complete report.
 
-The busy oncologist walking down the hallway to an appointment can consult this report and step into that meeting with a more informed recommendation than would have been possible before.
+The busy oncologist walking down the hallway to an appointment can consult this report and step into that room with a more informed recommendation than would have been possible before.
 
 This is the current frontier of AI: delegating entire tasks and waiting for results. It's powerful, but it's also the most difficult to test and the most prone to unexpected behavior. Going back to the principle of building complex systems from simple systems, you can see why this must be an outer layer. The lower layers are the simpler components that have to be solid first: foundation model, prompts, data integration, evaluations, tool use. These are what the agent flow is composed of.
 
@@ -169,13 +169,11 @@ The AI Onion exists because founders kept trying to peel the problem from the ou
 
 The framework is a sequence for working through the problem correctly. Which foundation model? What interaction pattern? Can prompting alone get us there? What data do we need to integrate? How will we evaluate success? Only then can we approach the thornier issues: should the LLM have tools? Should we build agent flows? Do we actually need to fine-tune?
 
-For the cancer research assistant, we worked through each layer in order and we now have a very robust multi-agent architecture that we can rigorously evaluate. Foundation model and interface. Prompts that define the research methodology. Patient context integrated with public literature. Evaluations to verify accuracy. Tools for the LLM to search PubMed autonomously. Agent flows to generate complete patient reports without human intervention.
+For the cancer research assistant, we worked through each layer in order and we now have a very robust multi-agent architecture that we can rigorously evaluate. Each layer was added because the previous layer wasn't sufficient, not because it seemed impressive. Because we built up this complex system from simple components, _we know that it works, and we know how we know._
 
-Each layer was added because the previous layer wasn't sufficient, not because it seemed impressive. Because we built up this complex system from simple components, _we know that it works, and we know how we know._
+The doctor I'm working with is very excited about where this is going.
 
-The doctor I'm working with is very excited about where this is going. And I think about my mom. She would have loved this tool. She would have used it to dig deeper into the research, to find angles her oncologists might have missed.
-
-She deserved a little more time. Maybe tools like this will help give that time to someone else.
+And I think about my mom. She would have loved this tool. She would have used it to dig deeper into the research, to find angles her oncologists might have missed. She deserved a little more time. I believe tools like this will help give that time to someone else.
 
 ---
 
