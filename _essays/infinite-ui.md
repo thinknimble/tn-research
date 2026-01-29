@@ -55,7 +55,7 @@ This is why security is such a big problem with AI. It's like you've created a R
 
 ## Constraining without nerfing
 
-Segato makes a useful observation about the tension between control and capability: "The more you try to control the model, the more you'll nerf it... intelligence and control start becoming opposing needs."
+Segato makes a useful observation about the tension between control and capability: "The more you try to control the model, the more you'll nerf[^3] it... intelligence and control start becoming opposing needs."
 
 We experienced this when prompting our GoPursue coach agent. Our early attempts put in too many guardrails and nerfed the agent. But I think we can develop techniques that effectively limit the user's range of motion in the state space and guard against specific actions without hobbling the agent.
 
@@ -78,5 +78,6 @@ _This essay prompted an [engaging team discussion](/notes/infinite-ui/) about th
 ---
 
 [^1]: [Combinatorial explosion](https://en.wikipedia.org/wiki/Combinatorial_explosion) refers to the rapid growth in complexity that occurs when combining multiple elements, where the number of possible combinations grows exponentially rather than linearly.
+
 [^2]: [Temperature](<https://en.wikipedia.org/wiki/Temperature_(machine_learning)>) is a parameter in language models that controls randomness in output generation. Temperature=0 makes the model deterministic, always selecting the most likely next token, while higher values introduce more randomness and creativity.
 [^3]: In gaming and software contexts, to "nerf" means to weaken or reduce the effectiveness of something, typically through updates or changes that make it less powerful than it was before.

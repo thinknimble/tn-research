@@ -25,7 +25,7 @@ I will take any opportunity to brag about my mom, and I promise this connects to
 
 A biostatistician is essentially a data scientist for medicine. At work in a research hospital, my mom designed clinical trials and analyzed the data. The mission was to determine whether treatments under trial actually worked to improve patient outcomes. Her job was epistemological: _how do we know a treatment is working?_ How do we know what we know?
 
-Growing up, I absorbed this way of thinking. My mom would point to a chart in USA Today and explain why it was misleading. "This sample size is too small to tell you anything significant!" I came to believe there's a big divide between people who think statistically and those who don't. Statistical thinking is about being rigorous with evidence, understanding confidence intervals, knowing when you can trust a claim and when you can't.
+Growing up, I absorbed this way of thinking. My mom would point to a chart in _USA Today_ and explain why it was misleading. "This sample size is too small to tell you anything significant!" I came to believe there's a big divide between people who think statistically and those who don't. Statistical thinking is about being rigorous with evidence, understanding confidence intervals, knowing when you can trust a claim and when you can't.
 
 My mom passed away two years ago from triple negative breast cancer. She fought for three and a half years. And in the end she "lost" that fight. But I prefer to look at it like the late, great comedian Norm Macdonald: you can't really lose to cancer: when you die, the cancer dies too. That's a draw.
 
@@ -34,6 +34,11 @@ So, no, she never truly lost. She fought until the end by doing her own research
 She declined and died just as ChatGPT was gaining traction.
 
 She would have been fascinated by what generative AI can do and its statistical underpinnings. She would have used these tools to dig deeper into the research. And who knows, maybe there actually was a treatment path for her that AI could have helped her discover, had it been available then as it is now.
+
+<figure>
+  <img src="/static/images/essays/statistics-ml-ai-meme.png" alt="Four-panel meme showing the evolution from statistics to machine learning to AI, depicting the same core concepts with increasingly elaborate presentations">
+  <figcaption>At its core, artificial intelligence is statistics with better marketing. The statistical foundations my mom mastered in biostatistics are the same ones powering today's AI breakthroughs.</figcaption>
+</figure>
 
 That question is what drew me to partner with a world-class oncologist on an AI cancer research assistant we are developing together. Both biostatistics and modern AI are tools for expanding what we can know from large amounts of data. They share the same mission my mom dedicated her life to: _how do we know this treatment works for this patient?_
 
@@ -171,3 +176,7 @@ Each layer was added because the previous layer wasn't sufficient, not because i
 The doctor I'm working with is very excited about where this is going. And I think about my mom. She would have loved this tool. She would have used it to dig deeper into the research, to find angles her oncologists might have missed.
 
 She deserved a little more time. Maybe tools like this will help give that time to someone else.
+
+---
+
+**Acknowledgments:** Thanks to [Marcy Ewald](/authors/marcy-ewald/) and [Neil Shah](/authors/neil-shah/) for reviewing drafts of this essay and contributing their thoughts and feedback.
