@@ -36,8 +36,8 @@ She declined and died just as ChatGPT was gaining traction.
 She would have been fascinated by what generative AI can do and its statistical underpinnings. She would have used these tools to dig deeper into the research. And who knows, maybe there actually was a treatment path for her that AI could have helped her discover, had it been available then as it is now.
 
 <figure>
-  <img src="/static/images/essays/statistics-ml-ai-meme.png" alt="Four-panel meme showing the evolution from statistics to machine learning to AI, depicting the same core concepts with increasingly elaborate presentations">
-  <figcaption>At its core, artificial intelligence is statistics with better marketing. The statistical foundations my mom mastered in biostatistics are the same ones powering today's AI breakthroughs.</figcaption>
+  <img src="/static/images/essays/statistics-ml-ai-meme.png" alt="Four-panel meme showing the evolution from statistics to machine learning to AI, depicting the same core concepts with increasingly elaborate presentations" style="max-height: 20rem; width: auto;">
+  <figcaption>At its core, artificial intelligence is statistics. The statistical foundations my mom mastered in biostatistics are the same ones powering today's AI breakthroughs.</figcaption>
 </figure>
 
 That question is what drew me to partner with a world-class oncologist on an AI cancer research assistant we are developing together. Both biostatistics and modern AI are tools for expanding what we can know from large amounts of data. They share the same mission my mom dedicated her life to: _how do we know this treatment works for this patient?_
@@ -54,7 +54,7 @@ This is backwards. Here's the thing: technology is not your business. It's your 
 
 So when a founder comes to me wanting to build an AI agent, I want to know: what outcome are you trying to drive? What problem are you solving for real people? For instance, founders don't usually know to ask for evals (which we'll talk about in a moment). And, sure, we _could_ fine-tune a model on a dataset that's too small or nonsensical, but we have too much integrity to just do what we're asked without questioning whether it makes sense.
 
-For the cancer research assistant, it's all about improving patient outcomes. Over the long run, we'll measure that. In the near term, we use experts to verify that the outputs are reasonable, correct, and providing value by performing time-consuming research that reliably unveils hidden gems of insight.
+For the cancer research assistant, it's all about improving patient outcomes. Over the long run, we'll find ways to measure that at scale. In the near term, we use experts to verify that the outputs are reasonable, correct, and providing value by performing time-consuming research that reliably unveils hidden gems of insight.
 
 **Any complex system that works is built up from simpler systems that work.** You have to start from the core and work outward, adding complexity only when you've hit the limits of the current layer.
 

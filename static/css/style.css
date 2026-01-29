@@ -145,6 +145,13 @@ img, video {
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  .essay-content figcaption,
+  .note-content figcaption {
+    font-size: 1.2rem;
+  }
+}
+
 /* Dark mode figcaption */
 @media (prefers-color-scheme: dark) {
   .essay-content figcaption,
