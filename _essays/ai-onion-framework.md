@@ -36,7 +36,7 @@ She declined and died just as ChatGPT was gaining traction.
 She would have been fascinated by what generative AI can do and its statistical underpinnings. She would have used these tools to dig deeper into the research. And who knows, maybe there actually was a treatment path for her that AI could have helped her discover, had it been available then as it is now.
 
 <figure>
-  <img src="/static/images/essays/statistics-ml-ai-meme.png" alt="Four-panel meme showing the evolution from statistics to machine learning to AI, depicting the same core concepts with increasingly elaborate presentations" style="max-height: 30rem; width: auto; margin: 0 auto;">
+  <img src="/static/images/essays/statistics-ml-ai-meme.png" alt="Four-panel meme showing the evolution from statistics to machine learning to AI, depicting the same core concepts with increasingly elaborate presentations" style="max-height: 30rem; width: auto; display: block; margin: 0 auto;">
   <figcaption>At its core, artificial intelligence is statistics. The statistical foundations my mom mastered in biostatistics are the same ones powering today's AI breakthroughs.</figcaption>
 </figure>
 
