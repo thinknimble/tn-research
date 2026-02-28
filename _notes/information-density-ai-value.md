@@ -184,15 +184,15 @@ Those that don't will find themselves:
 
 ### Complexity Collapse
 
-Low information density might contribute to [[Evidence of Complexity Collapse in LLMs]]—models fail when they lack substantial grounding information.
+Low information density might contribute to complexity collapse in LLMs ([[Verification Complexity]])—models fail when they lack substantial grounding information.
 
 ### Agency of Agents
 
-In [[Agency of Agents - ThinkNimble's AI Collaboration Framework]], each agent should add information density, not just process existing text.
+In [[Agency of Agents]], each agent should add information density, not just process existing text.
 
 ### The AI Onion
 
-Each layer in [[The AI Onion - Layered Approach to AI Implementation]] should increase information density, not just sophistication.
+Each layer in [[The AI Onion: A Layered Approach to AI Integration]] should increase information density, not just sophistication.
 
 ## The Bottom Line
 
