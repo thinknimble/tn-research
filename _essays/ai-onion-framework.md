@@ -5,7 +5,7 @@ date: 2025-09-01
 authors: ["William Huster"]
 tags: [ai, product-design, software-architecture]
 attribution: human-written
-status: budding
+status: evergreen
 summary: "A framework for integrating AI into products and organizations, starting simple and adding complexity only as needed."
 image: /static/images/essays/ai-onion.png
 ---

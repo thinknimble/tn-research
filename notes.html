@@ -9,11 +9,11 @@ permalink: /notes/
 <div class="notes-index row-wrap">
   <header class="page-header">
     <h1>Digital Garden</h1>
-    <p class="page-description">
-      A collection of atomic notes — interconnected thoughts, concepts, and ideas that grow and evolve over time.
-      <b>Unlike traditional blog posts, these notes are living documents.</b> They are updated as our understanding 
-      evolves, cross-referenced to show connections between ideas, and designed to be explored non-linearly. 
-    </p>
+    <div class="garden-callout">
+      A collection of atomic notes — interconnected thoughts, concepts, and ideas that grow and evolve over time.
+      <b>Unlike traditional blog posts, these notes are living documents.</b> They are updated as our understanding
+      evolves, cross-referenced to show connections between ideas, and designed to be explored non-linearly.
+    </div>
   </header>
 
   <section class="notes-list">
@@ -22,13 +22,13 @@ permalink: /notes/
       <a href="{{ note.url | relative_url }}" class="note-preview-link">
         <article class="note-preview">
           <h2 class="note-preview-title">{{ note.title }}</h2>
-          
+
           {% if note.summary %}
             <p class="note-preview-excerpt">{{ note.summary }}</p>
           {% elsif note.excerpt %}
             <p class="note-preview-excerpt">{{ note.excerpt | strip_html | truncate: 100 }}</p>
           {% endif %}
-          
+
           {% assign display_date = note.updated | default: note.date %}
           <div class="note-preview-date-line">
             <time datetime="{{ display_date | date_to_xmlschema }}">
