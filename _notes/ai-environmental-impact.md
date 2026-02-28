@@ -38,7 +38,7 @@ The book juxtaposes colonial torture with data center water usage, framing the l
 
 <div class="conversation">
 {% message author-id="william-huster" name="first" time="February 28, 2026 at 5:44 PM" %}
-Looks like he went head-to-head with Karen about Empire of AI: https://andymasley.substack.com/p/empire-of-ai-is-wildly-misleading
+Looks like he went head-to-head with Karen about Empire of AI: <a href="https://andymasley.substack.com/p/empire-of-ai-is-wildly-misleading">https://andymasley.substack.com/p/empire-of-ai-is-wildly-misleading</a>
 
 I think her book is what started the "AI is wasting water" tiktok meme. This is the bit I was referring to yesterday:
 

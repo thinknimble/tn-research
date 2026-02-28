@@ -59,11 +59,11 @@ Orchestration tools like [Conductor](https://www.conductor.build/) and [claude-s
 
 <div class="conversation">
 {% message author-id="neil-shah" name="first" time="December 21, 2025 at 10:31 PM" %}
-https://www.conductor.build/
+<a href="https://www.conductor.build/">https://www.conductor.build/</a>
 {% endmessage %}
 
 {% message author-id="william-huster" name="first" time="December 22, 2025 at 9:59 AM" %}
-This is cool. There is also: https://github.com/smtg-ai/claude-squad and a few others.
+This is cool. There is also: <a href="https://github.com/smtg-ai/claude-squad">https://github.com/smtg-ai/claude-squad</a> and a few others.
 
 This sort of thing doesn't really solve my problem, though. Using this, I am still the bottleneck and babysitting, except now it's a room full of toddlers and it's even easier to lose context (maybe I'm just describing management 🫠).
 
@@ -75,7 +75,7 @@ My theory is that the world is too complex for a single LLM to affordably "do it
 {% endmessage %}
 
 {% message author-id="william-huster" name="first" time="December 22, 2025 at 10:02 AM" %}
-Armin Ronacher just published a year in review where he suggests that we should consider replacing the pull request model and even Git itself with something that better separates human and AI contributions: https://news.ycombinator.com/item?id=46352875
+Armin Ronacher just published a year in review where he suggests that we should consider replacing the pull request model and even Git itself with something that better separates human and AI contributions: <a href="https://news.ycombinator.com/item?id=46352875">https://news.ycombinator.com/item?id=46352875</a>
 
 Maybe I'm stuck in my ways, but I don't see a need. Treating Claude as a separate employee goes partway, though, because I can keep various contributions from my account visibly separate from Claude's.
 
@@ -95,7 +95,7 @@ He says no one has solved the part where you have to merge the work of multiple 
 
 I think our core case is and has always been that managing complexity and coordination -> desired outcomes is the hard part and the "true" role of a senior dev is to accomplish that, so we could appeal to senior engineers on those grounds without making them feel threatened that the AI will take their job. "Your job has always had a greater purpose and now you are actually free to do it."
 
-https://youtu.be/zuJyJP517Uw?si=c-xOhHJIwI4xMAA4
+<a href="https://youtu.be/zuJyJP517Uw?si=c-xOhHJIwI4xMAA4">https://youtu.be/zuJyJP517Uw?si=c-xOhHJIwI4xMAA4</a>
 {% endmessage %}
 
 </div>
