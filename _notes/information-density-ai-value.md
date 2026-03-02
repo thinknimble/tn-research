@@ -180,6 +180,20 @@ Those that don't will find themselves:
 - Providing interchangeable, commodity output
 - Racing to the bottom on value
 
+## Latent Space as Value Reservoir
+
+The economic argument for information density gains clarity when we consider the AI's "latent space"—the vast multidimensional space of possible outputs the model can generate. In a [LatentSpace podcast interview](https://youtu.be/01ybLOH1fnU), Alessio Fanelli describes finding "billions of dollars of value in the latent space" and positions SaaS products as mechanisms that constrain or expand access to that space.
+
+This framing illuminates why information density matters economically:
+
+**Without high-density input, you get random access to the latent space**: The AI wanders through its vast capability space, potentially generating anything from its training data. This is why generic prompts produce generic (low-information-density) output—you're sampling randomly from the latent space.
+
+**High-density input directs navigation through the latent space**: When you provide specific facts, domain knowledge, and contextual constraints, you're essentially guiding the AI to high-value regions of its latent space—the areas where its capabilities align with your actual needs.
+
+**The human's competitive advantage is knowing where value lies**: AI has access to the entire latent space, but humans provide the crucial navigation: which problems matter, which solutions are viable, which facts are true. This navigation is the information density we contribute.
+
+This connects directly to [[infinite-ui]]'s concept of state space design: product designers carve pathways through the infinite state space, while information providers (domain experts, strategists, practitioners) identify which regions of that space contain actual value. Both are essential for creating useful AI systems.
+
 ## Connection to Broader Themes
 
 ### Complexity Collapse

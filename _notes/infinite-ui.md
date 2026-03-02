@@ -71,6 +71,22 @@ Sounds like an excerpt from the ThinkNimble product playbook!
 
 I mean, I think those kinds of orgs (and people and patterns of thought) also defined every previous era of technology. The more things change, the more they stay the same. It's still solid advice.
 
+## Economic Value in the Latent Space
+
+The concept of "state space" as the fundamental dimension of GenAI products has interesting economic implications. In a [LatentSpace podcast interview](https://youtu.be/01ybLOH1fnU), Alessio Fanelli (Decibel Partners) discusses finding "billions of dollars of value in the latent space" and frames SaaS products as mechanisms that constrain or expand access to that latent space.
+
+This economic framing perfectly complements the product design perspective: the "latent space" and the "state space" are the same territory, just viewed through different lenses. Product designers see a vast, infinite UI space that must be carved down into navigable pathways. Investors and business builders see a vast reservoir of potential value that must be accessed and delivered efficiently.
+
+SaaS products, then, serve a dual function:
+- **Design perspective**: Constraining the infinite state space into manageable, predictable user experiences
+- **Economic perspective**: Creating optimal pathways to extract value from the latent space
+
+The "carving away" or "spotlighting" (as Marcy put it) that product designers do isn't just about UX—it's about identifying which paths through the latent space create the most value for specific use cases. Generic AI chatbots give users access to the entire latent space, but specialized SaaS apps guide them efficiently to high-value regions.
+
+This explains why, despite the existence of general-purpose AI, there will always be room for focused SaaS applications: they're optimized value extraction mechanisms, not just constrained interfaces. The economic value comes from knowing which parts of the infinite space are worth exploring for specific problems.
+
+Related: [[information-density-ai-value]]
+
 ## Team Discussion
 
 After sharing this note, we had an engaging discussion about these concepts:
