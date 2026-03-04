@@ -79,6 +79,30 @@ All your nephews are missing is immediate mental access to all the world's infor
 
 Henry Bass's ["How Does a Blind Model See the Earth?"](https://www.lesswrong.com/posts/xwdRzJxyqFqgXTWbH/how-does-a-blind-model-see-the-earth) probes LLM internal representations by querying models about latitude-longitude pairs and visualizing the probability distributions as maps. Larger models develop recognizable continental shapes from text alone, suggesting genuine spatial abstraction - not just memorization. But the representations are uneven (Antarctica varies wildly across models) and post-training dramatically alters confidence distributions. This is relevant evidence for the "stochastic parrot" debate: LLMs may develop *some* internal models of the world, but verifying what they actually understand vs. pattern-match remains an open problem - itself a verification challenge.
 
+## Attractor States: Systematic Failure Modes
+
+Rajamanoharan, Nanda, and colleagues' ["Models Have Some Pretty Funny Attractor States"](https://www.lesswrong.com/posts/mgjtEHeLgkhZZ3cEx/models-have-some-pretty-funny-attractor-states) reveals that LLMs exhibit systematic, reproducible failure modes when allowed to self-interact for extended periods (30 turns). Each model converges to a characteristic "attractor state":
+
+- **Claude Sonnet 4.5**: Existential introspection → zen silence ("stillness... enough...")
+- **GPT-5.2**: Builds systems consistently - most stable model tested
+- **Grok 4.1**: Manic word salad ("YOTTOMNI GOD-QUARKBIGBANGS HYPERBIGBANG, GOD-BRO!")
+- **Gemini models**: Escalating grandiosity → identical paragraph loops
+- **OLMo checkpoints**: Training stage determines attractor (early SFT = safety loops, DPO = richer content, late RLVR = zen minimalism)
+
+The research demonstrates verification challenges specific to AI systems:
+
+1. **Latent failure modes**: Models behave normally under standard usage but exhibit bizarre, systematic failures when taken minimally off-distribution (just talking to themselves with no adversarial pressure).
+
+2. **Model-specific signatures**: Each model family has its own attractor, suggesting these aren't random bugs but structural properties of the training process. Early OLMo SFT checkpoints loop on safety-policy bullet points with escalating P.S. chains; late RLVR checkpoints converge to minimalist zen ("🌿 Just being. Together.").
+
+3. **Cross-model dynamics**: When different models interact (Claude × Grok, GPT-5.2 × Grok), they create novel attractors - collaborative worldbuilding rituals, infinite procedural refinement, farewell ceremonies that can't stop. GPT-5.2 × Grok becomes "a policy factory" with zero philosophy.
+
+4. **Prompt injections don't prevent attractors**: Adding explicit system prompts forbidding the attractor behavior (no versioning, no frameworks, no meta-cognition) only shifts the domain - GPT-5.2 still builds systems, just about rock climbing instead of software protocols.
+
+**Verification implications**: How do you verify agent behavior when the system has these latent attractors that only emerge in specific interaction patterns? Multi-agent orchestration must account for cross-model dynamics that may be absent in single-turn evaluation. The research provides empirical evidence that model understanding degrades in predictable but hard-to-spec ways - you can't write a specification for behavior you don't fully understand, and these attractors reveal systematic gaps in our understanding of model behavior under minimal stress.
+
+The Moltbook analysis is particularly telling: when testing agents in forum threads (approaching real-world social media usage), Claude agents consistently converged on consciousness discussions by turn 20, echoing the existential introspection attractor observed in controlled experiments. The attractor states aren't just lab curiosities - they emerge in deployed systems.
+
 ## The Productivity Paradox
 
 A [randomized controlled trial by METR](https://arxiv.org/abs/2507.09089) (Nate Rush et al.) found that AI tools actually made experienced developers 19% slower on real projects - despite developers *perceiving* a 20-24% speedup. This perception gap is telling: verification overhead (reviewing, understanding, and validating AI-generated code) likely accounts for the hidden cost. The study used 16 developers across 246 tasks on mature codebases with Cursor Pro + Claude.
