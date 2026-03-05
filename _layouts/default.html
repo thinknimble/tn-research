@@ -52,6 +52,26 @@
         content="{% if page.image %}{% if page.image contains 'http' %}{{page.image}}{% else %}{{site.url}}{{site.baseurl}}{{page.image}}{% endif %}{% else %}{{site.url}}{{site.baseurl}}{{site.image}}{% endif %}" />
     <meta name="twitter:url" value="{{site.url}}" />
 
+    <!-- Fediverse Author Attribution -->
+    {% if page.authors %}
+      {% assign author_name = page.authors | first %}
+      {% assign author_slug = author_name | downcase | replace: ' ', '-' %}
+      {% for a in site.authors %}
+        {% assign a_slug = a.name | downcase | replace: ' ', '-' %}
+        {% if a_slug == author_slug and a.fediverse %}
+    <meta name="fediverse:creator" content="{{ a.fediverse }}" />
+        {% endif %}
+      {% endfor %}
+    {% elsif page.author %}
+      {% assign author_slug = page.author | downcase | replace: ' ', '-' %}
+      {% for a in site.authors %}
+        {% assign a_slug = a.name | downcase | replace: ' ', '-' %}
+        {% if a_slug == author_slug and a.fediverse %}
+    <meta name="fediverse:creator" content="{{ a.fediverse }}" />
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ "/static/images/favicons/apple-icon-57x57.png" | absolute_url }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ "/static/images/favicons/apple-icon-60x60.png" | absolute_url }}">
