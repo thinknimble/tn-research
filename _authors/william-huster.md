@@ -7,6 +7,7 @@ bio: "CTO of ThinkNimble. Software engineer with 20+ years of professional exper
 profile_pic: https://gravatar.com/avatar/4e5a5a2d5be8c26770a7d901b5898a9e?s=800
 email: william@thinknimble.com
 twitter:
+fediverse: "@william@social.williamhuster.com"
 linkedin:
 github: whusterj
 website: https://williamhuster.com
