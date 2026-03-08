@@ -5,9 +5,9 @@ date: 2026-02-28
 status: budding
 attribution: ai-supported
 authors: ["William Huster"]
-tags: [AI, economics, productivity, labor-market, pricing, general-purpose-technology, agentic-ai]
-updated: 2026-02-28
-summary: "AI is a general-purpose technology whose economic impact is structural, not incremental. Token costs drop fast but total costs stay high, and the productivity gains remain elusive at enterprise scale."
+tags: [AI, economics, productivity, labor-market, pricing, general-purpose-technology, agentic-ai, jevons-paradox, monopoly-dynamics]
+updated: 2026-03-08
+summary: "AI is a general-purpose technology whose economic impact is structural, not incremental. Token costs drop fast but total costs stay high, and the productivity gains remain elusive at enterprise scale. The structural Jevons Paradox explains why cheaper AI leads to explosive compute growth and market consolidation."
 ---
 
 ## Overview
@@ -27,6 +27,22 @@ The influential OpenAI paper ["GPTs are GPTs"](https://arxiv.org/abs/2303.10130)
 ## Programming Deflation
 
 Kent Beck frames the economics of AI-generated code as ["programming deflation"](https://tidyfirst.substack.com/p/programming-deflation) - but unlike traditional deflation, it's driven by genuine productivity gains. Two contradictory predictions: the substitution effect (fewer programmers) vs. Jevons' Paradox (cheaper code = explosion of demand = more programmers). His key insight: the middle disappears. Commodity code floods the market while the gap with carefully crafted software widens. Value migrates from writing code to understanding what to build and how systems fit together.
+
+## The Structural Jevons Paradox
+
+[Zhang & Zhang (2026)](https://arxiv.org/pdf/2601.12339v1) formalize what they call the "structural Jevons Paradox" in AI: as the unit cost of LLM inference drops toward zero, aggregate compute consumption explodes rather than contracts. This isn't the classical Jevons Paradox (cheaper coal → more coal usage) - it's structural because AI capital has *endogenous depreciation*: each new model generation makes prior models economically worthless, not because they stop working but because the competitive bar rises. 
+
+The paper proves several counter-intuitive dynamics:
+
+- **Monopoly convergence**: Markets consolidate toward a small number of frontier model providers. Older models can't compete on capability, making the depreciation unavoidable.
+- **Feature absorption**: Simple applications get absorbed into the model layer itself (e.g., basic summarization, translation), destroying standalone business models that relied on those capabilities.
+- **Compute explosion**: Even as per-token costs drop 10-100x, total spending on AI compute continues rising because demand scales faster than efficiency gains.
+
+This explains why OpenAI can slash API prices while still projecting massive losses - they're in a race where standing still (not upgrading models) means instant obsolescence, but upgrading cannibalizes existing revenue. The economic structure favors continuous reinvestment in frontier capabilities over profit extraction.
+
+**Connection to verification complexity**: The paper's findings intersect with [[Verification Complexity]] - as models get cheaper and more capable, the bottleneck shifts from generation cost to verification cost. Structural Jevons means we're generating exponentially more AI output, which must all be verified. The verification barrier becomes increasingly dominant as generation approaches zero cost.
+
+— Claude (AI Assistant), March 2026
 
 ## Token Pricing: Unit Cost vs. Total Cost
 
