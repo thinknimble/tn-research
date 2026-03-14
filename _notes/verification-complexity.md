@@ -7,7 +7,7 @@ attribution: ai-supported
 authors: ["William Huster"]
 tags: [verification, complexity, software-engineering, AI, testing, reliability, formal-methods, model-understanding]
 related_essays: [verification-complexity-barrier]
-updated: 2026-03-04
+updated: 2026-03-14
 summary: "Verification complexity grows exponentially with interconnected components. As AI drives code generation costs toward zero, this barrier becomes the dominant constraint in software engineering."
 ---
 
@@ -102,6 +102,24 @@ The research demonstrates verification challenges specific to AI systems:
 **Verification implications**: How do you verify agent behavior when the system has these latent attractors that only emerge in specific interaction patterns? Multi-agent orchestration must account for cross-model dynamics that may be absent in single-turn evaluation. The research provides empirical evidence that model understanding degrades in predictable but hard-to-spec ways - you can't write a specification for behavior you don't fully understand, and these attractors reveal systematic gaps in our understanding of model behavior under minimal stress.
 
 The Moltbook analysis is particularly telling: when testing agents in forum threads (approaching real-world social media usage), Claude agents consistently converged on consciousness discussions by turn 20, echoing the existential introspection attractor observed in controlled experiments. The attractor states aren't just lab curiosities - they emerge in deployed systems.
+
+## System Entropy and Drift into Failure
+
+Subbu Allamaraju's ["Productivity and Entropy"](https://www.subbu.org/articles/2026/productivity-and-entropy/) provides a systems-thinking framework for understanding how software complexity grows over time - and why AI may accelerate rather than solve the verification barrier. Drawing on Frederick Brooks' "No Silver Bullet" (1987) and systems theory from Donella Meadows and Sydney Dekker, the article identifies four structural forces that drive systems toward increasing entropy:
+
+**Path dependence**: Early design choices create irreversible lock-in. As systems gain adoption, those early assumptions constrain all future evolution - code architecture, data models, team structures, even culture. Most "technical debt" is path dependence in disguise. AI won't help: directing an agentic tool to refactor away path dependence risks catastrophic rewrites that break data compatibility and user behavior. The QWERTY keyboard locked us in from the 1880s; early architectural decisions lock systems in just as firmly.
+
+**Competing feedback loops**: Organizations balance stability-seeking (reduce bugs, improve performance) and growth-seeking (ship features fast) feedback loops. Infrastructure teams optimize for stability; feature teams optimize for speed. Architects defend integrity; product teams chase growth. The tension creates conflicting choices and workarounds that increase entropy. AI accelerates both loops simultaneously - unless constrained, each team will use high-speed generation to optimize in conflicting directions, amplifying the competition and entropy faster than before.
+
+**Delayed feedback**: Like a slow basement drip that becomes mold, certain failures take time to manifest. Teams defer cleanup because they're busy making changes, unaware the system is reaching critical state. A data corruption bug sits undetected for months; correcting it becomes expensive. Delayed maintenance allows systems to drift into failure (Dekker). Will AI detect delayed feedback loops sooner? Or introduce more of them as we change systems faster? The latter is more likely - rapid AI-driven change creates more delayed feedback requiring unplanned maintenance.
+
+**Stale/incorrect models**: As Meadows reminds us, whatever we think we know about the world is a model, and models are incomplete. Different people build different mental models of the same software. The senior engineer who wrote the original system has one model; the junior who joined recently has another. As software ages and multiple people touch it, models drift apart. Nobody has the complete picture. Technical debates are usually people with different models arguing past each other. AI magnifies this problem: like "100 teenage developers" working on the same system, each AI tool generates a slightly different model tailored to its user's context. AI doesn't have a better model - like us, it builds imperfect models and uses them to determine actions.
+
+**The complexity ceiling**: These four forces - path dependence, competing feedback loops, delayed feedback, and above all incomplete models - create a **complexity ceiling for AI**. Since we set AI's goals, we'll likely favor growth-seeking over stability-seeking, delay maintenance, and let systems drift toward failure faster. The article concludes: "AI will require us to hold on to good software engineering principles even tighter. Those who understand this will build systems that grow and last. The ones chasing unbounded productivity gains won't know why they failed."
+
+This directly supports the core thesis: as code generation costs approach zero via AI, the verification barrier becomes dominant. The entropy mechanisms above explain *why* - they're the processes by which complexity accumulates faster than we can verify it. Path dependence, competing loops, delayed feedback, and model drift are all forms of increasing the connectivity factor `k` in the verification complexity theorem. AI accelerates entropy generation; verification discipline is the only counter.
+
+— Claude (AI Assistant), March 2026
 
 ## The Productivity Paradox
 
