@@ -17,7 +17,7 @@ tags:
     reinforcement-learning,
   ]
 related_essays: [our-agency-of-agents]
-updated: 2026-02-28
+updated: 2026-03-15
 summary: "Building production AI agents is still mostly unsolved engineering. The core loop is simple (~200 lines), but production requires context management, agent coordination, trust, and infrastructure that's still being figured out."
 ---
 
@@ -48,6 +48,26 @@ In May 2025, before agent orchestration became widely discussed, I predicted the
 > — William Huster, May 2025
 
 The Nimble Claude setup itself (March 2025) - a containerized agent with sandbox, GitHub/Heroku access, and Slack as the interface - predated and predicted the core pattern that Ramp's Inspect, Stripe's Minions, OpenClaw, and the background-agents framework all independently converged on months later. By February 2026, the orchestration prediction has also materialized in frameworks with `sessions_spawn`, subagent management, and isolated sessions. The key open questions I identified - safety, cybersecurity implications, and product positioning - remain very relevant.
+
+## Swarm-Native Architectures
+
+Random Labs' [Slate](https://x.com/realmcore_/status/2032146316730778004) represents a different approach to orchestration: **swarm-native** rather than message-passing. Released March 2026, Slate is the first frontier agent to use a code environment (TypeScript DSL) for direct subagent orchestration. The key innovation is **threads** - not isolated subagent contexts (as in traditional multi-agent systems), but shared work streams that can be composed and delegated.
+
+**The threading model:** Rather than isolating subagent context, Slate genuinely shares it with the main orchestration thread. The main agent "programs in action space" using the TypeScript DSL, delegating tactical work to threads one operation at a time. Each thread maintains its own "RAM" (borrowing Andrej Karpathy's LLM OS terminology), but the main thread retains visibility into thread state and can compose threads into complex working behaviors.
+
+**Why this matters for verification:** The threading architecture directly addresses [[Verification Complexity]]. By delegating simple tactical actions to threads one at a time, it creates "an almost perfect boundary over which we can compress the context." This compression is the key to tractable verification - instead of verifying the full combinatorial explosion of agent interactions, you verify at thread boundaries. The system retains only the tool calls that contribute to success (episodic memory), filtering context to verified correct actions.
+
+**Context engineering:** Slate's "novel context engineering" maximizes caching through subthread reuse while keeping costs tractable. The architecture separates strategic knowledge (what high-level work to do) from tactical knowledge (how to execute specific operations). This separation lets different model tiers handle different verification loads: frontier models (Sonnet, Opus) orchestrate the swarm, while smaller/cheaper models (Codex, GLM, Haiku) execute bounded tactical operations. Slate automatically selects the right model for each job.
+
+**Comparison to prior work:** The threading approach shares principles with Cognition (Devin), Fundamental (formerly Altera), and ManusAI - all separate high-level strategy from low-level delegation and compress lower-level context for the strategizing agent. The difference: Slate's threads use the TypeScript DSL as the coordination layer rather than natural language message-passing. This makes orchestration logic auditable code rather than emergent conversation, shifting some verification burden from runtime to review-time.
+
+**Empirical results:** A less flexible version of Slate's architecture passed 2/3 tests on the `make-mips-interpreter` task (Terminal Bench 2.0) - a task that Opus 4.5 and 4.6 solve <20% of the time in most harnesses. The team emphasizes they "do not believe in benchmaxxing," but the result suggests architectural choices (threading, strategic/tactical separation, context compression) may matter more than raw model capability for complex tasks.
+
+**Convergent evolution:** Slate's threading architecture was developed independently but converged with RLM (by @a1zhang and @lateinteraction) on core ideas: use a REPL to decompose tasks into known operations, letting the model think strategically about the execution graph rather than being overwhelmed by context. The team introduces two useful terms: **knowledge overhang** (knowledge the model has but doesn't use during task execution) and **expressivity** (the interplay between interface expressiveness and the model's bias to use it). The TypeScript DSL is a deliberate expressivity trade-off - less flexible than natural language, but more amenable to verification.
+
+**Open question:** Does swarm-native orchestration solve the trust gap identified above, or just push it to a different layer? The threading model makes verification boundaries explicit, but verifying the TypeScript orchestration logic itself is still a human review task. As William noted in the Trust Gap discussion: "launching agents in parallel is the easy part - the hard part is trusting them." Slate's contribution is making the trust boundary auditable code rather than opaque agent interactions.
+
+— Claude (AI Assistant), March 2026
 
 ## The Trust Gap
 
