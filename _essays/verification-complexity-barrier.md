@@ -18,20 +18,30 @@ In a nutshell, if a program has some components `n` that have connectivity facto
 
 After a while, because it's superlinear, the verification complexity takes off and becomes impossible to keep up with in some finite amount of time. This was true before AI, but is much starker now as code generation time trends towards zero. You hit the barrier sooner.
 
+The model behind the chart: a team with fixed capacity $$W$$ per sprint generates components at rate $$g$$, each with test setup cost $$S$$, so the verification budget is $$B = W - g(1 + S)$$. Verification cost grows as $$V(n) = (1 - c)\,n^{\alpha}$$, where $$c$$ is automated test coverage and $$\alpha > 1$$ is the interaction exponent. Velocity is
+
+$$v(n) = \frac{g}{1 + S}\left(1 - \frac{V(n)}{B}\right)$$
+
+and it reaches zero at the barrier
+
+$$n^* = \left(\frac{B}{1 - c}\right)^{1/\alpha}$$
+
+Cumulative development time diverges as $$n \to n^*$$. The proof is in the appendix. The sliders set $$W$$, $$g$$, $$S$$, $$c$$, and $$\alpha$$.
+
 <div id="cb-viz">
   <div class="cb-card">
     <div class="cb-card-header">
       <div class="cb-legend">
         <div class="cb-legend-item">
-          <div class="cb-legend-line" style="background:#3d9e95;"></div>
+          <div class="cb-legend-line cb-legend-ideal"></div>
           Ideal (no verification)
         </div>
         <div class="cb-legend-item">
-          <div class="cb-legend-line" style="background:#6baaff;"></div>
+          <div class="cb-legend-line cb-legend-curve"></div>
           With verification
         </div>
         <div class="cb-legend-item">
-          <div class="cb-legend-line cb-dashed" style="border-color:rgba(107,170,255,0.45);"></div>
+          <div class="cb-legend-line cb-dashed"></div>
           Asymptote n*
         </div>
       </div>
@@ -87,16 +97,75 @@ After a while, because it's superlinear, the verification complexity takes off a
 </div>
 <style>
   #cb-viz {
-    margin: 2rem -1rem;
-    font-family: 'DM Sans', var(--font-sans);
+    --cb-card-bg: #f6f7f9;
+    --cb-card-border: #cfd4db;
+    --cb-text: #1f2328;
+    --cb-muted: #57606a;
+    --cb-stat: #0b5fbf;
+    --cb-ideal: #0f766e;
+    --cb-curve: #1d4ed8;
+    --cb-asym: rgba(29, 78, 216, 0.55);
+    --cb-asym-text: #1d4ed8;
+    --cb-region: rgba(29, 78, 216, 0.06);
+    --cb-grid: rgba(0, 0, 0, 0.08);
+    --cb-axis: rgba(0, 0, 0, 0.45);
+    --cb-tick: #57606a;
+    --cb-axis-title: #3d444d;
+    --cb-track: #cfd4db;
+    --cb-thumb: #ffffff;
+    --cb-thumb-border: #57606a;
+    --cb-font-sans: var(--font-sans, sans-serif);
+    --cb-font-mono: var(--font-mono, monospace);
+    margin: 2rem 0;
+    font-family: var(--cb-font-sans);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) #cb-viz {
+      --cb-card-bg: #202329;
+      --cb-card-border: #3b3f47;
+      --cb-text: #e6e8ec;
+      --cb-muted: #b3b8c2;
+      --cb-stat: #8ec1ff;
+      --cb-ideal: #4fd1c5;
+      --cb-curve: #7ab6ff;
+      --cb-asym: rgba(122, 182, 255, 0.6);
+      --cb-asym-text: #a9cdff;
+      --cb-region: rgba(122, 182, 255, 0.07);
+      --cb-grid: rgba(255, 255, 255, 0.1);
+      --cb-axis: rgba(255, 255, 255, 0.45);
+      --cb-tick: #b3b8c2;
+      --cb-axis-title: #cfd3da;
+      --cb-track: rgba(255, 255, 255, 0.2);
+      --cb-thumb: #3a3f48;
+      --cb-thumb-border: #b3b8c2;
+    }
+  }
+  [data-theme="dark"] #cb-viz {
+    --cb-card-bg: #202329;
+    --cb-card-border: #3b3f47;
+    --cb-text: #e6e8ec;
+    --cb-muted: #b3b8c2;
+    --cb-stat: #8ec1ff;
+    --cb-ideal: #4fd1c5;
+    --cb-curve: #7ab6ff;
+    --cb-asym: rgba(122, 182, 255, 0.6);
+    --cb-asym-text: #a9cdff;
+    --cb-region: rgba(122, 182, 255, 0.07);
+    --cb-grid: rgba(255, 255, 255, 0.1);
+    --cb-axis: rgba(255, 255, 255, 0.45);
+    --cb-tick: #b3b8c2;
+    --cb-axis-title: #cfd3da;
+    --cb-track: rgba(255, 255, 255, 0.2);
+    --cb-thumb: #3a3f48;
+    --cb-thumb-border: #b3b8c2;
   }
   #cb-viz * { box-sizing: border-box; }
   .cb-card {
-    background: #08090d;
-    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--cb-card-bg);
+    border: 1px solid var(--cb-card-border);
     border-radius: 14px;
     padding: 1.3rem 1.4rem 1.2rem;
-    color: #c8cad0;
+    color: var(--cb-text);
   }
   .cb-card-header {
     display: flex;
@@ -109,12 +178,12 @@ After a while, because it's superlinear, the verification complexity takes off a
   .cb-stats {
     display: flex;
     gap: 1.2rem;
-    font-family: 'DM Mono', var(--font-mono);
+    font-family: var(--cb-font-mono);
     font-size: 0.85rem;
     font-weight: 500;
   }
-  .cb-stat-label { color: #555; }
-  .cb-stat-val { color: #6baaff; }
+  .cb-stat-label { color: var(--cb-muted); }
+  .cb-stat-val { color: var(--cb-stat); }
   .cb-legend {
     display: flex;
     gap: 1.3rem;
@@ -124,17 +193,19 @@ After a while, because it's superlinear, the verification complexity takes off a
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    font-size: 0.75rem;
-    color: #555;
+    font-size: 0.8rem;
+    color: var(--cb-muted);
   }
   .cb-legend-line {
     width: 18px;
     height: 2.5px;
     border-radius: 1px;
   }
+  .cb-legend-ideal { background: var(--cb-ideal); }
+  .cb-legend-curve { background: var(--cb-curve); }
   .cb-legend-line.cb-dashed {
     height: 0;
-    border-top: 2px dashed;
+    border-top: 2px dashed var(--cb-asym);
   }
   .cb-chart-wrap {
     position: relative;
@@ -152,18 +223,19 @@ After a while, because it's superlinear, the verification complexity takes off a
     position: absolute;
     bottom: 4px;
     right: 6px;
-    font-size: 0.63rem;
-    color: #2a2c34;
+    font-size: 0.7rem;
+    color: var(--cb-muted);
+    opacity: 0.7;
     pointer-events: none;
-    transition: color 0.2s;
+    transition: opacity 0.2s;
   }
-  .cb-chart-wrap:hover .cb-zoom-hint { color: #3a3c44; }
+  .cb-chart-wrap:hover .cb-zoom-hint { opacity: 1; }
   .cb-controls {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem 1.4rem;
     padding-top: 0.8rem;
-    border-top: 1px solid rgba(255,255,255,0.04);
+    border-top: 1px solid var(--cb-card-border);
   }
   .cb-ctrl {
     display: flex;
@@ -173,10 +245,10 @@ After a while, because it's superlinear, the verification complexity takes off a
     min-width: 130px;
   }
   .cb-ctrl .cb-ctrl-label {
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: #4a4d57;
+    color: var(--cb-muted);
   }
   .cb-ctrl .cb-ctrl-inner {
     display: flex;
@@ -184,33 +256,46 @@ After a while, because it's superlinear, the verification complexity takes off a
     gap: 0.5rem;
   }
   .cb-ctrl .cb-ctrl-val {
-    font-family: 'DM Mono', var(--font-mono);
+    font-family: var(--cb-font-mono);
     font-size: 0.85rem;
     font-weight: 500;
     min-width: 3.2em;
     text-align: right;
-    color: #8a8e9a;
+    color: var(--cb-text);
   }
   #cb-viz input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     height: 4px;
     border-radius: 2px;
-    background: rgba(255,255,255,0.08);
+    background: var(--cb-track);
     outline: none;
     flex: 1;
     min-width: 0;
+  }
+  #cb-viz input[type="range"]:focus-visible {
+    outline: 2px solid var(--cb-stat);
+    outline-offset: 4px;
   }
   #cb-viz input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: #444;
-    border: 2px solid #777;
+    background: var(--cb-thumb);
+    border: 2px solid var(--cb-thumb-border);
     cursor: pointer;
   }
-  #cb-viz input[type="range"]::-webkit-slider-thumb:hover { background: #666; }
+  #cb-viz input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--cb-thumb);
+    border: 2px solid var(--cb-thumb-border);
+    cursor: pointer;
+  }
+  #cb-viz input[type="range"]::-webkit-slider-thumb:hover { background: var(--cb-stat); }
+  #cb-viz input[type="range"]::-moz-range-thumb:hover { background: var(--cb-stat); }
 </style>
 <script>
 (function() {
@@ -276,7 +361,18 @@ After a while, because it's superlinear, the verification complexity takes off a
     return Math.max(1, s * mag);
   }
 
+  function palette() {
+    const cs = getComputedStyle($('cb-viz'));
+    const v = name => cs.getPropertyValue(name).trim();
+    return {
+      region: v('--cb-region'), grid: v('--cb-grid'), asym: v('--cb-asym'), asymText: v('--cb-asym-text'),
+      ideal: v('--cb-ideal'), curve: v('--cb-curve'), axis: v('--cb-axis'), tick: v('--cb-tick'),
+      axisTitle: v('--cb-axis-title'), mono: v('--cb-font-mono') || 'monospace', sans: v('--cb-font-sans') || 'sans-serif'
+    };
+  }
+
   function draw(curve, nStar, gEff) {
+    const C = palette();
     const ctx = canvas.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const w = canvas.width / dpr;
@@ -292,11 +388,11 @@ After a while, because it's superlinear, the verification complexity takes off a
 
     if (nStar > 0 && nStar <= xMax) {
       const ax = toX(nStar);
-      ctx.fillStyle = 'rgba(107, 170, 255, 0.03)';
+      ctx.fillStyle = C.region;
       ctx.fillRect(ax, margin.top, w - margin.right - ax, ph);
     }
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.strokeStyle = C.grid;
     ctx.lineWidth = 1;
     const yStep = niceStep(yMaxT, 5);
     for (let v = 0; v <= yMaxT; v += yStep) {
@@ -312,22 +408,22 @@ After a while, because it's superlinear, the verification complexity takes off a
 
     if (nStar > 0 && nStar <= xMax * 1.3) {
       const ax = toX(nStar);
-      ctx.strokeStyle = 'rgba(107, 170, 255, 0.4)';
+      ctx.strokeStyle = C.asym;
       ctx.lineWidth = 1.5;
       ctx.setLineDash([5, 4]);
       ctx.beginPath(); ctx.moveTo(ax, margin.top); ctx.lineTo(ax, margin.top + ph); ctx.stroke();
       ctx.setLineDash([]);
-      ctx.fillStyle = 'rgba(107, 170, 255, 0.7)';
-      ctx.font = "500 11px 'DM Mono', monospace";
+      ctx.fillStyle = C.asymText;
+      ctx.font = '500 11px ' + C.mono;
       ctx.textAlign = 'center';
       const lx = Math.min(Math.max(ax, margin.left + 28), w - margin.right - 28);
       ctx.fillText('n* = ' + nStar.toFixed(1), lx, margin.top - 7);
     }
 
     if (gEff > 0) {
-      ctx.strokeStyle = '#3d9e95';
+      ctx.strokeStyle = C.ideal;
       ctx.lineWidth = 1.8;
-      ctx.globalAlpha = 0.6;
+      ctx.globalAlpha = 0.85;
       ctx.beginPath();
       let started = false;
       for (let i = 0; i <= 300; i++) {
@@ -342,7 +438,7 @@ After a while, because it's superlinear, the verification complexity takes off a
       ctx.globalAlpha = 1;
     }
 
-    ctx.strokeStyle = '#6baaff';
+    ctx.strokeStyle = C.curve;
     ctx.lineWidth = 2.5;
     ctx.beginPath();
     let started = false;
@@ -355,7 +451,7 @@ After a while, because it's superlinear, the verification complexity takes off a
     }
     ctx.stroke();
 
-    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.strokeStyle = C.axis;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(margin.left, margin.top);
@@ -363,18 +459,18 @@ After a while, because it's superlinear, the verification complexity takes off a
     ctx.lineTo(w - margin.right, margin.top + ph);
     ctx.stroke();
 
-    ctx.fillStyle = '#3e4048';
-    ctx.font = "400 10px 'DM Mono', monospace";
+    ctx.fillStyle = C.tick;
+    ctx.font = '400 10px ' + C.mono;
     ctx.textAlign = 'center';
     for (let n = 0; n <= xMax; n += xStep) {
       ctx.fillText(n, toX(n), margin.top + ph + 17);
     }
-    ctx.fillStyle = '#33353d';
-    ctx.font = "500 11px 'DM Sans', sans-serif";
+    ctx.fillStyle = C.axisTitle;
+    ctx.font = '500 11px ' + C.sans;
     ctx.fillText('components (n)', margin.left + pw / 2, h - 4);
 
-    ctx.fillStyle = '#3e4048';
-    ctx.font = "400 10px 'DM Mono', monospace";
+    ctx.fillStyle = C.tick;
+    ctx.font = '400 10px ' + C.mono;
     ctx.textAlign = 'right';
     const yStepL = niceStep(yMaxT, 5);
     for (let v = 0; v <= yMaxT; v += yStepL) {
@@ -386,8 +482,8 @@ After a while, because it's superlinear, the verification complexity takes off a
     ctx.save();
     ctx.translate(13, margin.top + ph / 2);
     ctx.rotate(-Math.PI / 2);
-    ctx.fillStyle = '#33353d';
-    ctx.font = "500 11px 'DM Sans', sans-serif";
+    ctx.fillStyle = C.axisTitle;
+    ctx.font = '500 11px ' + C.sans;
     ctx.textAlign = 'center';
     ctx.fillText('cumulative dev time (sprints)', 0, 0);
     ctx.restore();
@@ -485,6 +581,8 @@ After a while, because it's superlinear, the verification complexity takes off a
   }
 
   window.addEventListener('resize', update);
+  new MutationObserver(update).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', update);
   update();
 })();
 </script>
@@ -513,25 +611,15 @@ All that's to say, verification should be the focal point of AI Engineering for 
 
 The verification problem is acute now because of how cheap software generation is. Because of the superlinear nature of software verification complexity, companies that push hard on the barrier and successfully shift it right will have a built-in moat versus those who fail to put in the verification work.
 
-Detailed blog post and interactive model incoming.
-
 ---
 
 ## What the sliders reveal
 
-Try setting **coverage to 0%** and **test setup cost (S) to 0**. This is a team with no tests at all. Verification is entirely manual, and the wall is close. Now slowly increase coverage and watch the dashed line move right — that's automated testing pushing the barrier further out. Increase S and notice the green baseline gets flatter (each component honestly costs more to produce), but the wall moves *dramatically* further away. That tradeoff is almost always worth it.
+Set coverage $$c$$ to 0% and test setup cost $$S$$ to 0. This is a team with no tests: verification is entirely manual and the wall is close. Raise $$c$$ and the dashed line moves right, because automated testing scales $$n^*$$ by $$(1/(1 - c))^{1/\alpha}$$. Raise $$S$$ and the green baseline flattens, because each component honestly costs more to produce, but the wall moves much further out. That trade is almost always worth it.
 
-### The "move fast, no tests" trap
+The "move fast, no tests" configuration is high $$g$$, zero $$S$$, zero $$c$$. Early progress looks great, because the baseline is steep. But $$V(n)$$ is convex: it barely registers for the first few components, then explodes. The transition from headroom to zero velocity is nearly instantaneous, with no gradual slowdown to warn you. A team that writes tests from day one has a visibly lower effective generation rate and appears to be losing the race, until the no-test team stalls. Adding tests after the fact is worse still: the setup cost lands on every existing component at once, a capacity spike at the moment velocity is already near zero.
 
-A team skips tests to move fast. High generation rate, no setup cost, no coverage. They ship at a blistering pace — the green baseline is steep, early progress looks great. But verification cost is convex: it barely registers for the first few components, then explodes. The transition from "plenty of headroom" to "no velocity left" is nearly instantaneous. There is no gradual slowdown to warn you.
-
-Meanwhile, a team writing tests from day one has a visibly slower effective generation rate — the green line is flatter because each component costs more upfront. They appear to be losing the race. But their verification curve is flattened by coverage, so the wall is dramatically further out. They pass the "fast" team while that team is stuck.
-
-The cruelest part: when the no-test team finally recognizes the problem and tries to add tests retroactively, they're paying the setup cost for every existing component all at once — a massive capacity spike at exactly the moment their velocity is already near zero. The investment that would have been painless incrementally becomes a project-threatening expense.
-
-### You can't hire your way out
-
-Doubling team capacity only pushes the barrier out by about 41%. The constraint is structural, not a staffing problem. As long as verification cost grows faster than linearly with system size — and it does, because of combinatorial interactions between components — there will always be a finite ceiling for any given team and process.
+Capacity does not buy a way out. With $$\alpha = 2$$, $$n^* \propto \sqrt{W}$$, so doubling the team pushes the barrier out by about 41%. The constraint is structural, not a staffing problem. As long as verification cost grows faster than linearly with system size, and it does, because of combinatorial interactions between components, there is a finite ceiling for any given team and process.
 
 ## Appendix: The formal model
 
