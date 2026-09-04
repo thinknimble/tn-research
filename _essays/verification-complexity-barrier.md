@@ -537,25 +537,61 @@ Doubling team capacity only pushes the barrier out by about 41%. The constraint 
 
 For readers who want the precise mechanics behind the visualization.
 
-A team with fixed sprint capacity $$W$$ builds components at generation rate $$g$$. Each component costs $$1 + S$$ to produce (where $$S$$ is the test setup overhead), giving an effective generation rate:
+**Axiom 1 (Finite Capacity).** A development team has fixed capacity $$W > 0$$ per sprint. All productive activity, generation and verification, must be funded from $$W$$. No activity can proceed without consuming capacity.
 
-$$g_{\text{eff}} = \frac{g}{1 + S}$$
+**Axiom 2 (Positive Production Cost).** Each component requires $$g\cdot(1 + S)$$ units of capacity to produce, where $$g > 0$$ is the generation rate and $$S \geq 0$$ is the per-component verification setup cost. We require $$g\cdot(1 + S) < W$$, otherwise no component can be produced at all.
 
-Production consumes $$g \cdot (1 + S)$$ of the budget. The remainder, $$W - g(1+S)$$, is the verification budget. Verification cost at system size $$n$$ is:
+**Axiom 3 (Superlinear Verification).** The human verification cost for a system of $$n$$ components is $$V(n) = (1 - c)\,n^{\alpha}$$, where $$c \in [0, 1)$$ is the fraction of verification automated by tests, and $$\alpha > 1$$ is the interaction exponent. $$V$$ is continuous, monotonically increasing, and unbounded.
 
-$$V(n) = (1 - c) \cdot n^\alpha$$
+**Axiom 4 (Capacity Constraint).** At system size $$n$$, the team must simultaneously fund production and verification from $$W$$:
 
-where $$c$$ is automated test coverage and $$\alpha > 1$$ is the verification exponent. Velocity is then:
+$$g\cdot(1 + S) + V(n) \leq W$$
 
-$$v(n) = g_{\text{eff}} \cdot \left(1 - \frac{V(n)}{W - g(1+S)}\right)$$
+Velocity is zero whenever this inequality is violated.
 
-Velocity reaches zero when $$V(n^*) = W - g(1+S)$$, giving us the barrier:
+**Definition 1 (Verification Budget).** The verification budget is $$B = W - g\cdot(1 + S)$$. By Axiom 2, $$B > 0$$.
 
-$$n^* = \left(\frac{W - g(1+S)}{1 - c}\right)^{1/\alpha}$$
+**Definition 2 (Effective Velocity).** The effective velocity at system size $$n$$ is:
 
-The cumulative development time $$T(n) = \int_0^n \frac{dn'}{v(n')}$$ diverges as $$n \to n^*$$. This is a vertical asymptote — not merely slow progress, but a hard limit.
+$$v(n) = g_{\text{eff}} \cdot \left(1 - \frac{V(n)}{B}\right)$$
 
-Note that doubling $$W$$ (with $$\alpha = 2$$) yields $$n^* \propto \sqrt{W}$$, so the barrier shifts by only $$\sqrt{2} \approx 1.41$$. The asymptote is structural.
+where $$g_{\text{eff}} = g \,/\, (1 + S)$$ is the effective generation rate. $$v(n) > 0$$ when $$V(n) < B$$, and $$v(n) = 0$$ when $$V(n) \geq B$$.
+
+**Definition 3 (Complexity Barrier).** The complexity barrier $$n^*$$ is the unique solution to $$V(n^*) = B$$, that is:
+
+$$n^* = \left(\frac{B}{1 - c}\right)^{1/\alpha}$$
+
+This exists and is unique because $$V$$ is continuous, $$V(0) = 0$$, and $$V$$ is unbounded (Axiom 3).
+
+**Theorem 1 (Existence of the Barrier).** For any system satisfying Axioms 1 to 4, there exists a finite $$n^*$$ such that the cumulative development time $$T(n) \to \infty$$ as $$n \to n^*$$. The system cannot reach $$n^*$$ components in finite time.
+
+**Proof.** The cumulative time to reach $$n$$ components is:
+
+$$T(n) = \int_0^n \frac{dn'}{v(n')} = \int_0^n \frac{dn'}{g_{\text{eff}} \cdot \left(1 - V(n')/B\right)}$$
+
+By Definition 3, $$V(n^*) = B$$, so as $$n' \to n^*$$, the denominator $$\left(1 - V(n')/B\right) \to 0$$.
+
+Since $$V$$ is continuous and differentiable near $$n^*$$, we can write $$V(n^*) - V(n^* - \varepsilon) \approx V'(n^*)\cdot\varepsilon$$ for small $$\varepsilon$$. Then near $$n^*$$:
+
+$$1 - \frac{V(n')}{B} \;\approx\; \frac{V'(n^*)\cdot(n^* - n')}{B}$$
+
+so the integrand behaves as:
+
+$$\frac{1}{v(n')} \;\approx\; \frac{B}{g_{\text{eff}} \cdot V'(n^*) \cdot (n^* - n')}$$
+
+This has the form $$C/(n^* - n')$$, which is a logarithmic divergence:
+
+$$\int^{n^*} \frac{dn'}{n^* - n'} = -\ln(n^* - n') \;\to\; \infty$$
+
+Therefore $$T(n) \to \infty$$ as $$n \to n^*$$. The barrier cannot be reached in finite time. ∎
+
+**Corollary 1 (Diminishing returns of capacity).** For the bare case ($$c = 0$$, $$\alpha = 2$$): $$n^* = \sqrt{B} = \sqrt{W - g}$$. Doubling $$W$$ increases $$n^*$$ by a factor of at most $$\sqrt{2}$$. The barrier is sublinear in capacity investment.
+
+**Corollary 2 (The generation-rate trap).** $$\partial n^*/\partial g < 0$$. Increasing generation rate $$g$$ while holding all else constant moves the barrier closer, because it shrinks $$B$$. A faster team hits the wall at a smaller system.
+
+**Corollary 3 (Testing shifts but preserves the barrier).** For any coverage $$c < 1$$ and any $$\alpha > 1$$, $$n^*$$ is finite. Automated testing increases $$n^*$$ by a factor of $$(1/(1 - c))^{1/\alpha}$$ but does not eliminate the barrier. Only $$c = 1$$ (complete verification automation) removes it, but Axiom 3 requires $$c < 1$$, reflecting the irreducible residual of emergent, unautomatable interactions.
+
+**Corollary 4 (Recursive barrier).** Capacity $$W$$ is itself produced by a team of $$m$$ people with coordination cost $$C(m)$$ growing superlinearly. By the same argument, there exists $$m^*$$ beyond which adding people decreases effective $$W$$. The barrier is self-similar across levels of organization.
 
 ---
 
