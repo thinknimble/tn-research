@@ -1315,3 +1315,34 @@ html[data-theme="dark"] .note-preview,
 html[data-theme="dark"] .essay-preview {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
+/* Related Notes on an essay page.
+   The cards get their background, border color and shadow from the theme
+   (.note-card in theme-system.html), but need their own box layout so they
+   read as cards and not as flat blocks against the heading. */
+.related-notes {
+  margin-top: 2.5rem;
+}
+
+.related-notes > h2 {
+  margin-bottom: 1.25rem;
+}
+
+.notes-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.note-card {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+}
+
+.note-card h3 {
+  margin: 0 0 0.4rem 0;
+}
+
+.note-card p {
+  margin: 0;
+  color: var(--meta-text);
+}
