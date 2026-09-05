@@ -18,15 +18,9 @@ In a nutshell, if a program has some components `n` that have connectivity facto
 
 After a while, because it's superlinear, the verification complexity takes off and becomes impossible to keep up with in some finite amount of time. This was true before AI, but is much starker now as code generation time trends towards zero. You hit the barrier sooner.
 
-The model behind the chart: a team with fixed capacity $$W$$ per sprint generates components at rate $$g$$, each with test setup cost $$S$$, so the verification budget is $$B = W - g(1 + S)$$. Verification cost grows as $$V(n) = (1 - c)\,n^{\alpha}$$, where $$c$$ is automated test coverage and $$\alpha > 1$$ is the interaction exponent. Velocity is
+### An interactive model
 
-$$v(n) = \frac{g}{1 + S}\left(1 - \frac{V(n)}{B}\right)$$
-
-and it reaches zero at the barrier
-
-$$n^* = \left(\frac{B}{1 - c}\right)^{1/\alpha}$$
-
-Cumulative development time diverges as $$n \to n^*$$. The proof is in the appendix. The sliders set $$W$$, $$g$$, $$S$$, $$c$$, and $$\alpha$$.
+Drag the sliders and watch where the barrier lands.
 
 <div id="cb-viz">
   <div class="cb-card">
