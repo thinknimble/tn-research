@@ -425,13 +425,17 @@ code.highlighter-rouge {
   color: #1f779a;
   word-wrap: break-word;
 }
-@supports (color-scheme: dark light) {
-  @media screen and (prefers-color-scheme: dark) {
-    code.highlighter-rouge {
-      background-color: rgb(40, 40, 40);
-      color: #f26b10;
-    }
+/* Dark styling follows the site theme, not just the OS preference:
+   a manual light toggle must win over prefers-color-scheme: dark. */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) code.highlighter-rouge {
+    background-color: rgb(40, 40, 40);
+    color: #f26b10;
   }
+}
+[data-theme="dark"] code.highlighter-rouge {
+  background-color: rgb(40, 40, 40);
+  color: #f26b10;
 }
 
 pre[class="highlight"] > code {
