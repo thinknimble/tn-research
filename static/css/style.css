@@ -1346,3 +1346,10 @@ html[data-theme="dark"] .essay-preview {
   margin: 0;
   color: var(--meta-text);
 }
+
+/* Space the "All Essays" footer from the content or the Related Notes
+   above it, so the gap matches the section spacing and does not read as
+   cramped under the last note card. */
+.essay-footer {
+  margin-top: 2.5rem;
+}
