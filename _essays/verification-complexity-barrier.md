@@ -6,7 +6,7 @@ updated: 2026-02-28
 authors: ["William Huster"]
 tags: [verification, complexity, software-engineering, ai, testing, ai-agents, software-architecture]
 attribution: ai-supported
-status: budding
+status: evergreen
 summary: "If a program has components with a connectivity factor greater than zero, verification complexity increases superlinearly with each new component. The time required to fully verify the system always exceeds the time to generate its components, and as AI drives generation time toward zero, you hit the barrier sooner."
 image: /static/images/essays/verification-complexity-barrier/verification-complexity-barrier-chart.png
 related_notes: [verification-complexity, task-size-relational]
