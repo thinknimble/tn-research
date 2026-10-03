@@ -2,7 +2,7 @@
 layout: essay
 title: "The Verification Complexity Barrier"
 date: 2026-02-28
-updated: 2026-02-28
+updated: 2026-10-03
 authors: ["William Huster"]
 tags: [verification, complexity, software-engineering, ai, testing, ai-agents, software-architecture]
 attribution: ai-supported
@@ -40,8 +40,9 @@ Drag the sliders and watch where the barrier lands.
         </div>
       </div>
       <div class="cb-stats">
-        <span><span class="cb-stat-label">n* = </span><span class="cb-stat-val" id="cb-nstar-val">28.5</span></span>
+        <span><span class="cb-stat-label">n* = </span><span class="cb-stat-val" id="cb-nstar-val">52.7</span></span>
         <span><span class="cb-stat-label">g_eff = </span><span class="cb-stat-val" id="cb-geff-val">1.9</span></span>
+        <span><span class="cb-stat-label">α = </span><span class="cb-stat-val" id="cb-alpha-val">2</span></span>
       </div>
     </div>
 
@@ -80,10 +81,17 @@ Drag the sliders and watch where the barrier lands.
         </div>
       </div>
       <div class="cb-ctrl">
-        <div class="cb-ctrl-label">Residual V exponent</div>
+        <div class="cb-ctrl-label">Connectivity (k)</div>
         <div class="cb-ctrl-inner">
-          <input type="range" id="cb-sl-exp" min="1.2" max="3" value="2.0" step="0.1">
-          <div class="cb-ctrl-val" id="cb-v-exp">2.0</div>
+          <input type="range" id="cb-sl-k" min="0.05" max="1" value="0.3" step="0.05">
+          <div class="cb-ctrl-val" id="cb-v-k">0.30</div>
+        </div>
+      </div>
+      <div class="cb-ctrl">
+        <div class="cb-ctrl-label">Trace depth (L)</div>
+        <div class="cb-ctrl-inner">
+          <input type="range" id="cb-sl-l" min="1" max="4" value="1" step="1">
+          <div class="cb-ctrl-val" id="cb-v-l">1</div>
         </div>
       </div>
     </div>
@@ -295,14 +303,15 @@ Drag the sliders and watch where the barrier lands.
 (function() {
   const dpr = window.devicePixelRatio || 1;
   const margin = { top: 24, right: 24, bottom: 40, left: 56 };
-  const state = { W: 250, g: 3.5, S: 0.8, cov: 0.70, exp: 2.0, xMax: 50, yMax: 80 };
+  const state = { W: 250, g: 3.5, S: 0.8, cov: 0.70, k: 0.3, L: 1, xMax: 80, yMax: 80 };
 
   const $ = id => document.getElementById(id);
   const canvas = $('cb-chart');
   const wrap = $('cb-chart-wrap');
 
+  // Expected traces of depth L that tests do not cover: (1 - c) k^L n^(L+1).
   function vFunc(n) {
-    return (1 - state.cov) * Math.pow(n, state.exp);
+    return (1 - state.cov) * Math.pow(state.k, state.L) * Math.pow(n, state.L + 1);
   }
 
   function findAsymptote(budget, hi) {
@@ -488,29 +497,31 @@ Drag the sliders and watch where the barrier lands.
     state.g = +$('cb-sl-g').value;
     state.S = +$('cb-sl-s').value;
     state.cov = +$('cb-sl-cov').value / 100;
-    state.exp = +$('cb-sl-exp').value;
+    state.k = +$('cb-sl-k').value;
+    state.L = +$('cb-sl-l').value;
 
     $('cb-v-w').textContent = state.W;
     $('cb-v-g').textContent = state.g.toFixed(1);
     $('cb-v-s').textContent = state.S.toFixed(2);
     $('cb-v-cov').textContent = Math.round(state.cov * 100) + '%';
-    $('cb-v-exp').textContent = state.exp.toFixed(1);
+    $('cb-v-k').textContent = state.k.toFixed(2);
+    $('cb-v-l').textContent = state.L;
 
+    // Verification draws on the whole capacity W; building uses what is left.
     const gEff = state.g / (1 + state.S);
-    const prodCost = state.g * (1 + state.S);
-    const budget = state.W - prodCost;
-    const nStar = budget > 0 ? findAsymptote(budget, 5000) : 0;
+    const budget = state.W;
+    const nStar = findAsymptote(budget, 5000);
 
-    $('cb-nstar-val').textContent = budget > 0
-      ? (nStar > 999 ? '999+' : nStar.toFixed(1)) : '0';
+    $('cb-nstar-val').textContent = nStar > 999 ? '999+' : nStar.toFixed(1);
     $('cb-geff-val').textContent = gEff.toFixed(1);
+    $('cb-alpha-val').textContent = state.L + 1;
 
     sizeCanvas();
     const curve = budget > 0 ? computeCurve(budget, gEff, nStar) : [];
     draw(curve, nStar, gEff);
   }
 
-  ['cb-sl-w', 'cb-sl-g', 'cb-sl-s', 'cb-sl-cov', 'cb-sl-exp'].forEach(id =>
+  ['cb-sl-w', 'cb-sl-g', 'cb-sl-s', 'cb-sl-cov', 'cb-sl-k', 'cb-sl-l'].forEach(id =>
     $(id).addEventListener('input', update)
   );
 
@@ -609,71 +620,87 @@ The verification problem is acute now because of how cheap software generation i
 
 ## What the sliders reveal
 
-Set coverage $$c$$ to 0% and test setup cost $$S$$ to 0. This is a team with no tests: verification is entirely manual and the wall is close. Raise $$c$$ and the dashed line moves right, because automated testing scales $$n^*$$ by $$(1/(1 - c))^{1/\alpha}$$. Raise $$S$$ and the green baseline flattens, because each component honestly costs more to produce, but the wall moves much further out. That trade is almost always worth it.
+Set coverage $$c$$ to 0% and test setup cost $$S$$ to 0. This is a team with no tests, and the wall is close. Raise $$c$$ and the dashed line moves right: automated testing scales $$n^*$$ by $$(1/(1 - c))^{1/(L+1)}$$. Raise $$S$$ and the green baseline flattens, because each component costs more to produce. $$S$$ is the price you pay for $$c$$, and that trade is almost always worth it.
 
-The "move fast, no tests" configuration is high $$g$$, zero $$S$$, zero $$c$$. Early progress looks great, because the baseline is steep. But $$V(n)$$ is convex: it barely registers for the first few components, then explodes. The transition from headroom to zero velocity is nearly instantaneous, with no gradual slowdown to warn you. A team that writes tests from day one has a visibly lower effective generation rate and appears to be losing the race, until the no-test team stalls. Adding tests after the fact is worse still: the setup cost lands on every existing component at once, a capacity spike at the moment velocity is already near zero.
+The "move fast, no tests" configuration is high $$g$$, zero $$S$$, zero $$c$$. Early progress looks great. But $$V(n)$$ is convex: it barely registers for the first few components, then explodes, with no gradual slowdown to warn you. The team that writes tests from day one appears to lose the race, until the no-test team stalls. Adding tests later is worse: the setup cost lands on every existing component at once, when velocity is already near zero.
 
-Capacity does not buy a way out. With $$\alpha = 2$$, $$n^* \propto \sqrt{W}$$, so doubling the team pushes the barrier out by about 41%. The constraint is structural, not a staffing problem. As long as verification cost grows faster than linearly with system size, and it does, because of combinatorial interactions between components, there is a finite ceiling for any given team and process.
+Connectivity $$k$$ and trace depth $$L$$ set the structure of the system. $$k$$ is the fraction of component pairs that interact. $$L$$ is how far a change travels before verification can stop following it. Lower $$k$$ moves the wall out. Raise $$L$$ from 1 to 2 and the wall moves in sharply: verification now checks chains of three components, and the number of chains grows as $$n^3$$.
+
+Capacity does not buy a way out. At $$L = 1$$, doubling the team moves the barrier out by about 41%. At $$L = 3$$, it buys about 19%. The constraint is structural, not a staffing problem: every team and process has a finite ceiling.
 
 ## Appendix: The formal model
 
 For readers who want the precise mechanics behind the visualization.
 
-**Axiom 1 (Finite Capacity).** A development team has fixed capacity $$W > 0$$ per sprint. All productive activity, generation and verification, must be funded from $$W$$. No activity can proceed without consuming capacity.
+_Correction (October 3, 2026): This appendix replaces the first version of the model, which did not define the connectivity factor $$k$$; this version defines $$k$$ as the density of the component graph and derives the interaction exponent from trace depth._
 
-**Axiom 2 (Positive Production Cost).** Each component requires $$g\cdot(1 + S)$$ units of capacity to produce, where $$g > 0$$ is the generation rate and $$S \geq 0$$ is the per-component verification setup cost. We require $$g\cdot(1 + S) < W$$, otherwise no component can be produced at all.
+### The setup
 
-**Axiom 3 (Superlinear Verification).** The human verification cost for a system of $$n$$ components is $$V(n) = (1 - c)\,n^{\alpha}$$, where $$c \in [0, 1)$$ is the fraction of verification automated by tests, and $$\alpha > 1$$ is the interaction exponent. $$V$$ is continuous, monotonically increasing, and unbounded.
+A system has $$n$$ components. Draw an arrow from component $$a$$ to component $$b$$ when a change in $$a$$ can change the behavior of $$b$$: a function call, a shared database table, an event, a shared config value.
 
-**Axiom 4 (Capacity Constraint).** At system size $$n$$, the team must simultaneously fund production and verification from $$W$$:
+**Definition 1 (Connectivity factor).** The connectivity factor $$k \in (0, 1]$$ is the density of this graph: the probability that a given ordered pair of components has an arrow. We assume that arrows occur independently. A component then interacts directly with about $$k(n - 1)$$ others, a number that grows as the system grows.
 
-$$g\cdot(1 + S) + V(n) \leq W$$
+**Definition 2 (Trace).** A trace of depth $$L$$ is a chain of $$L$$ arrows through $$L + 1$$ different components, $$c_0 \to c_1 \to \cdots \to c_L$$. The trace depth $$L \geq 1$$ is how far verification must follow an effect before it can stop. A data point that one service collects and broadcasts, a second service transforms and saves, and a web client displays, is one trace of depth 3.
 
-Velocity is zero whenever this inequality is violated.
+**Lemma 1 (Trace count).** A system of $$n$$ components with connectivity factor $$k$$ has, in expectation,
 
-**Definition 1 (Verification Budget).** The verification budget is $$B = W - g\cdot(1 + S)$$. By Axiom 2, $$B > 0$$.
+$$N_L(n) = k^L \, n(n-1)\cdots(n-L) \;\approx\; k^L \, n^{L+1}$$
 
-**Definition 2 (Effective Velocity).** The effective velocity at system size $$n$$ is:
+traces of depth $$L$$.
 
-$$v(n) = g_{\text{eff}} \cdot \left(1 - \frac{V(n)}{B}\right)$$
+**Proof.** There are $$n(n-1)\cdots(n-L)$$ sequences of $$L + 1$$ different components. A sequence is a trace when all $$L$$ of its arrows exist, which happens with probability $$k^L$$. ∎
 
-where $$g_{\text{eff}} = g \,/\, (1 + S)$$ is the effective generation rate. $$v(n) > 0$$ when $$V(n) < B$$, and $$v(n) = 0$$ when $$V(n) \geq B$$.
+### The model
 
-**Definition 3 (Complexity Barrier).** The complexity barrier $$n^*$$ is the unique solution to $$V(n^*) = B$$, that is:
+**Axiom 1 (Finite capacity).** A team has capacity $$W > 0$$ per sprint. Building and verification both draw from $$W$$.
 
-$$n^* = \left(\frac{B}{1 - c}\right)^{1/\alpha}$$
+**Axiom 2 (Verification follows traces).** To release a system of $$n$$ components, the team must check each trace of depth $$L$$ that automated tests do not cover. With coverage $$c \in [0, 1)$$ and one unit of capacity per trace, the cost of each release is
 
-This exists and is unique because $$V$$ is continuous, $$V(0) = 0$$, and $$V$$ is unbounded (Axiom 3).
+$$V(n) = (1 - c)\, k^L \, n^{L+1}$$
 
-**Theorem 1 (Existence of the Barrier).** For any system satisfying Axioms 1 to 4, there exists a finite $$n^*$$ such that the cumulative development time $$T(n) \to \infty$$ as $$n \to n^*$$. The system cannot reach $$n^*$$ components in finite time.
+The cost recurs each sprint, because a system in use must keep changing (Lehman[^1]), and the release that was verified last sprint is not the release that ships this sprint.
 
-**Proof.** The cumulative time to reach $$n$$ components is:
+**Axiom 3 (Building uses what is left).** With no verification, the team builds $$g$$ components per sprint. Tests add a setup cost $$S \geq 0$$ per component, so the effective generation rate is $$g_{\text{eff}} = g / (1 + S)$$. Verification takes its share of capacity first, and the team builds at
 
-$$T(n) = \int_0^n \frac{dn'}{v(n')} = \int_0^n \frac{dn'}{g_{\text{eff}} \cdot \left(1 - V(n')/B\right)}$$
+$$v(n) = g_{\text{eff}} \cdot \max\!\left(0,\; 1 - \frac{V(n)}{W}\right)$$
 
-By Definition 3, $$V(n^*) = B$$, so as $$n' \to n^*$$, the denominator $$\left(1 - V(n')/B\right) \to 0$$.
+The interaction exponent is now $$\alpha = L + 1$$. It is a result of the model, not an axiom.
 
-Since $$V$$ is continuous and differentiable near $$n^*$$, we can write $$V(n^*) - V(n^* - \varepsilon) \approx V'(n^*)\cdot\varepsilon$$ for small $$\varepsilon$$. Then near $$n^*$$:
+**Theorem 1 (Existence of the barrier).** There is exactly one system size
 
-$$1 - \frac{V(n')}{B} \;\approx\; \frac{V'(n^*)\cdot(n^* - n')}{B}$$
+$$n^* = \left(\frac{W}{(1 - c)\, k^L}\right)^{1/(L+1)}$$
 
-so the integrand behaves as:
+at which verification uses all of $$W$$. At $$n^*$$ and above, the team cannot build anything new.
 
-$$\frac{1}{v(n')} \;\approx\; \frac{B}{g_{\text{eff}} \cdot V'(n^*) \cdot (n^* - n')}$$
+**Proof.** $$V(0) = 0$$, and because $$k > 0$$ and $$c < 1$$, $$V$$ is continuous, strictly increasing, and unbounded. So $$V(n) = W$$ has exactly one positive solution. Solve for $$n$$. ∎
 
-This has the form $$C/(n^* - n')$$, which is a logarithmic divergence:
+This is where $$k > 0$$ enters: any connectivity at all gives $$\alpha \geq 2$$ and a finite barrier.
 
-$$\int^{n^*} \frac{dn'}{n^* - n'} = -\ln(n^* - n') \;\to\; \infty$$
+**Theorem 2 (The barrier cannot be reached).** The time to grow a system to $$n$$ components, $$T(n) = \int_0^n dn' / v(n')$$, goes to infinity as $$n \to n^*$$.
 
-Therefore $$T(n) \to \infty$$ as $$n \to n^*$$. The barrier cannot be reached in finite time. ∎
+**Proof.** $$V$$ is convex, so it lies above its tangent at $$n^*$$: for $$n < n^*$$, $$V(n^*) - V(n) \leq V'(n^*)\,(n^* - n)$$. Divide by $$W = V(n^*)$$, and use $$V'(n^*) / V(n^*) = (L + 1)/n^*$$:
 
-**Corollary 1 (Diminishing returns of capacity).** For the bare case ($$c = 0$$, $$\alpha = 2$$): $$n^* = \sqrt{B} = \sqrt{W - g}$$. Doubling $$W$$ increases $$n^*$$ by a factor of at most $$\sqrt{2}$$. The barrier is sublinear in capacity investment.
+$$1 - \frac{V(n)}{W} \;\leq\; \frac{(L + 1)(n^* - n)}{n^*}$$
 
-**Corollary 2 (The generation-rate trap).** $$\partial n^*/\partial g < 0$$. Increasing generation rate $$g$$ while holding all else constant moves the barrier closer, because it shrinks $$B$$. A faster team hits the wall at a smaller system.
+So $$1/v(n) \geq n^* / \left(g_{\text{eff}}\,(L + 1)\,(n^* - n)\right)$$, and $$\int^{n^*} dn / (n^* - n)$$ diverges. ∎
 
-**Corollary 3 (Testing shifts but preserves the barrier).** For any coverage $$c < 1$$ and any $$\alpha > 1$$, $$n^*$$ is finite. Automated testing increases $$n^*$$ by a factor of $$(1/(1 - c))^{1/\alpha}$$ but does not eliminate the barrier. Only $$c = 1$$ (complete verification automation) removes it, but Axiom 3 requires $$c < 1$$, reflecting the irreducible residual of emergent, unautomatable interactions.
+### Corollaries
 
-**Corollary 4 (Recursive barrier).** Capacity $$W$$ is itself produced by a team of $$m$$ people with coordination cost $$C(m)$$ growing superlinearly. By the same argument, there exists $$m^*$$ beyond which adding people decreases effective $$W$$. The barrier is self-similar across levels of organization.
+**Corollary 1 (Capacity has diminishing returns).** $$n^* \propto W^{1/(L+1)}$$. Doubling $$W$$ multiplies $$n^*$$ by $$2^{1/(L+1)}$$: about 1.41 at $$L = 1$$ and about 1.19 at $$L = 3$$.
+
+**Corollary 2 (Speed does not move the barrier).** $$n^*$$ does not depend on $$g$$ or $$S$$. A higher generation rate divides the time $$T(n)$$ to reach any size below $$n^*$$ by the same factor. AI gets you to the barrier sooner. It does not move the barrier.
+
+**Corollary 3 (Tests shift the barrier, less for deep traces).** Coverage $$c$$ multiplies $$n^*$$ by $$(1/(1 - c))^{1/(L+1)}$$. At 70% coverage this is about 1.83 for $$L = 1$$ and about 1.35 for $$L = 3$$. Only $$c = 1$$ removes the barrier, but Axiom 2 requires $$c < 1$$, reflecting the irreducible residual of emergent, unautomatable interactions.
+
+**Corollary 4 (Traces without a bound).** Suppose traces can cross the system, so that $$L \geq \beta n$$ for some $$\beta > 0$$, and each component has more than one neighbor, $$k n \geq a > 1$$. Then $$N_L \approx n (kn)^L \geq a^{\beta n}$$, and
+
+$$n^* \;\leq\; \frac{\ln\!\big(W / (1 - c)\big)}{\beta \ln a}$$
+
+The barrier now grows with the logarithm of capacity. Doubling $$W$$ adds at most $$\ln 2 / (\beta \ln a)$$ components: a fixed number, not a factor.
+
+**Corollary 5 (Architecture bounds the traces).** Group components into modules, and give each module an interface with a contract that is itself verified. Then verification can stop at an interface, because the contract stands in for everything behind it. $$L$$ is bounded by the depth of a trace inside one module plus one step across an interface, no matter how long the end-to-end chain is. This turns the exponential of Corollary 4 back into a polynomial and lowers $$\alpha$$. It is the work that Lehman's law of increasing complexity asks for[^1], and it is the lever that changes the curve itself rather than a constant in front of it.
+
+**Corollary 6 (Recursive barrier).** Capacity $$W$$ is itself produced by a team of $$m$$ people. They have $$m(m - 1)/2$$ communication channels (Brooks[^9]), which is Lemma 1 with $$k = 1$$ and $$L = 1$$. By the same argument, there exists $$m^*$$ beyond which adding people decreases effective $$W$$. The barrier is self-similar across levels of organization.
 
 ---
 
@@ -687,3 +714,4 @@ _This essay was first published as [a post on X](https://x.com/whusterj/status/2
 [^6]: Thorsten Ball, [post on X](https://x.com/thorstenball/status/2022310010391302259), February 2026.
 [^7]: [Linus's law](https://en.wikipedia.org/wiki/Linus%27s_law), Wikipedia.
 [^8]: METR, [Measuring AI Ability to Complete Long Tasks](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/), March 2025.
+[^9]: Frederick P. Brooks Jr., *The Mythical Man-Month*, 1975.
